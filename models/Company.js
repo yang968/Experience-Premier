@@ -8,15 +8,18 @@ const CompanySchema = new Schema({
   },
   industry: {
     type: Schema.Types.ObjectId,
-    ref: 'industries'
+    ref: 'industries',
+    required: true
   },
   ceo: {
     type: Schema.Types.ObjectId,
-    ref: 'users'
+    ref: 'users',
+    required: true
   },
   date: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+    required: true
   }
 });
 

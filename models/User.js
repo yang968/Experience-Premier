@@ -24,18 +24,14 @@ const UserSchema = new Schema({
     min: 8,
     default: ""
   },
-  isDeleted: {
-    type: Boolean,
-    default: false
-  },
   managerId: {
-    type: String,
-    required:true,
+    type: Schema.Types.ObjectId,
     index: true
   },
   date: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+    required: true
   },
 });
 
