@@ -5,6 +5,7 @@ const CompanySchema = new Schema({
   name: {
     type: String,
     required: true,
+    default: ""
   },
   industry: {
     type: Schema.Types.ObjectId,
