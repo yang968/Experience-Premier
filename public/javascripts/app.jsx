@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const App = () => (
   <h1>"goodbye"</h1>
 )
