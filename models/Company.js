@@ -7,7 +7,12 @@ const CompanySchema = new Schema({
     required: true,
   },
   industry: {
-    type: String
+    type: Schema.Types.ObjectId,
+    ref: 'industries'
+  },
+  ceo: {
+    type: Schema.Types.ObjectId,
+    ref: 'users'
   },
   date: {
     type: Date,
@@ -15,4 +20,4 @@ const CompanySchema = new Schema({
   }
 });
 
-module.exports = Event = mongoose.model('event', EventSchema);
+module.exports = Company = mongoose.model('company', CompanySchema);
