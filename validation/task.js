@@ -3,11 +3,11 @@ const isValid = require('./is-valid');
 
 module.exports = function validateTaskInput(data) {
   let errors = {};
-
+  
   data.transcript = !isValid(data.transcript) ? data.transcript : "";
 
   if (!Validator.isLength(data.transcript, { min: 1})) {
-    errors.text = "Transcript can't be empty!"
+    errors.transcript = "Transcript can't be empty!"
   }
 
   return {

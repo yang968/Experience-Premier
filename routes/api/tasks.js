@@ -12,6 +12,8 @@ const validateTaskInput = require('../../validation/task');
   and create a new instance of Task and save into the database
 */
 router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
+  console.log(req.body);
+  
   const {errors, isValid} = validateTaskInput(req.body);
 
   if (!isValid) {
@@ -19,8 +21,9 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   }
 
   const newTask = new Task({
-    user: req.body.userId,
-    transcript: req.body.transcript
+    user: req.user.id,
+    transcript: req.body.transcript,
+    results: req.body.results
   });
 
   newTask.save().then(task => res.json(task));
