@@ -4,20 +4,20 @@
 
 
 // Google Fonts
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+// @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 // Font Variables
-$roboto: 'Roboto', sans-serif;
+$montserrat: 'Montserrat', sans-serif;
 
 // Styles
 
 body {
-  background-color: #F8F9F9;
+  background-color: $secondary-color;
 }
 
 header a {
+  font-family: $montserrat, sans-serif;
   font-size: 36px;
-  font-weight: 800;
   text-decoration: none;
   color: #fff;
 }
@@ -28,30 +28,30 @@ nav.header-login-signup {
   margin-left: 10px;
 
   a:last-child {
-    font-weight: 700;
-    background: rgba(92, 176, 71, 1);
+    color: $primary-color-dark;
+    opacity: 0.7;
 
     &:hover {
-      font-weight: 700;
-      background: rgba(92, 176, 71, 0.8);
+      opacity: 1;
     }
   }
 }
 
 .session-button {
+  font-family: $montserrat, sans-serif;
   font-size: 1.2em;
   margin: 0 4px 0;
   border: none;
-  color: #fff;
+  color: set-text-color(#fff);
+  opacity: 0.7;
   text-decoration: none;
-  background: rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  box-shadow: 0 2px rgba(0, 0, 0, 0.3);
   padding: 10px 18px 10px;
-  box-sizing: border-box;
+  // box-sizing: border-box;
 
   &:hover {
-    background: rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    cursor: pointer;
   }
 }
 
@@ -116,7 +116,7 @@ nav.header-login-signup {
     }
 
     &.session-button {
-      font-family: $roboto;
+      font-family: $montserrat;
       color: #fff;
       background: rgba(90, 172, 68, 0.9);
       border: none;
