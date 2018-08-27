@@ -86,6 +86,8 @@ router.post('/login', (req, res) => {
             const payload = {
               id: user.id,
               firstName: user.firstName,
+              lastName: user.lastName,
+              email: user.email
             };
 
             // Getting subordinates
@@ -111,6 +113,10 @@ router.post('/login', (req, res) => {
                   res.json({
                     success: true,
                     token: 'Bearer ' + token,
+                    userId: payload.id,
+                    FirstName: payload.firstName,
+                    lastName: payload.lastName,
+                    email: payload.email,
                     subordinates: filteredSubInfo
                   });
                 });
