@@ -34,6 +34,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "validator": "^10.7.0",
+    "watson-speech": "^0.35.0",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0"
   },
