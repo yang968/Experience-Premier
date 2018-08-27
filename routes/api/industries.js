@@ -15,4 +15,12 @@ router.post('/', (req, res) => {
   newIndustry.save().then(industry => res.json(industry));
 });
 
+router.get('/', (req, res) => {
+  Industry.find((error, industries) => {
+    if (error) return res.status(404).json({error});
+
+    res.json(industries.map(industry => industry.name));
+  })
+});
+
 module.exports = router;

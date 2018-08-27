@@ -16,4 +16,12 @@ router.post('/', (req, res) => {
   newCompany.save().then(company => res.json(company));
 });
 
+router.get('/', (req, res) => {
+  Company.find((error, companies) => {
+    if (error) return res.status(404).json({ error });
+
+    res.json(companies.map(company => company.name));
+  })
+});
+
 module.exports = router;

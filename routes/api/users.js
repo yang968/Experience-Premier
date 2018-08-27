@@ -8,8 +8,11 @@ const validateLoginInput = require('../../validation/login');
 const router = express.Router();
 const mongoose = require('mongoose');
 
+// Fetch the username and key for API here
+
 // importing User model
 const User = require('../../models/User');
+const Task = require('../../models/Task');
 
 router.get("/tester", (req, res) => res.json({
   msg: "This is the users route"
@@ -21,7 +24,8 @@ router.get('/overview', passport.authenticate('jwt', { session: false }), (req, 
     id: req.user.id,
     firstName: req.user.firstName,
     lastName: req.user.lastName,
-    email: req.user.email
+    email: req.user.email,
+    // Send username and key for API here to the Frontend user
   });
 });
 
@@ -105,5 +109,20 @@ router.post('/login', (req, res) => {
     });
 });
 
+/* 
+  Get all tasks for a user id. 
+*/
+router.get('/:id', (req, res) => {
+  User.findById(req.params.id)
+    .then(user => {
+      if (!user) {
+        return res.status(404).json({invalidUser: 'User does not exist!'});
+      }
+
+      Task.find({user: user._id}).then(tasks => {
+        res.json(tasks.map(task => {task.transcript, task.data, task.results}));
+      })
+    })
+})
 
 module.exports = router;
