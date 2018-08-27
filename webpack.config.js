@@ -10,7 +10,7 @@ module.exports = {
   },
   module: {
     rules: [{
-        test: /\.jsx?$/,
+        test: [/\.jsx?$/, /\.js?$/],
         exclude: /(node_modules)/,
         use: {
           loader: "babel-loader",
@@ -21,31 +21,13 @@ module.exports = {
       }, {
         test: /\.scss$/,
         exclude: /(node_modules)/,
-        use: [{
-          loader: "style-loader"
-        }, {
-          loader: "css-loader",
-          options: {
-            sourceMap: true
-          }
-        }, {
-          loader: "sass-loader",
-          options: {
-            sourceMap: true
-            // implementation: require('dart-sass'),
-            // fiber: Fiber
-          }
-        }]
-      }, {
-        test: /\.scss$/,
         use: [
           // fallback to style-loader in development
           process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
           "css-loader",
           "sass-loader"
         ]
-      }
-    ]
+      }]
   }, 
   plugins: [
     new MiniCssExtractPlugin({
