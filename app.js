@@ -60,7 +60,7 @@ app.use('/api/speech-to-text/token', function (req, res) {
       url: watson.SpeechToTextV1.URL
     },
     function (err, token) {
-      if (err) {"txwGxR80eCSP"
+      if (err) {
         res.status(500).send('Error retrieving token');
         return;
       }
