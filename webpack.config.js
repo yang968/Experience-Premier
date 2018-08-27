@@ -9,25 +9,32 @@ module.exports = {
     filename: "bundle.js"
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.jsx?$/,
         exclude: /(node_modules)/,
-        use: [{
+        use: {
           loader: "babel-loader",
           query: {
             presets: ["env", "react"]
           }
-        }, {
+        }
+      }, {
+        test: /\.scss$/,
+        exclude: /(node_modules)/,
+        use: [{
           loader: "style-loader"
         }, {
-          loader: "css-loader"
+          loader: "css-loader",
+          options: {
+            sourceMap: true
+          }
         }, {
           loader: "sass-loader",
-          // options: {
-          //   implementation: require('dart-sass'),
-          //   fiber: Fiber
-          // }
+          options: {
+            sourceMap: true
+            // implementation: require('dart-sass'),
+            // fiber: Fiber
+          }
         }]
       }, {
         test: /\.scss$/,
