@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const TaskSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
-    ref: 'users'
+    ref: "users"
   },
   transcript: {
     type: String,
@@ -14,6 +14,10 @@ const TaskSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  results: {
+    type: String,
+    required: true
   }
 });
 
