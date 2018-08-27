@@ -3,16 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // Google Fonts
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 // Font Variables
-$roboto: 'Roboto', sans-serif;
+$montserrat: 'Montserrat', sans-serif;
 
 // Styles
 
 body {
-  font-family: $roboto;
-  // font-family: 'Montserrat', serif;
+  font-family: $montserrat;
   height: 100%;
   margin: 0;
 }

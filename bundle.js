@@ -95,10 +95,11 @@
 
 exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat);", ""]);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Roboto);", ""]);
 
 // module
-exports.push([module.i, "html, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1;\n  background: blue; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nbody {\n  font-family: \"Roboto\", sans-serif;\n  height: 100%;\n  margin: 0; }\n\nheader {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 20px 25px 20px;\n  color: #fff;\n  background-color: #026AA7;\n  box-sizing: border-box; }\n\n.main {\n  position: absolute;\n  width: 100%; }\n", ""]);
+exports.push([module.i, "html, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nbody {\n  font-family: \"Montserrat\", sans-serif;\n  height: 100%;\n  margin: 0; }\n\nheader {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 20px 25px 20px;\n  color: #fff;\n  background-color: #026AA7;\n  box-sizing: border-box; }\n\n.main {\n  position: absolute;\n  width: 100%; }\n\nbody {\n  background-color: #F8F9F9; }\n\nheader a {\n  font-size: 36px;\n  font-weight: 800;\n  text-decoration: none;\n  color: #fff; }\n\nnav.header-login-signup {\n  display: flex;\n  justify-content: space-between;\n  margin-left: 10px; }\n  nav.header-login-signup a:last-child {\n    font-weight: 700;\n    background: #5cb047; }\n    nav.header-login-signup a:last-child:hover {\n      font-weight: 700;\n      background: rgba(92, 176, 71, 0.8); }\n\n.session-button {\n  font-size: 1.2em;\n  margin: 0 4px 0;\n  border: none;\n  color: #fff;\n  text-decoration: none;\n  background: rgba(0, 0, 0, 0.1);\n  border-radius: 5px;\n  box-shadow: 0 2px rgba(0, 0, 0, 0.3);\n  padding: 10px 18px 10px;\n  box-sizing: border-box; }\n  .session-button:hover {\n    background: rgba(0, 0, 0, 0.2); }\n\n.user-nav {\n  display: flex;\n  align-items: center; }\n  .user-nav h2 {\n    font-size: 20px; }\n\n.login-form-box h1 {\n  font-size: 42px;\n  font-weight: 1000px; }\n\n.login-form-box a {\n  color: #298FCA; }\n\n.login-form-box a:hover {\n  color: #000; }\n\n.login-form {\n  margin-top: 10px; }\n\n.session-form-error {\n  font-size: 14px;\n  color: #fff;\n  border: 1px solid none;\n  border-radius: 5px;\n  margin-bottom: 15px;\n  padding-left: 10px;\n  background: #EB5A46; }\n\n.login-form-box {\n  width: 40%;\n  margin: auto;\n  margin-top: 4em;\n  font-size: 20px;\n  line-height: 2em; }\n  .login-form-box input {\n    width: 100%;\n    color: #4D4D4D;\n    font-size: 24px;\n    line-height: 1.5em;\n    background: #EDEFF0;\n    border: 1px solid lightgray;\n    border-radius: 3px;\n    padding: 5px 12px 5px;\n    box-sizing: border-box; }\n    .login-form-box input:focus {\n      outline: none;\n      box-shadow: 0 0 3px #bebebe; }\n    .login-form-box input.session-button {\n      font-family: \"Roboto\", sans-serif;\n      color: #fff;\n      background: rgba(90, 172, 68, 0.9);\n      border: none;\n      margin: auto;\n      margin-top: 1em; }\n      .login-form-box input.session-button:hover {\n        background: #5aac44; }\n\ninput::-webkit-input-placeholder {\n  color: rgba(0, 0, 0, 0.3); }\n\n.splash-header {\n  position: fixed;\n  overflow: hidden;\n  top: 0;\n  left: 0;\n  width: 100%;\n  z-index: 1; }\n  .splash-header h1 {\n    font-size: 36px;\n    font-weight: 700; }\n\n.splash-header-spacer {\n  position: relative;\n  width: 100%;\n  height: 80px; }\n\n.home-link {\n  display: flex;\n  flex-direction: row;\n  align-items: center; }\n\ni.icon-home {\n  background: image-url(\"flipped_trello_logo.png\");\n  background-size: 98%;\n  width: 36px;\n  height: 36px;\n  margin-right: 7px;\n  padding-bottom: 8px; }\n\n.splash-tagline {\n  display: flex;\n  background: image-url(\"cmu_splash.jpg\");\n  background-size: cover;\n  background-position: center;\n  justify-content: center;\n  box-shadow: inset 0 0 0 1000px rgba(7, 127, 196, 0.8); }\n\n.splash-tagline-box {\n  margin: 8em 2em 7em 2em;\n  display: flex;\n  width: 550px;\n  flex-direction: column;\n  text-align: center;\n  color: #fff; }\n  .splash-tagline-box h1 {\n    font-size: 40px;\n    line-height: 1.1em;\n    font-weight: bold;\n    padding: 0 1em 0; }\n  .splash-tagline-box p {\n    font-size: 20px;\n    line-height: 1.2em;\n    margin: 1em 0 1em; }\n  .splash-tagline-box a {\n    color: #e1e1e1;\n    margin: 1em 0 1em; }\n    .splash-tagline-box a:hover {\n      color: #fff; }\n    .splash-tagline-box a.session-button {\n      color: #fff;\n      background: rgba(90, 172, 68, 0.9); }\n      .splash-tagline-box a.session-button:hover {\n        background: #5aac44; }\n\n.dashboard-expo {\n  background: #315989;\n  width: 100%;\n  height: 400px; }\n\n.data-expo {\n  background-image: linear-gradient(#FEAA4A, #F06E47);\n  width: 100%;\n  height: 400px; }\n", ""]);
 
 // exports
 
@@ -27237,6 +27238,66 @@ exports.default = Root;
 
 /***/ }),
 
+/***/ "./public/javascripts/components/splash/dashboard_expo.jsx":
+/*!*****************************************************************!*\
+  !*** ./public/javascripts/components/splash/dashboard_expo.jsx ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DashboardExpo = function DashboardExpo() {
+  return _react2.default.createElement("div", { className: "dashboard-expo" });
+};
+
+exports.default = DashboardExpo;
+
+/***/ }),
+
+/***/ "./public/javascripts/components/splash/data_expo.jsx":
+/*!************************************************************!*\
+  !*** ./public/javascripts/components/splash/data_expo.jsx ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DataExpo = function DataExpo() {
+  return _react2.default.createElement("div", { className: "data-expo" });
+};
+
+exports.default = DataExpo;
+
+/***/ }),
+
 /***/ "./public/javascripts/components/splash/splash_body.jsx":
 /*!**************************************************************!*\
   !*** ./public/javascripts/components/splash/splash_body.jsx ***!
@@ -27259,13 +27320,23 @@ var _splash_tagline = __webpack_require__(/*! ./splash_tagline.jsx */ "./public/
 
 var _splash_tagline2 = _interopRequireDefault(_splash_tagline);
 
+var _dashboard_expo = __webpack_require__(/*! ./dashboard_expo.jsx */ "./public/javascripts/components/splash/dashboard_expo.jsx");
+
+var _dashboard_expo2 = _interopRequireDefault(_dashboard_expo);
+
+var _data_expo = __webpack_require__(/*! ./data_expo */ "./public/javascripts/components/splash/data_expo.jsx");
+
+var _data_expo2 = _interopRequireDefault(_data_expo);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SplashBody = function SplashBody() {
   return _react2.default.createElement(
     "div",
     { className: "splash-body" },
-    _react2.default.createElement(_splash_tagline2.default, null)
+    _react2.default.createElement(_splash_tagline2.default, null),
+    _react2.default.createElement(_dashboard_expo2.default, null),
+    _react2.default.createElement(_data_expo2.default, null)
   );
 };
 
