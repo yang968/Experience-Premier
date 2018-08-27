@@ -49,7 +49,8 @@ router.post('/register', (req, res) => {
           lastName: req.body.lastName,
           company: mongoose.Types.ObjectId(req.body.company),
           email: req.body.email,
-          password: req.body.password
+          password: req.body.password,
+          manager: req.body.manager === '' ? null : mongoose.Types.ObjectId(req.body.manager)
         });
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -66,40 +67,58 @@ router.post('/register', (req, res) => {
 
 // Returning User.
 router.post('/login', (req, res) => {
-  const {
-    errors,
-    isValid
-  } = validateLoginInput(req.body);
-  if (!isValid) {
-    return res.status(400).json(errors);
-  }
+  const { errors, isValid } = validateLoginInput(req.body);
+  if (!isValid) { return res.status(400).json(errors);}
 
   const email = req.body.email;
   const password = req.body.password;
 
   User.findOne({ email })
     .then(user => {
-      if (!user) {
-        return res.status(404).json({ email: 'This user does not exist' });
-      }
+      if (!user) { return res.status(404).json({ email: 'This user does not exist' });}
 
       bcrypt.compare(password, user.password)
         .then(isMatch => {
           if (isMatch) {
+            // define payload
             const payload = {
               id: user.id,
-              firstName: user.firstName
+              firstName: user.firstName,
+              lastName: user.lastName,
+              email: user.email
             };
 
-            jsonwebtoken.sign(payload, keys.secretOrKey,
-              // Tell the key to expire in one hour
-              { expiresIn: 3600 },
-              (err, token) => {
-                res.json({
-                  success: true,
-                  token: 'Bearer ' + token
+            // Getting subordinates
+            let managerId = mongoose.Types.ObjectId(user._id);
+            const filteredSubInfo = [];
+
+            User.find({manager: managerId})
+              .then(subs => {
+                subs.forEach((sub) => {
+                  // Add subordinate info here.
+                  filteredSubInfo.push({
+                    id: sub._id,
+                    firstName: sub.firstName,
+                    lastName: sub.lastName,
+                    email: sub.email
+                  });
                 });
-              });
+             }).then(() => {
+              jsonwebtoken.sign(payload, keys.secretOrKey,
+                // Tell the key to expire in one hour
+                { expiresIn: 3600 },
+                (err, token) => {
+                  res.json({
+                    success: true,
+                    token: 'Bearer ' + token,
+                    userId: payload.id,
+                    FirstName: payload.firstName,
+                    lastName: payload.lastName,
+                    email: payload.email,
+                    subordinates: filteredSubInfo
+                  });
+                });
+             });
           } else {
             return res.status(400).json({
               password: 'Incorrect password'
