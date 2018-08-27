@@ -19,6 +19,7 @@
     "babel-preset-react": "^6.24.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
@@ -34,11 +35,14 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "validator": "^10.7.0",
+    "vcap_services": "^0.5.1",
+    "watson-developer-cloud": "^3.9.0",
     "watson-speech": "^0.35.0",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.3"
-  }
+  },
+  "proxy": "http://localhost:3000/"
 }
