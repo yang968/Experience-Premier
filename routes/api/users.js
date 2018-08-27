@@ -45,7 +45,8 @@ router.post('/register', (req, res) => {
           lastName: req.body.lastName,
           company: mongoose.Types.ObjectId(req.body.company),
           email: req.body.email,
-          password: req.body.password
+          password: req.body.password,
+          manager: req.body.manager === '' ? null : mongoose.Types.ObjectId(req.body.manager)
         });
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -84,18 +85,37 @@ router.post('/login', (req, res) => {
           if (isMatch) {
             const payload = {
               id: user.id,
-              firstName: user.firstName
+              firstName: user.firstName,
             };
 
-            jsonwebtoken.sign(payload, keys.secretOrKey,
-              // Tell the key to expire in one hour
-              { expiresIn: 3600 },
-              (err, token) => {
-                res.json({
-                  success: true,
-                  token: 'Bearer ' + token
+            // Getting subordinates
+            let managerId = mongoose.Types.ObjectId(user._id);
+            const filteredSubInfo = [];
+
+            User.find({manager: managerId})
+              .then(subs => {
+                subs.forEach((sub) => {
+                  // Add subordinate info here.
+                  filteredSubInfo.push({
+                    id: sub._id,
+                    firstName: sub.firstName,
+                    lastName: sub.lastName,
+                    email: sub.email
+                  });
                 });
-              });
+             }).then(() => {
+              jsonwebtoken.sign(payload, keys.secretOrKey,
+                // Tell the key to expire in one hour
+                { expiresIn: 3600 },
+                (err, token) => {
+                  res.json({
+                    success: true,
+                    token: 'Bearer ' + token,
+                    subordinates: filteredSubInfo
+                  });
+                });
+             });
+
           } else {
             return res.status(400).json({
               password: 'Incorrect password'
