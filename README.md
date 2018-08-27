@@ -73,33 +73,33 @@ As of Sunday 08/26/2018:
 | `08.27 Monday`    | __Nick__: finish connecting the task page with the Watson speech to text. Have text rendering and have proper data being sent to the back-end for compounding. Start styling task page.
 |                   | __Jordan__: set up site theme colors and fonts. Complete working splash page with functional frontend auth (sign up, log in, log out)
 |                   | __Victor__: 
-|                   | __Mark__:   
+|                   | __Mark__:  finish touching up backend. Help connecting frontend and backend.
 | `08.28 Tuesday`   | __Nick__: finish styling task page and work on compounding data on the back-end.
 |                   | __Jordan__: add animations to splash page and live page. Build basic employee dashboard components (profile, performance). Test component integration. 
 |                   | __Victor__: 
-|                   | __Mark__:   
+|                   | __Mark__: connect task transcript with IBM watson and be able to retrieve the sentimental report.
 | `08.29 Wednesday` | __Nick__: continue working on the back-end data structure
 |                   | __Jordan__: build basic manager dashboard components (managed employees index, team performance). Test component integration. 
 |                   | __Victor__: 
-|                   | __Mark__:   
+|                   | __Mark__:  help frontend to render visually appealing frontend.
 | `08.30 Thursday`  | __Nick__: finish back-end data structure and start working on charts for employee data
 |                   | __Jordan__: add manager dashboard screenshots to splash page.
 |                   | __Victor__: 
-|                   | __Mark__:   
+|                   | __Mark__:  work on creating a useful chart using D3 and chart.js
 | `08.31 Friday`    | __Nick__: Continue working on employee data chart and overall team charts
 |                   | __Jordan__: add team public presence links and contact information. 
 |                   | __Victor__: 
-|                   | __Mark__:   
+|                   | __Mark__:  work on creating a useful chart using D3 and chart.js
 | `09.01 Saturday`  | __TEAM__: create seed data, debug 
 |                   | __Nick__: finish overall team charts, debug all chart and data info check for edge cases for the data
 |                   | __Jordan__: polish user interface 
 |                   | __Victor__: 
-|                   | __Mark__:   
+|                   | __Mark__:  work on compilating that data charts and try to break the website.
 | `09.02 Sunday`    | __TEAM__: create seed data, debug 
 |                   | __Nick__: debug all chart and data info check for edge cases for the data
 |                   | __Jordan__: polish user interface 
 |                   | __Victor__: 
-|                   | __Mark__:   
+|                   | __Mark__: work on final touches.
 | `09.03 Monday`    | __TEAM__: submit project by 0900. Go out to a nice lunch 
 
 
