@@ -4,7 +4,7 @@ Seungho Victor Yang, Nick Matison, Mark Lee, Jordan Yu
 
 __CONTENTS:__ 
 - [Background & Overview](https://github.com/yang968/ExP#background--overview) 
-- [Functionality & MVP List](https://github.com/yang968/ExP#functionality--MVP-list) 
+- [Functionality & MVP List](https://github.com/yang968/ExP#functionality--mvp-list) 
 - [Technologies & Technical Challenges](https://github.com/yang968/ExP#technologies--technical-challenges) 
 - [Work Completed](https://github.com/yang968/ExP#work-completed)
 - [Project Timeline](https://github.com/yang968/ExP#project-timeline-goals) 
