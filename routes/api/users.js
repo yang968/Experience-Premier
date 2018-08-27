@@ -10,35 +10,31 @@ const router = express.Router();
 // importing User model
 const User = require('../../models/User');
 
-// router.get("/tester", (req, res) => res.json({
-//   msg: "This is the users route"
-// }));
+router.get("/tester", (req, res) => res.json({
+  msg: "This is the users route"
+}));
 
 // Private Auth route
-router.get('/overview', passport.authenticate('jwt', {
-  session: false
-}), (req, res) => {
+router.get('/overview', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.json({
     id: req.user.id,
-    name: req.user.name,
+    firstName: req.user.firstName,
+    lastName: req.user.lastName,
     email: req.user.email
   });
 });
 
 // New user.
 router.post('/register', (req, res) => {
-  const {
-    errors,
-    isValid
-  } = validateRegisterInput(req.body);
-  if (!isValid) {
-    return res.status(400).json(errors);
-  }
+  console.log("received new user request");
+
+  const { errors, isValid } = validateRegisterInput(req.body);
+  if (!isValid) { return res.status(400).json(errors); }
+
+  console.log("passed initial screen");
 
   // Check to make sure nobody has already registered with a duplicate email
-  User.findOne({
-      email: req.body.email
-    })
+  User.findOne({ email: req.body.email })
     .then(user => {
       if (user) {
         // Throw a 400 error if the email address already exists
@@ -48,7 +44,9 @@ router.post('/register', (req, res) => {
       } else {
         // Otherwise create a new user
         const newUser = new User({
-          name: req.body.name,
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          company: req.body.company,
           email: req.body.email,
           password: req.body.password
         });
@@ -89,14 +87,12 @@ router.post('/login', (req, res) => {
           if (isMatch) {
             const payload = {
               id: user.id,
-              name: user.name
+              firstName: user.firstName
             };
 
             jsonwebtoken.sign(payload, keys.secretOrKey,
               // Tell the key to expire in one hour
-              {
-                expiresIn: 3600
-              },
+              { expiresIn: 3600 },
               (err, token) => {
                 res.json({
                   success: true,

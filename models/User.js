@@ -24,8 +24,17 @@ const UserSchema = new Schema({
     min: 8,
     default: ""
   },
-  managerId: {
+  company: {
+    type: String,
+    required: true,
+    default:''
+    // type: Schema.Types.ObjectId,
+    // ref: 'companies',
+  },
+  manager: {
     type: Schema.Types.ObjectId,
+    ref: 'users',
+    required: false,
     index: true
   },
   date: {
