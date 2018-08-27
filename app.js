@@ -4,13 +4,14 @@ const app = express();
 const db = require("./config/keys").mongoURI;
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const users = require("./routes/api/users");
 
 const users = require('./routes/api/users');
 const tasks = require('./routes/api/tasks');
 const industries = require('./routes/api/industries');
 
 mongoose
-  .connect(db)
+  .connect(db, { useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 
