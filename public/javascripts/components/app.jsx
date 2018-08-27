@@ -1,11 +1,8 @@
 import React from 'react';
-import LivePage from './live-page/live-page';
+import TaskPage from './tasks/task';
 
 const App = () => (
-  <div>
-    <h1>HELLOLKLKLK</h1>
-    <LivePage />
-  </div>
+  <TaskPage />
 )
 
 export default App;

@@ -5,7 +5,6 @@ class TaskPage extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = { text: "" };
   }
 
   handleSubmit(e) {
@@ -32,9 +31,14 @@ class TaskPage extends React.Component {
         // If we receive a "data" response then we need to key into the data and display it by
         // setting it to our state.
         stream.on("data", data => {
-          this.setState({
-            text: data.results[0].alternatives[0].transcript
-          });
+          //Watson sends multiple results per sentence, so we only want to display the "final"
+          //result. Otherwise we may have the same sentence displayed 1-3 times.
+          const final = data.results[0].final;
+          const text = data.results[0].alternatives[0].transcript;
+          if (final) {
+            let dataNode = document.createTextNode(text);
+            document.querySelector(".live-text").appendChild(dataNode);
+          }
         });
         // Vanilla DOM to select the stop button and give it an onclick function to stop the stream.
         document.querySelector(".stop-button").onclick = stream.stop.bind(stream);
@@ -49,14 +53,14 @@ class TaskPage extends React.Component {
           Start
         </button>
         <button className="stop-button">Stop</button>
-        <p
-          contentEditable="true"
-          suppressContentEditableWarning="true"
-          placeholder="Speech will generate here"
+        <div className="live-text"
+          // contentEditable="true"
+          // suppressContentEditableWarning="true"
+          // placeholder="Speech will generate here"
           id="live-feed"
         >
-          {this.state.text}
-        </p>
+          {/* {this.state.transcript} */}
+        </div>
       </div>
     );
   }
