@@ -6,6 +6,7 @@ const passport = require('passport');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 const router = express.Router();
+const mongoose = require('mongoose');
 
 // importing User model
 const User = require('../../models/User');
@@ -26,12 +27,8 @@ router.get('/overview', passport.authenticate('jwt', { session: false }), (req, 
 
 // New user.
 router.post('/register', (req, res) => {
-  console.log("received new user request");
-
   const { errors, isValid } = validateRegisterInput(req.body);
   if (!isValid) { return res.status(400).json(errors); }
-
-  console.log("passed initial screen");
 
   // Check to make sure nobody has already registered with a duplicate email
   User.findOne({ email: req.body.email })
@@ -46,7 +43,7 @@ router.post('/register', (req, res) => {
         const newUser = new User({
           firstName: req.body.firstName,
           lastName: req.body.lastName,
-          company: req.body.company,
+          company: mongoose.Types.ObjectId(req.body.company),
           email: req.body.email,
           password: req.body.password
         });

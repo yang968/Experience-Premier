@@ -10,12 +10,12 @@ const CompanySchema = new Schema({
   industry: {
     type: Schema.Types.ObjectId,
     ref: 'industries',
-    required: true
+    required: false
   },
   ceo: {
     type: Schema.Types.ObjectId,
     ref: 'users',
-    required: true
+    required: false
   },
   date: {
     type: Date,
@@ -24,4 +24,4 @@ const CompanySchema = new Schema({
   }
 });
 
-module.exports = Company = mongoose.model('company', CompanySchema);
+module.exports = Company = mongoose.model('companies', CompanySchema);

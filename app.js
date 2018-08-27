@@ -5,10 +5,9 @@ const db = require("./config/keys").mongoURI;
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const users = require("./routes/api/users");
-
-const users = require('./routes/api/users');
 const tasks = require('./routes/api/tasks');
 const industries = require('./routes/api/industries');
+const companies = require('./routes/api/companies');
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -27,5 +26,6 @@ app.use(bodyParser.json());
 app.use("/api/users", users);
 app.use("/api/tasks", tasks);
 app.use("/api/industries", industries);
+app.use("/api/companies", companies);
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
