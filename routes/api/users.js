@@ -1,7 +1,6 @@
 const express = require("express");
 const bcrypt = require('bcryptjs');
 const jsonwebtoken = require('jsonwebtoken');
-const keys = require('../../config/keys');
 const passport = require('passport');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
@@ -9,6 +8,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 // Fetch the username and key for API here
+const keys = require('../../config/keys');
 
 // importing User model
 const User = require('../../models/User');
@@ -26,6 +26,8 @@ router.get('/overview', passport.authenticate('jwt', { session: false }), (req, 
     lastName: req.user.lastName,
     email: req.user.email,
     // Send username and key for API here to the Frontend user
+    username: keys.username,
+    password: keys.password
   });
 });
 
