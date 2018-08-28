@@ -21,6 +21,7 @@ mongoose
 
 const port = process.env.PORT || 5000;
 
+app.use(cors());
 app.get("/", (req, res) => res.send("Hello World"));
 
 app.use(passport.initialize());
@@ -34,7 +35,6 @@ app.use("/api/industries", industries);
 app.use("/api/companies", companies);
 
 //We need this for the no access control origin header. Imported in line 11
-app.use(cors());
 
 
 
