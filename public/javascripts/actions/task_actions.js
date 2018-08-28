@@ -6,6 +6,10 @@ export const createTask = task => dispatch => (
   taskUtil.createTask(task).then(taskData => dispatch(receiveTask(taskData)))
 );
 
+export const fetchTask = task => dispatch => (
+  taskUtil.fetchTask(task).then(taskData => dispatch(receiveTask(taskData)))
+)
+
 const receiveTask = taskData => ({
   type: RECEIVE_TASK,
   task: taskData.data
