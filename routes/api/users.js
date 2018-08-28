@@ -14,10 +14,6 @@ const keys = require('../../config/keys');
 const User = require('../../models/User');
 const Task = require('../../models/Task');
 
-router.get("/tester", (req, res) => res.json({
-  msg: "This is the users route"
-}));
-
 // Private Auth route
 router.get('/overview', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.json({
@@ -26,8 +22,10 @@ router.get('/overview', passport.authenticate('jwt', { session: false }), (req, 
     lastName: req.user.lastName,
     email: req.user.email,
     // Send username and key for API here to the Frontend user
-    username: keys.username,
-    password: keys.password
+    // use env vars for Heroku deployment
+    // emotionUsername: process.env.emotionUsername
+    emotionUsername: keys.emotionUsername,
+    emotionPassword: keys.emotionPassword
   });
 });
 
@@ -44,7 +42,7 @@ router.post('/register', (req, res) => {
         return res.status(400).json({
           email: "A user has already registered with this address"
         });
-      } else {
+       } else {
         // Otherwise create a new user
         const newUser = new User({
           firstName: req.body.firstName,

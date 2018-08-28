@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 const CompanySchema = new Schema({
   name: {
     type: String,
-    required: true,
-    default: ""
+    required: true
   },
   industry: {
     type: Schema.Types.ObjectId,
@@ -19,8 +18,7 @@ const CompanySchema = new Schema({
   },
   date: {
     type: Date,
-    default: Date.now,
-    required: true
+    default: Date.now
   }
 });
 
