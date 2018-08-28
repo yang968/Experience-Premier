@@ -22,6 +22,13 @@ header {
   color: set-text-color($secondary-color);
   background-color: $secondary-color;
   box-sizing: border-box;
+
+  a {
+    font-family: $montserrat, sans-serif;
+    font-size: 36px;
+    text-decoration: none;
+    color: set-text-color($secondary-color);
+  }
 }
 
 .main {
