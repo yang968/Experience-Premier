@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
     if (error) return res.status(404).json({ error });
 
     res.json(companies.map(company => company.name));
-  })
+  });
 });
 
 module.exports = router;

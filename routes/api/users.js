@@ -140,8 +140,8 @@ router.get('/:id', (req, res) => {
 
       Task.find({user: user._id}).then(tasks => {
         res.json(tasks.map(task => {task.transcript, task.data, task.results}));
-      })
-    })
-})
+    });
+  });
+});
 
 module.exports = router;
