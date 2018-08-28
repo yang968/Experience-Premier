@@ -6,7 +6,6 @@ import DashboardExpo from './dashboard_expo';
 import DataExpo from './data_expo';
 
 import LoginFormContainer from './login_form_container';
-import SignUpFormContainer from './signup_form_container';
 
 const modalDivRef = React.createRef();
 
@@ -29,7 +28,7 @@ class SplashBody extends React.Component {
         <Tagline />
         <DashboardExpo />
         <DataExpo />
-        
+        <div ref={modalDivRef} className="modalDiv animated" id="modalDiv"></div>
       </div>
     );
   }

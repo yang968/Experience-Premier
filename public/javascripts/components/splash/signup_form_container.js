@@ -10,7 +10,7 @@ const mapStateToProps = ({ errors }) => {
     errors: errors.session,
     formType: "Create New Account",
     navLink: <Link to="/login">sign in to your account</Link>,
-    sessionFormHeader: "Create a ExP Account"
+    sessionFormHeader: "Create an ExP Account"
   };
 };
 
