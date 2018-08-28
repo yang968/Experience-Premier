@@ -13,6 +13,8 @@ const keys = require('../../config/keys');
 // importing User model
 const User = require('../../models/User');
 const Task = require('../../models/Task');
+const UserSession = require('../../models/Session');
+const Company = require('../../models/Company');
 
 // Private Auth route
 router.get('/overview', passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -83,6 +85,20 @@ router.post('/login', (req, res) => {
       bcrypt.compare(password, user.password)
         .then(isMatch => {
           if (isMatch) {
+
+          // Update Session with current user. / For frontend to check with backend.
+          const userSession = new UserSession();
+            userSession.userId = user._id;
+            userSession.save((err, doc) => {
+                  if (err) {
+                    console.log(err);
+                    return res.send({
+                      success: false,
+                      message: 'Error: server error'
+                    });
+                 }
+              });
+
             // helper function that gives user's info with user token
             getUserInfoAndToken(res, user);
           } else {
@@ -110,6 +126,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
+
 // helper functions
 function getUserInfoAndToken(res, user) {
   const payload = {
@@ -118,6 +135,8 @@ function getUserInfoAndToken(res, user) {
     lastName: user.lastName,
     email: user.email
   };
+
+  findCompany(user);
 
   let managerId = mongoose.Types.ObjectId(user._id);
   const filteredSubInfo = [];
@@ -139,16 +158,26 @@ function getUserInfoAndToken(res, user) {
     { expiresIn: "24h" },
     (err, token) => {
       res.json({
-        success: true,
-        token: 'Bearer ' + token,
-        userId: payload.id,
-        FirstName: payload.firstName,
-        lastName: payload.lastName,
-        email: payload.email,
-        subordinates: filteredSubInfo
+        currentUser: {
+          success: true,
+          token: 'Bearer ' + token,
+          userId: payload.id,
+          FirstName: payload.firstName,
+          lastName: payload.lastName,
+          email: payload.email,
+          subordinates: filteredSubInfo
+        },
+        company: {}
       });
     })
   );
+}
+
+function findCompany(user) {
+  const companyId = mongoose.Types.ObjectId(user.company);
+  console.log(companyId);
+  Company.find({_id: companyId})
+    .then((company) => console.log(company));
 }
 
 
