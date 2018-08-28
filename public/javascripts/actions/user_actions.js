@@ -12,12 +12,12 @@ export const login = loginData => dispatch => (
   userUtil.login(loginData).then(userData => dispatch(receiveCurrentUser(userData)))
 );
 
-const receiveUser = (userData) => ({
+const receiveUser = userData => ({
   type: RECEIVE_USER,
-  userData
+  user: userData.data
 });
 
 const receiveCurrentUser = (userData) => ({
   type: RECEIVE_CURRENT_USER,
-  userData
+  user: userData.data
 })
