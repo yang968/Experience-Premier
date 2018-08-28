@@ -41,13 +41,13 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
 
   render() {
     const sessionLinks = () => (
-      <nav className="header-login-signup">
-        <button className="session-button" onClick={this.demoLogin}>Demo</button>
-        {/* <button className="session-button" onClick={console.log("Demo not yet implemented")}>Demo</button> */}
+      <nav className="header-login-demo">
+        <Link to="/contact" className="session-button">Contact Us</Link>
         &nbsp;
         <Link to="/login" className="session-button">Log In</Link>
         &nbsp;
-        <Link to="/signup" className="session-button">Sign Up</Link>
+        <button className="session-button" onClick={this.demoLogin}>Experience the Glory</button>
+        {/* <button className="session-button" onClick={console.log("Demo not yet implemented")}>Demo</button> */}
       </nav>
     );
 

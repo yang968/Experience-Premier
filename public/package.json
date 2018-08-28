@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "server": "webpack-dev-server --open --config webpack.dev.js",
+    "server": "webpack-dev-server --mode=development --open --config webpack.dev.js",
     "webpack": "webpack --mode=development --watch"
   },
   "author": "Victor Yang, Mark Lee, Nick Matison, Jordan Yu",

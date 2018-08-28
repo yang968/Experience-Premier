@@ -2,29 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// Google Fonts
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700');
-
-// Variables
-
-$body-bg: #fff;
-$montserrat: 'Montserrat', sans-serif;
-
-$primary-color: rgba(99, 206, 131, 1);
-$primary-color-dark: rgba(65, 191, 102, 1);
-$secondary-color: #fff;
-$light-color: #f4f4f4;
-$dark-color: rgba(48, 57, 82, 1);
-
-// Functions 
-
-@function set-text-color($bg-color) {
-  @if (lightness($bg-color) > 50) {
-    @return rgba(50, 50, 50, 1);
-  } @else {
-    @return #fff;
-  }
-}
+@import 'partials/variables';
+@import 'partials/functions';
 
 // Styles
 
@@ -39,7 +18,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 25px 20px;
+  padding: 15px 25px 15px;
   color: set-text-color($secondary-color);
   background-color: $secondary-color;
   box-sizing: border-box;

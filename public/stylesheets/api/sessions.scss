@@ -22,17 +22,18 @@ header a {
   color: #fff;
 }
 
-nav.header-login-signup {
+nav.header-login-demo {
   display: flex;
   justify-content: space-between;
   margin-left: 10px;
 
-  a:last-child {
+  button {
     color: $primary-color-dark;
-    opacity: 0.7;
+    // opacity: 0.7;
 
     &:hover {
-      opacity: 1;
+      color: lighten($primary-color-dark, 10%)
+      // opacity: 1;
     }
   }
 }
