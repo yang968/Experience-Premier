@@ -1,19 +1,19 @@
-
 .splash-tagline {
   display: flex;
   // background: image-url("cmu_splash.jpg");
-  // background: 
+  background: linear-gradient(rgba(48, 57, 82, 0.75), $dark-color);
   background-size: cover;
   background-position: center;
   justify-content: center;
-  box-shadow: inset 0 0 0 1000px $primary-color;
+  // box-shadow: inset 0 0 0 1000px rgba(99, 206, 131, 0.5);
 }
 
 .splash-tagline-box {
-  margin: 8em 2em 7em 2em;
   display: flex;
-  width: 550px;
   flex-direction: column;
+  margin: 10em 2em 9em 2em;
+  width: 550px;
+  align-items: center;
   text-align: center;
   color: #fff;
 
@@ -39,11 +39,12 @@
     }
 
     &.session-button {
+      width: 300px;
+      background: $primary-color-dark;
       color: #fff;
-      background: rgba(90, 172, 68, 0.9);
 
       &:hover {
-        background: rgba(90, 172, 68, 1);
+        background: lighten($primary-color-dark, 5%);
       }
     }
   }

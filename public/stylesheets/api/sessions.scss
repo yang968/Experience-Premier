@@ -11,29 +11,27 @@ $montserrat: 'Montserrat', sans-serif;
 
 // Styles
 
-body {
-  background-color: $secondary-color;
-}
+// body {
+//   background-color: $secondary-color;
+// }
 
 header a {
   font-family: $montserrat, sans-serif;
   font-size: 36px;
   text-decoration: none;
-  color: #fff;
+  color: set-text-color($secondary-color);
 }
 
 nav.header-login-demo {
-  display: flex;
-  justify-content: space-between;
+  // display: flex;
+  // justify-content: space-between;
   margin-left: 10px;
 
   button {
     color: $primary-color-dark;
-    // opacity: 0.7;
 
     &:hover {
       color: lighten($primary-color-dark, 10%)
-      // opacity: 1;
     }
   }
 }
@@ -41,21 +39,20 @@ nav.header-login-demo {
 .session-button {
   font-family: $montserrat, sans-serif;
   font-size: 1.2em;
-  margin: 0 4px 0;
+  // width: 300px;
+  // margin: 0 4px 0;
   border: none;
-  color: set-text-color(#fff);
-  opacity: 0.7;
+  color: set-text-color($secondary-color);
   text-decoration: none;
   border-radius: 5px;
-  padding: 10px 18px 10px;
-  // box-sizing: border-box;
+  padding: 10px 1em 10px;
+  box-sizing: border-box;
 
   &:hover {
     opacity: 1;
     cursor: pointer;
   }
 }
-
 
 .user-nav {
   display: flex;
@@ -118,15 +115,15 @@ nav.header-login-demo {
 
     &.session-button {
       font-family: $montserrat;
+      background: $primary-color-dark;
       color: #fff;
-      background: rgba(90, 172, 68, 0.9);
       border: none;
       margin: auto;
       margin-top: 1em;
       // box-sizing: border-box;
 
       &:hover {
-        background: rgba(90, 172, 68, 1);
+        background: darken($primary-color-dark, 10%);
       }
     }
   }
