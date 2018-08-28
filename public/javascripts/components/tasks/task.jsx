@@ -12,8 +12,7 @@ class TaskPage extends React.Component {
     // fetching the token from our back-end
     this.props.fetchSpeechToken()
       .then(response => {
-        console.log(response)
-        return response.token.data;
+        return response.token
       })
       .then(token => {
         // grab token and use Watson's node module to stream from the computer mic and send that sound file to 

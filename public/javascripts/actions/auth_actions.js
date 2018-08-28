@@ -8,5 +8,5 @@ export const fetchSpeechToken = () => dispatch => (
 
 const receiveSpeechToken = (token) => ({
   type: RECEIVE_SPEECH_TOKEN,
-  token
+  token: token.data
 });
