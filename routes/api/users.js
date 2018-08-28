@@ -27,13 +27,10 @@ router.get('/overview', passport.authenticate('jwt', { session: false }), (req, 
 
 // New user.
 router.post('/register', (req, res) => {
-  console.log(req.body)
-  console.log(req.headers)
   const { errors, isValid } = validateRegisterInput(req.body);
   if (!isValid) { return res.status(400).json(errors); }
 
   // Check to make sure nobody has already registered with a duplicate email
-  console.log(req.body.email)
   const email = req.body.email
   User.findOne({ email })
     .then(user => {

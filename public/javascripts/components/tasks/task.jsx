@@ -30,7 +30,6 @@ class TaskPage extends React.Component {
         // If we receive a "data" response then we need to key into the data and display it by
         // setting it to our state.
         stream.on("data", data => {
-          console.log(data)
           //Watson sends multiple results per sentence, so we only want to display the "final"
           //result. Otherwise we may have the same sentence displayed 1-3 times.
           const final = data.results[0].final;
