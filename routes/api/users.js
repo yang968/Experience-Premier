@@ -42,7 +42,7 @@ router.post('/register', (req, res) => {
         return res.status(400).json({
           email: "A user has already registered with this address"
         });
-       } else {
+      } else {
         // Otherwise create a new user
         const newUser = new User({
           firstName: req.body.firstName,
@@ -52,13 +52,16 @@ router.post('/register', (req, res) => {
           password: req.body.password,
           manager: req.body.manager === '' ? null : mongoose.Types.ObjectId(req.body.manager)
         });
-        bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.genSalt(10, (error, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
             newUser.password = hash;
             newUser.save()
-              .then(user => res.json(user))
-              .catch(err => console.log(err));
+              .then(() => {
+                // helper function that gives user's info with user token
+                getUserInfoAndToken(res, newUser);
+              })
+              .catch(err1 => console.log(err1));
           });
         });
       }
@@ -80,45 +83,8 @@ router.post('/login', (req, res) => {
       bcrypt.compare(password, user.password)
         .then(isMatch => {
           if (isMatch) {
-            // define payload
-            const payload = {
-              id: user.id,
-              firstName: user.firstName,
-              lastName: user.lastName,
-              email: user.email
-            };
-
-            // Getting subordinates
-            let managerId = mongoose.Types.ObjectId(user._id);
-            const filteredSubInfo = [];
-
-            User.find({manager: managerId})
-              .then(subs => {
-                subs.forEach((sub) => {
-                  // Add subordinate info here.
-                  filteredSubInfo.push({
-                    id: sub._id,
-                    firstName: sub.firstName,
-                    lastName: sub.lastName,
-                    email: sub.email
-                  });
-                });
-             }).then(() => {
-              jsonwebtoken.sign(payload, keys.secretOrKey,
-                // Tell the key to expire in one hour
-                { expiresIn: 3600 },
-                (err, token) => {
-                  res.json({
-                    success: true,
-                    token: 'Bearer ' + token,
-                    userId: payload.id,
-                    FirstName: payload.firstName,
-                    lastName: payload.lastName,
-                    email: payload.email,
-                    subordinates: filteredSubInfo
-                  });
-                });
-             });
+            // helper function that gives user's info with user token
+            getUserInfoAndToken(res, user);
           } else {
             return res.status(400).json({
               password: 'Incorrect password'
@@ -143,5 +109,49 @@ router.get('/:id', (req, res) => {
     });
   });
 });
+
+// helper functions
+function getUserInfoAndToken(res, user) {
+  const payload = {
+    id: user.id,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email
+  };
+
+  let managerId = mongoose.Types.ObjectId(user._id);
+  const filteredSubInfo = [];
+
+  User.find({ manager: managerId })
+    .then(subs => {
+      subs.forEach((sub) => {
+        // Add subordinate info here.
+        filteredSubInfo.push({
+          id: sub._id,
+          firstName: sub.firstName,
+          lastName: sub.lastName,
+          email: sub.email
+        });
+    });
+  }).then(() =>
+    jsonwebtoken.sign(payload, keys.secretOrKey,
+    // Tell the key to expire in one hour
+    { expiresIn: "24h" },
+    (err, token) => {
+      res.json({
+        success: true,
+        token: 'Bearer ' + token,
+        userId: payload.id,
+        FirstName: payload.firstName,
+        lastName: payload.lastName,
+        email: payload.email,
+        subordinates: filteredSubInfo
+      });
+    })
+  );
+}
+
+
+
 
 module.exports = router;

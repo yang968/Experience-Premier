@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const express = require('express');
-const router = require('express').router();
+// const router = require('express').Router();
 const app = express();
 const db = require("./config/keys").mongoURI;
 const bodyParser = require('body-parser');
@@ -26,8 +26,8 @@ app.use(bodyParser.json());
 
 
 // Normal routes
-router.get('/register', Authentication.register);
-router.get('/login', Authentication.login);
+// router.get('/register', Authentication.register);
+// router.get('/login', Authentication.login);
 
 // Api routes
 app.use("/api/users", users);
