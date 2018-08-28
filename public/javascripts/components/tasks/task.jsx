@@ -10,10 +10,10 @@ class TaskPage extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     // fetching the token from our back-end
-    console.log("were in");
-    fetch("http://localhost:5000/api/speech-to-text/token")
+    this.props.fetchSpeechToken()
       .then(response => {
-        return response.text();
+        console.log(response)
+        return response.token.data;
       })
       .then(token => {
         // grab token and use Watson's node module to stream from the computer mic and send that sound file to 
@@ -31,6 +31,7 @@ class TaskPage extends React.Component {
         // If we receive a "data" response then we need to key into the data and display it by
         // setting it to our state.
         stream.on("data", data => {
+          console.log(data)
           //Watson sends multiple results per sentence, so we only want to display the "final"
           //result. Otherwise we may have the same sentence displayed 1-3 times.
           const final = data.results[0].final;
@@ -59,7 +60,6 @@ class TaskPage extends React.Component {
           // placeholder="Speech will generate here"
           id="live-feed"
         >
-          {/* {this.state.transcript} */}
         </div>
       </div>
     );

@@ -1,4 +1,4 @@
-import * as authUtil from '../util/auth_api_util';
+import * as authUtil from '../util/auth_api_util'
 
 export const RECEIVE_SPEECH_TOKEN = "RECEIVE_SPEECH_TOKEN";
 

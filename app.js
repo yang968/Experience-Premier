@@ -27,14 +27,14 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+//We need this for the no access control origin header. Imported in line 11
+app.use(cors());
 
 app.use("/api/users", users);
 app.use("/api/tasks", tasks);
 app.use("/api/industries", industries);
 app.use("/api/companies", companies);
 
-//We need this for the no access control origin header. Imported in line 11
-app.use(cors());
 
 
 
