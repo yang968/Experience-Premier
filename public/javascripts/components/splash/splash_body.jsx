@@ -1,16 +1,38 @@
-import React from "react";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import Tagline from "./splash_tagline.jsx";
-import DashboardExpo from "./dashboard_expo.jsx";
-import DataExpo from "./data_expo";
+import Tagline from './splash_tagline';
+import DashboardExpo from './dashboard_expo';
+import DataExpo from './data_expo';
 
-const SplashBody = () => (
-  <div className="splash-body">
-    <Tagline />
-    <DashboardExpo />
-    <DataExpo />
-    
-  </div>
-);
+import LoginFormContainer from './login_form_container';
+import SignUpFormContainer from './signup_form_container';
+
+const modalDivRef = React.createRef();
+
+class SplashBody extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  
+  componentDidMount() {
+    this.modalDiv = ReactDOM.findDOMNode(modalDivRef.current);
+  }
+
+  render() {
+    const SessionFormWithRef = React.forwardRef((props, ref) => (
+      <SessionForm modalDiv={this.modalDiv} ref={ref} />
+    ));
+
+    return (
+      <div className="splash-body">
+        <Tagline />
+        <DashboardExpo />
+        <DataExpo />
+        
+      </div>
+    );
+  }
+}
 
 export default SplashBody;
