@@ -1,7 +1,7 @@
 import {fetchSpeechToken} from '../../actions/auth_actions';
 import {createTask} from '../../actions/task_actions';
 import {connect} from 'react-redux';
-import TaskPage from './task';
+import SpeechRecord from './speech_record';
 
 const mapStateToProps = state => ({
   // speechToken: state.entities.speechToken
@@ -16,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(TaskPage);
+)(SpeechRecord);

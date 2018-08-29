@@ -64,7 +64,11 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
       <nav className="header-login-demo">
         <Link to="/contact" className="session-button">Contact Us</Link>
         &nbsp;
-        <Link to="/" className="session-button js-modal-open">Log In</Link>
+        <Link to="/" 
+          className="session-button js-modal-open"
+          disabled="true">
+          Log In
+        </Link>
         &nbsp;
         <button className="session-button" onClick={this.demoLogin}>Experience the Glory</button>
       </nav>

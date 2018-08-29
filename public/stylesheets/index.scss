@@ -1,16 +1,25 @@
+// App-wide styles 
 @import './reset.scss';
 @import './static_pages.scss';
 @import './shared/icon.scss';
 
+// Modal & session styles 
 @import './session/modal.scss';
 @import './session/session_inputs.scss';
 @import './session/session_form.scss';
 
+// Splash page styles 
 @import './splash/splash_header.scss';
 @import './splash/splash_tagline.scss';
 @import './splash/dashboard_expo.scss';
 @import './splash/data_expo.scss';
 
+// Footer styles 
 @import './footer/footer_body.scss';
 @import './footer/footer_links.scss';
 @import './footer/social_media_links.scss';
+
+// Live dashboard styles 
+@import './dashboard/dashboard_page.scss';
+@import './dashboard/dashboard_sidebar.scss';
+@import './dashboard/dashboard_main.scss';
