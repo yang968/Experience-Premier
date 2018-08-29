@@ -15,6 +15,7 @@ const User = require('../../models/User');
 const Task = require('../../models/Task');
 const UserSession = require('../../models/Session');
 const Company = require('../../models/Company');
+const Industry = require('../../models/Industry');
 
 // Private Auth route
 router.get('/overview', passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -129,7 +130,7 @@ router.get('/:id', (req, res) => {
 });
 
 
-// helper functions
+// Helper function to return necessary information for the frontend.
 function getUserInfoAndToken(res, user) {
   const payload = {
     id: user.id,
@@ -137,51 +138,65 @@ function getUserInfoAndToken(res, user) {
     lastName: user.lastName,
     email: user.email
   };
-
-  findCompany(user);
-
-  let managerId = mongoose.Types.ObjectId(user._id);
+  
+  // Constants.
+  const company = {};
+  const industry = {};
+  const taskObj = {};
+  const managerId = mongoose.Types.ObjectId(user._id);
   const filteredSubInfo = [];
 
-  User.find({ manager: managerId })
-    .then(subs => {
-      subs.forEach((sub) => {
-        // Add subordinate info here.
-        filteredSubInfo.push({
-          id: sub._id,
-          firstName: sub.firstName,
-          lastName: sub.lastName,
-          email: sub.email
+  Company.find({_id: user.company})
+    .then((companyFound) => {
+      company.id = companyFound[0]._id;
+      company.name = companyFound[0].name;
+
+      // Getting industry with company information.
+      Industry.find({_id: companyFound[0].industry})
+        .then((industryFound) => {
+          industry.id = industryFound[0]._id;
+          industry.name = industryFound[0].name;
         });
-    });
-  }).then(() =>
-    jsonwebtoken.sign(payload, keys.secretOrKey,
-    // Tell the key to expire in one hour
-    { expiresIn: "24h" },
-    (err, token) => {
-      res.json({
-        currentUser: {
-          success: true,
-          token: 'Bearer ' + token,
-          userId: payload.id,
-          FirstName: payload.firstName,
-          lastName: payload.lastName,
-          email: payload.email,
-          subordinates: filteredSubInfo
-        },
-        company: {}
-      });
-    })
-  );
+      // Getting all the users' tasks
+      Task.find({user: user._id})
+        .then((tasks) => { taskObj[user._id] = tasks; });
+      })
+    .then(() => {
+    // Finding subordinates with loggedin user's id
+    User.find({ manager: managerId })
+      .then(subs => {
+        subs.forEach((sub) => {
+          // Add subordinate info here.
+          filteredSubInfo.push({
+            id: sub._id,
+            firstName: sub.firstName,
+            lastName: sub.lastName,
+            email: sub.email
+          });
+        });
+      }).then(() =>
+        jsonwebtoken.sign(payload, keys.secretOrKey,
+          // Tell the key to expire in one hour
+          { expiresIn: "24h" },
+          (err, token) => {
+            res.json({
+              currentUser: {
+                success: true,
+                token: 'Bearer ' + token,
+                userId: payload.id,
+                FirstName: payload.firstName,
+                lastName: payload.lastName,
+                email: payload.email,
+                subordinates: filteredSubInfo
+              },
+              company: company,
+              industry: industry,
+              tasks: taskObj
+            });
+          })
+        );
+    }); 
 }
-
-function findCompany(user) {
-  const companyId = mongoose.Types.ObjectId(user.company);
-  console.log(companyId);
-  Company.find({_id: companyId})
-    .then((company) => console.log(company));
-}
-
 
 
 

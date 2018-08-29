@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Company = require('../../models/Company');
+const mongoose = require('mongoose');
 
 router.post('/', (req, res) => {
   if (req.body.name === undefined || req.body.name === null || req.body.name.length === 0) {
@@ -10,7 +11,8 @@ router.post('/', (req, res) => {
   }
 
   const newCompany = new Company({
-    name: req.body.name
+    name: req.body.name,
+    industry: req.body.industry
   });
 
   newCompany.save().then(company => res.json(company));
