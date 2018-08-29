@@ -49,15 +49,12 @@ class TaskPage extends React.Component {
   }
 
 
-<<<<<<< HEAD
   // stopStream(stream) {
   //   stream 
   //   taskText = document.querySelector(".live-text".innerText);
   //   this.props.createTask({transcript: taskText, token: this.props.token});
   // }
 
-=======
->>>>>>> 1eae45cb2c9c8df7e128c750911dfc42b8dceda0
   render() {
     return (
       <div className="live-page">

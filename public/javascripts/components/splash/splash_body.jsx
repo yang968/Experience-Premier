@@ -24,8 +24,8 @@ class SplashBody extends React.Component {
     return (
       <div className="splash-body">
         <Tagline />
-        <DashboardExpo />
-        <DataExpo />
+        {/* <DashboardExpo />
+        <DataExpo /> */}
         {/* <div ref={modalDivRef} className="modalDiv animated" id="modalDiv"></div> */}
       </div>
     );
