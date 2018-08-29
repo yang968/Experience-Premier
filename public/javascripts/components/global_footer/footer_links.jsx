@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const FooterLinks = () => (
-  <div className="footer-links">
-    <ul>
+  <div className="footer-links-container">
+    <ul className="footer-links">
       <li>
         <Link to="/about">
           About
