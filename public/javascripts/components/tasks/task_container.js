@@ -4,13 +4,13 @@ import {connect} from 'react-redux';
 import TaskPage from './task';
 
 const mapStateToProps = state => ({
-  // token: state.session.currentUser.token
+  // speechToken: state.entities.speechToken
 })
 
 
 const mapDispatchToProps = dispatch => ({
   fetchSpeechToken: () => dispatch(fetchSpeechToken()),
-  createTask: (task) => dispatch(createTask(task))
+  createTask: (task) => dispatch(createTask(task)),
 });
 
 export default connect(
