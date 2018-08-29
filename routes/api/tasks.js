@@ -48,12 +48,19 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   }
 
   // Calling IBM Watson from Backend
+  let results = {};
   apiCall.analyze(parameters, function(error, response) {
     if (error)
       console.log('Failed to get transcript analyzed: ' + error);
     else {
-      console.log(JSON.stringify(response));
-      newTask.results = JSON.stringify(response);
+      // console.log(JSON.stringify(response));
+      results.sentiment = response.sentiment.document;
+      results.keywords = response.keywords;
+      results.entities = response.entities;
+      results.emotion = response.emotion.document.emotion;
+      newTask.results = results;
+      console.log(newTask.date.getMonth());
+      
       newTask.save().then(task => res.json(task));
     }
   })
