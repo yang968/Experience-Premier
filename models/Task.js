@@ -16,8 +16,8 @@ const TaskSchema = new Schema({
     default: Date.now
   },
   results: {
-    type: String,
-    required: true
+    type: Object,
+    required: false
   }
 });
 
