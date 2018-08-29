@@ -7,7 +7,7 @@ class DashboardSidebar extends React.Component {
 
   render() {
 
-    return() (
+    return (
       <div className="dashboard-sidebar-container">
 
       </div>

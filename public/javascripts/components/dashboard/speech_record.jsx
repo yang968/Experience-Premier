@@ -61,13 +61,6 @@ class SpeechRecord extends React.Component {
           // document.querySelector(".record-button").onclick = stream.stop.bind(stream);
         });
   }
-  
-
-  // stopStream(stream) {
-  //   stream 
-  //   taskText = document.querySelector(".live-text".innerText);
-  //   this.props.createTask({transcript: taskText, token: this.props.token});
-  // }
 
   render() {
     return (
