@@ -48,44 +48,48 @@ class SessionForm extends React.Component {
   render() {
 
     return (
-      <div className="login-form-container">
-        <form onSubmit={this.handleSubmit} className="login-form-box">
+      <div className="modal">
+        <div className="modal-overlay"></div>
+        <div className="login-form-container modal-form">
           <span className="modal-close js-modal-close">&times;</span>
-          {/* <section className="session-form-error">
-            {this.renderErrors()}
-          </section> */}
-          <h1>Sign in</h1>
-          <h3>or <Link to="/contact">contact us</Link> to create an account</h3>
-          <div className="login-form">
-            <label>Email
+          <form onSubmit={this.handleSubmit} className="login-form-box">
             <br />
-              <input type="text"
-                value={this.state.email}
-                onChange={this.update('email')}
-                className="login-input"
-                placeholder="e.g. tony.stark@starkindustries.com"
-              />
-            </label>
-            <br />
-            <label>Password
+            {/* <section className="session-form-error">
+              {this.renderErrors()}
+            </section> */}
+            <h1>Sign in</h1>
+            <h3>or <Link to="/contact">contact us</Link> to create an account</h3>
+            <div className="login-form">
+              <label>Email
               <br />
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                className="login-input"
-                placeholder="e.g. ••••••••"
-              />
-            </label>
-            <br />
-            <input 
-              className={"session-button " + 
+                <input type="text"
+                  value={this.state.email}
+                  onChange={this.update('email')}
+                  className="login-input"
+                  placeholder="e.g. tony.stark@starkindustries.com"
+                  />
+              </label>
+              <br />
+              <label>Password
+                <br />
+                <input type="password"
+                  value={this.state.password}
+                  onChange={this.update('password')}
+                  className="login-input"
+                  placeholder="e.g. ••••••••"
+                  />
+              </label>
+              <br />
+              <input 
+                className={"session-button " + 
                 this.state.email && this.state.password ? "form-submit-enabled" : "form-submit-disabled"}
-              type="submit"
-              value="Sign in"
-              disabled={!(this.state.email && this.state.password)}
-            />
-          </div>
-        </form>
+                type="submit"
+                value="Sign in"
+                disabled={!(this.state.email && this.state.password)}
+                />
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

@@ -37,6 +37,23 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
     // this.props.login(demoUser);
   };
 
+  componentDidMount() {
+    let modal = document.querySelector(".modal");
+    let modalOverlay = document.querySelector(".modal-overlay");
+    let openButton = document.querySelector(".js-modal-open");
+    let closeButton = document.querySelector(".js-modal-close");
+
+    closeButton.addEventListener("click", function () {
+      modal.classList.toggle("is-open");
+      modalOverlay.classList.toggle("is-open");
+    });
+
+    openButton.addEventListener("click", function () {
+      modal.classList.toggle("is-open");
+      modalOverlay.classList.toggle("is-open");
+    });
+  }
+
   // handleLogout() {
   //   this.props.history.push("/"); // not working 
   //   this.props.logout();
@@ -47,7 +64,7 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
       <nav className="header-login-demo">
         <Link to="/contact" className="session-button">Contact Us</Link>
         &nbsp;
-        <Link to="#" className="session-button form-toggle-button js-modal-open">Log In</Link>
+        <Link to="#" className="session-button js-modal-open">Log In</Link>
         &nbsp;
         <button className="session-button" onClick={this.demoLogin}>Experience the Glory</button>
       </nav>
