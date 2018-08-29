@@ -12,7 +12,6 @@ const validateTaskInput = require('../../validation/task');
   and create a new instance of Task and save into the database
 */
 router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
-  console.log(req.body);
   
   const {errors, isValid} = validateTaskInput(req.body);
 
@@ -54,11 +53,16 @@ router.delete(
   (req, res) => {
     Task.findById(req.params.id)
       .then(task => {
-        taskOwner = User.findById(task.user);
-        if (taskOwner.manager === req.user.id) {
-          task.remove();
-          res.json(task);
-        }
+        User.findById(mongoose.Types.ObjectId(task.user)).then( user => {
+          if (user.manager == req.user.id) {
+            task.remove();
+            return res.json(task);
+          } else {
+            return res
+              .status(404)
+              .json({ noTaskFound: "No Task found with that Id" });
+          }
+        })
       })
       .catch(error => 
         res.status(404).json({ noTaskFound: "No Task found with that Id" })

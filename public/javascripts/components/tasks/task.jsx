@@ -10,10 +10,9 @@ class TaskPage extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     // fetching the token from our back-end
-    console.log("were in");
-    fetch("http://localhost:5000/api/speech-to-text/token")
+    this.props.fetchSpeechToken()
       .then(response => {
-        return response.text();
+        return response.token
       })
       .then(token => {
         // grab token and use Watson's node module to stream from the computer mic and send that sound file to 
@@ -45,6 +44,13 @@ class TaskPage extends React.Component {
       });
   }
 
+
+  // stopStream(stream) {
+  //   stream 
+  //   taskText = document.querySelector(".live-text".innerText);
+  //   // this.props.createTask({transcript: taskText, token: this.props.token});
+  // }
+
   render() {
     return (
       <div className="live-page">
@@ -59,7 +65,6 @@ class TaskPage extends React.Component {
           // placeholder="Speech will generate here"
           id="live-feed"
         >
-          {/* {this.state.transcript} */}
         </div>
       </div>
     );

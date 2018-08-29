@@ -17,6 +17,7 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "form-urlencoded": "^3.0.0",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
     "normalize.css": "^8.0.0",
