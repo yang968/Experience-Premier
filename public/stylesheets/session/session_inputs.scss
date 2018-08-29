@@ -3,18 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// Google Fonts
-// @import url('https://fonts.googleapis.com/css?family=Roboto');
-
 // Font Variables
-$montserrat: 'Montserrat', sans-serif;
+// $montserrat: 'Montserrat', sans-serif;
 
 // Styles
 
 nav.header-login-demo {
   // display: flex;
   // justify-content: space-between;
-  margin-left: 10px;
+  // margin-left: 10px;
 
   button {
     color: $primary-color-dark;
@@ -52,78 +49,3 @@ nav.header-login-demo {
   }
 }
 
-.login-form-box {
-  h1 {
-    font-size: 42px;
-    font-weight: 1000px;
-  }
-  a {
-    color: #298FCA;
-  }
-  a:hover {
-    color: #000;
-  }
-}
-
-.login-form {
-  margin-top: 10px;
-}
-
-.session-form-error {
-  font-size: 14px;
-  color: #fff;
-  border: 1px solid none;
-  border-radius: 5px;
-  margin-bottom: 15px;
-  padding-left: 10px;
-  background: #EB5A46;
-}
-
-.login-form-box {
-  width: 40%;
-  margin: auto;
-  margin-top: 4em;
-  font-size: 20px;
-  line-height: 2em;
-
-  input {
-    width: 100%;
-    color: #4D4D4D;
-    font-size: 24px;
-    line-height: 1.5em;
-    background: #EDEFF0;
-    border: 1px solid lightgray;
-    border-radius: 3px;
-    padding: 5px 12px 5px;
-    box-sizing: border-box;
-
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 3px rgb(190, 190, 190);
-    }
-
-    &.session-button {
-      font-family: $montserrat;
-      background: $primary-color-dark;
-      color: #fff;
-      border: none;
-      margin: auto;
-      margin-top: 1em;
-      // box-sizing: border-box;
-
-      &:hover {
-        background: darken($primary-color-dark, 10%);
-      }
-    }
-  }
-}
-
-input::-webkit-input-placeholder {
-  color: rgba(0, 0, 0, 0.3);
-}
-
-// input:focus {
-//   ::-webkit-input-placeholder {
-//     color: rgba(0, 0, 0, 0.2);
-//   }
-// }

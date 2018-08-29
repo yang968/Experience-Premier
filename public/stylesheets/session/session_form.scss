@@ -1,103 +1,115 @@
-input[class^="form-submit"] {
-  font-size: 16px;
-  line-height: 2em;
-  font-weight: 700;
-  color: rgba(180, 180, 180, 1);
-  border: none;
-  border-radius: 4px;
-  box-sizing: border-box;
-  padding: 0 1.2em 0;
-  background: rgba(248, 249, 249, 1);
-  transition: 0.2s;
-}
-
-input.form-submit-enabled {
-  background: $primary-color-dark;
-  color: set-text-color($primary-color-dark);
-}
-
-.form-submit-enabled:hover {
-  background: $primary-color;
-  cursor: pointer;
-}
-
-.form-submit-enabled:focus {
-  outline: none;
-  box-shadow: none;
+.login-form-container {
+  width: 550px;
 }
 
 .login-form-box {
+  width: 70%;
+  margin: auto;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  font-size: 20px;
+  line-height: 2.5em;
+  
+  h3 {
+    line-height: 3em;
+    font-weight: 300;
+  }  
+  
   h1 {
     font-size: 42px;
     font-weight: 1000px;
   }
+
   a {
     color: #298FCA;
+    text-decoration: none;
+
+    &:hover {
+      color: #000;
+    }
   }
-  a:hover {
-    color: #000;
+  
+  .login-form {
+    margin-top: 10px;
   }
-}
-
-.login-form {
-  margin-top: 10px;
-}
-
-.session-form-error {
-  font-size: 14px;
-  color: #fff;
-  border: 1px solid none;
-  border-radius: 5px;
-  margin-bottom: 15px;
-  padding-left: 10px;
-  background: #EB5A46;
-}
-
-.login-form-box {
-  width: 40%;
-  margin: auto;
-  margin-top: 4em;
-  font-size: 20px;
-  line-height: 2em;
+  
+  .session-form-error {
+    font-size: 14px;
+    color: #fff;
+    border: 1px solid none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    background: #EB5A46;
+  }
 
   input {
+    font-family: $montserrat, sans-serif;
     width: 100%;
     color: #4D4D4D;
-    font-size: 24px;
-    line-height: 1.5em;
+    font-size: 19px;
+    line-height: 2em;
     background: #EDEFF0;
     border: 1px solid lightgray;
     border-radius: 3px;
     padding: 5px 12px 5px;
     box-sizing: border-box;
+    transition: 0.2s;
 
     &:focus {
       outline: none;
       box-shadow: 0 0 3px rgb(190, 190, 190);
-    }
+
+      &::-webkit-input-placeholder {
+        color: rgba(0, 0, 0, 0.2);
+      }  
+    }  
+
+    &::-webkit-input-placeholder {
+      color: rgba(0, 0, 0, 0.3);
+    }  
 
     &.session-button {
-      font-family: $montserrat;
+      font-family: $montserrat, sans-serif;
       background: $primary-color-dark;
       color: #fff;
       border: none;
       margin: auto;
-      margin-top: 1em;
+      margin-top: 3em;
       // box-sizing: border-box;
 
       &:hover {
         background: darken($primary-color-dark, 10%);
-      }
-    }
-  }
-}
+      }  
+    }  
+  }  
+}  
 
-input::-webkit-input-placeholder {
-  color: rgba(0, 0, 0, 0.3);
-}
+input[class^="form-submit"] {
+  margin-top: 1.5em;
+  font-size: 19px;
+  line-height: 2em;
+  font-weight: 400;
+  background: darken($light-color,20%);
+  color: set-text-color(darken($light-color, 20%));
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 0 1.2em 0;
+  transition: 0.2s;
+}  
 
-// input:focus {
-//   ::-webkit-input-placeholder {
-//     color: rgba(0, 0, 0, 0.2);
-//   }
-// }
+input.form-submit-enabled {
+  background: $primary-color-dark;
+  color: set-text-color($primary-color-dark);
+
+  &:hover {
+    background: $primary-color;
+    cursor: pointer;
+  }  
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }  
+}  
