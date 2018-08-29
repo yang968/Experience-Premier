@@ -3,6 +3,7 @@ import SplashHeaderContainer from './splash/splash_header_container';
 import SplashBody from './splash/splash_body';
 import FooterBody from './global_footer/footer_body';
 import TaskContainer from './tasks/task_container';
+import { AuthRoute, ProtectedRoute } from "../util/route_util"
 // import LoginFormContainer from './splash/login_form_container';
 
 
@@ -15,7 +16,7 @@ const App = () => (
       <Route exact path="/" component={SplashHeaderContainer} />
       <Route exact path="/" component={SplashBody} />
       <Route exact path="/" component={FooterBody} />
-      <Route path="/task" component={TaskContainer} />
+      <Route path="/dashboard" component={DashboardPage} />
     {/* </Switch> */}
   </div>
 )
