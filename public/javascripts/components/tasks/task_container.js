@@ -2,7 +2,6 @@ import {fetchSpeechToken} from '../../actions/auth_actions';
 import {createTask} from '../../actions/task_actions';
 import {connect} from 'react-redux';
 import TaskPage from './task';
-import {startRecording, stopRecording} from '../../actions/record_button_actions';
 
 const mapStateToProps = state => ({
   // speechToken: state.entities.speechToken

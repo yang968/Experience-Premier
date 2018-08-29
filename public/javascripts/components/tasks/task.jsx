@@ -14,11 +14,10 @@ class TaskPage extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
     if (this.stream) {
-      console.log(this.stream)
       this.stream.stop.bind(this.stream);
-      this.stream.removeAllListeners();
-      this.stream.recognizeStream.removeAllListeners();
+      this.stream.stop();
       this.stream = null
       // this.props.history.push("/")
       return;
