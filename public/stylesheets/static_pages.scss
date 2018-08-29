@@ -1,0 +1,37 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'partials/variables';
+@import 'partials/functions';
+
+// Styles
+
+body, html {
+  font-family: $montserrat;
+  height: 100%;
+  margin: 0;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 25px 12px;
+  color: set-text-color($secondary-color);
+  background-color: $secondary-color;
+  box-sizing: border-box;
+
+  a {
+    font-family: $montserrat, sans-serif;
+    font-size: 36px;
+    text-decoration: none;
+    color: set-text-color($secondary-color);
+  }
+}
+
+.main {
+  position: absolute;
+  width: 100%;
+}

@@ -1,0 +1,20 @@
+import merge from 'lodash/merge';
+import {RECEIVE_CURRENT_USER, LOGOUT_USER} from '../actions/employee_actions';
+
+const _nullSession = {
+  currentUser: null
+}
+
+const SessionReducer = (oldState = _nullSession, action) => {
+  Object.freeze(oldState);
+  switch (action.type) {
+    case RECEIVE_CURRENT_USER:
+      return merge({}, oldState, { currentUser: action.payload.user });
+    case LOGOUT_USER:
+      return _nullSession
+    default:
+      return oldState;
+  }
+}
+
+export default SessionReducer;

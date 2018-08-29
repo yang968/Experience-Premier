@@ -1,0 +1,22 @@
+.footer-links-container {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  
+  .footer-links {
+    column-count: 2;
+
+    li {
+      a {
+        color: set-text-color($secondary-color);
+        line-height: 1.2em;
+        text-decoration: none;
+        
+        &:hover {
+          opacity: 0.7;
+          
+        }
+      }
+    }
+  }
+}

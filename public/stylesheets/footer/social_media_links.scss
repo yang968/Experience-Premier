@@ -1,0 +1,10 @@
+.social-media-links-container {
+  width: 33%;
+  
+  .social-media-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+  }
+}

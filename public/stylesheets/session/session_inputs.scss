@@ -1,0 +1,51 @@
+// Place all the styles related to the api/sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// Font Variables
+// $montserrat: 'Montserrat', sans-serif;
+
+// Styles
+
+nav.header-login-demo {
+  // display: flex;
+  // justify-content: space-between;
+  // margin-left: 10px;
+
+  button {
+    color: $primary-color-dark;
+
+    &:hover {
+      color: lighten($primary-color-dark, 10%)
+    }
+  }
+}
+
+.session-button {
+  font-family: $montserrat, sans-serif;
+  font-size: 1.2em;
+  // width: 300px;
+  // margin: 0 4px 0;
+  border: none;
+  color: set-text-color($secondary-color);
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 10px 1em 10px;
+  box-sizing: border-box;
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+.user-nav {
+  display: flex;
+  align-items: center;
+
+  h2 {
+    font-size: 20px;
+  }
+}
+
