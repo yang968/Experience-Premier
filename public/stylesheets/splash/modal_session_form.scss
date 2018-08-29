@@ -95,12 +95,12 @@ input[class^="form-submit"] {
 }
 
 input.form-submit-enabled {
-  background: rgba(90, 172, 68, 1);
-  color: #fff;
+  background: $primary-color-dark;
+  color: set-text-color($primary-color-dark);
 }
 
 .form-submit-enabled:hover {
-  background: rgba(90, 172, 68, 0.9);
+  background: $primary-color;
   cursor: pointer;
 }
 
