@@ -34,5 +34,5 @@ const removeTask = taskData => ({
 
 const receiveErrors = errors => ({
   type: RECEIVE_TASK_ERRORS,
-  errors: errors.data
+  errors
 })
