@@ -1,4 +1,5 @@
 import {RECEIVE_TASK, REMOVE_TASK} from '../actions/task_actions';
+import {RECEIVE_CURRENT_USER} from '../actions/employee_actions';
 import merge from 'lodash/merge'
 
 const TaskReducer = (oldState = {}, action) => {
@@ -9,6 +10,8 @@ const TaskReducer = (oldState = {}, action) => {
       let newState = merge({}, oldState);
       delete newState[action.task._id]
       return newState;
+    case RECEIVE_CURRENT_USER:
+      return action.payload.data.tasks;
     default: 
       return oldState;
   }
