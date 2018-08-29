@@ -87,20 +87,7 @@ router.post('/login', (req, res) => {
         .then(isMatch => {
           if (isMatch) {
 
-          // Update Session with current user. / For frontend to check with backend.
-          const userSession = new UserSession();
-            userSession.userId = user._id;
-            userSession.save((err, doc) => {
-                  if (err) {
-                    console.log(err);
-                    return res.send({
-                      success: false,
-                      message: 'Error: server error'
-                    });
-                 }
-              });
-
-            // helper function that gives user's info with user token
+        // helper function that gives user's info with user token
             getUserInfoAndToken(res, user);
           } else {
             return res.status(400).json({
@@ -110,6 +97,36 @@ router.post('/login', (req, res) => {
         });
     });
 });
+
+router.post('/logout', passport.authenticate('jwt', { session: false }), (req, res) => {
+    const { user } = req;
+    const { rawHeaders } = req;
+    const tokenIndex = rawHeaders.findIndex((el) => el === 'Authorization') + 1;
+    const token = rawHeaders[tokenIndex].split(" ")[1];
+    let sess;
+
+    UserSession.find({userId: user._id})
+    .then((session) => {
+      sess = session;
+      console.log(sess[0]);
+      if (session.length === 0) {
+        return res.status(400).json({
+          error: "Could not logout, user session not found"
+        });
+      } else {
+      UserSession.findOneAndRemove(
+        sess, 
+        (session1) => {
+          console.log(session1);
+          return res.send({
+            success: true,
+            message: 'Thank you for visiting!'
+          });
+        });
+      }
+    });
+  }
+);
 
 /* 
   Get all tasks for a user id. 
@@ -127,7 +144,6 @@ router.get('/:id', (req, res) => {
   });
 });
 
-
 // Helper function to return necessary information for the frontend.
 function getUserInfoAndToken(res, user) {
   const payload = {
@@ -136,7 +152,7 @@ function getUserInfoAndToken(res, user) {
     lastName: user.lastName,
     email: user.email
   };
-  
+
   // Constants.
   const company = {};
   const industry = {};
@@ -172,11 +188,23 @@ function getUserInfoAndToken(res, user) {
             email: sub.email
           });
         });
-      }).then(() =>
-        jsonwebtoken.sign(payload, keys.secretOrKey,
+      })
+      .then(() => jsonwebtoken.sign(payload, keys.secretOrKey,
           // Tell the key to expire in one hour
-          { expiresIn: "24h" },
-          (err, token) => {
+        { expiresIn: "24h" },
+        (err, token) => {
+          const userSession = new UserSession();
+          userSession.userId = user._id;
+          userSession.token = token;
+          userSession.save((error, doc) => {
+              if (error) {
+                console.log(error);
+                return res.send({
+                  success: false,
+                  message: 'Error: server error'
+                });
+              }
+            });
             res.json({
               currentUser: {
                 success: true,
