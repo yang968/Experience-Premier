@@ -17,7 +17,6 @@ export const fetchTask = (taskData) => {
   return instance.get(`http://localhost:5000/api/tasks/${taskData._id}`);
 }
 
-
 export const deleteTask = (taskData) => {
   let authToken = taskData.token;
   let instance = axios.create({});

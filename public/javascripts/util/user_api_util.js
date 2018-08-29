@@ -12,3 +12,10 @@ export const login = (user) => {
   instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; 
   return instance.post("http://localhost:5000/api/users/login", formurlencoded(user))
 };
+
+export const logout = (token) => {
+  let instance = axios.create({});
+  instance.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+  instance.defaults.headers.common[`Authorization`] = token;
+  return instance.post("http://localhost:5000/api/users/logout")
+}

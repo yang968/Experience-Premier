@@ -9,7 +9,6 @@ import "../stylesheets/index.scss";
 
 document.addEventListener("DOMContentLoaded", () => { 
   const root = document.getElementById("root")
-  window.currentUser = null
   let store;
   if (window.currentUser) {
     const preloadedState = {
