@@ -136,12 +136,11 @@ function getUserInfoAndToken(res, user) {
     lastName: user.lastName,
     email: user.email
   };
-
-  // Finding company and its industry with user's company information.
+  
+  // Constants.
   const company = {};
   const industry = {};
   const taskObj = {};
-  const taskIds = [];
   const managerId = mongoose.Types.ObjectId(user._id);
   const filteredSubInfo = [];
 
@@ -150,14 +149,17 @@ function getUserInfoAndToken(res, user) {
       company.id = companyFound[0]._id;
       company.name = companyFound[0].name;
 
+      // Getting industry with company information.
       Industry.find({_id: companyFound[0].industry})
         .then((industryFound) => {
           industry.id = industryFound[0]._id;
           industry.name = industryFound[0].name;
         });
+      // Getting all the users' tasks
+      Task.find({user: user._id})
+        .then((tasks) => { taskObj[user._id] = tasks; });
       })
     .then(() => {
-
     // Finding subordinates with loggedin user's id
     User.find({ manager: managerId })
       .then(subs => {
@@ -169,28 +171,8 @@ function getUserInfoAndToken(res, user) {
             lastName: sub.lastName,
             email: sub.email
           });
-          // finding all the tasks of subordinates.
-          Task.find({user: sub._id})
-            .then((tasks) => {
-               tasks.forEach((task) => {
-                taskObj[task._id] = {
-                  user: task.user,
-                  results: task.results,
-                  transcript: task.transcript
-                };
-              });
-
-              // console.log("taskObj");
-              // console.log(taskObj);       
-              // console.log("Sub Info:");
-              // console.log(filteredSubInfo);
-              // console.log("company:");
-              // console.log(company);
-              // console.log("industry:");
-              // console.log(industry);
-            });
-          });
-        }).then(() =>
+        });
+      }).then(() =>
         jsonwebtoken.sign(payload, keys.secretOrKey,
           // Tell the key to expire in one hour
           { expiresIn: "24h" },
@@ -211,8 +193,7 @@ function getUserInfoAndToken(res, user) {
             });
           })
         );
-    });   
-
+    }); 
 }
 
 
