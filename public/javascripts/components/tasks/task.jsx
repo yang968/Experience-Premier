@@ -15,6 +15,7 @@ class TaskPage extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
+    //if the stream is on, switch the button to make it stop.
     if (this.stream) {
       this.stream.stop.bind(this.stream);
       this.stream.stop();
