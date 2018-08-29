@@ -15,6 +15,7 @@ const User = require('../../models/User');
 const Task = require('../../models/Task');
 const UserSession = require('../../models/Session');
 const Company = require('../../models/Company');
+const Industry = require('../../models/Industry');
 
 // Private Auth route
 router.get('/overview', passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -127,7 +128,7 @@ router.get('/:id', (req, res) => {
 });
 
 
-// helper functions
+// Helper function to return necessary information for the frontend.
 function getUserInfoAndToken(res, user) {
   const payload = {
     id: user.id,
@@ -136,50 +137,83 @@ function getUserInfoAndToken(res, user) {
     email: user.email
   };
 
-  findCompany(user);
-
-  let managerId = mongoose.Types.ObjectId(user._id);
+  // Finding company and its industry with user's company information.
+  const company = {};
+  const industry = {};
+  const taskObj = {};
+  const taskIds = [];
+  const managerId = mongoose.Types.ObjectId(user._id);
   const filteredSubInfo = [];
 
-  User.find({ manager: managerId })
-    .then(subs => {
-      subs.forEach((sub) => {
-        // Add subordinate info here.
-        filteredSubInfo.push({
-          id: sub._id,
-          firstName: sub.firstName,
-          lastName: sub.lastName,
-          email: sub.email
+  Company.find({_id: user.company})
+    .then((companyFound) => {
+      company.id = companyFound[0]._id;
+      company.name = companyFound[0].name;
+
+      Industry.find({_id: companyFound[0].industry})
+        .then((industryFound) => {
+          industry.id = industryFound[0]._id;
+          industry.name = industryFound[0].name;
         });
-    });
-  }).then(() =>
-    jsonwebtoken.sign(payload, keys.secretOrKey,
-    // Tell the key to expire in one hour
-    { expiresIn: "24h" },
-    (err, token) => {
-      res.json({
-        currentUser: {
-          success: true,
-          token: 'Bearer ' + token,
-          userId: payload.id,
-          FirstName: payload.firstName,
-          lastName: payload.lastName,
-          email: payload.email,
-          subordinates: filteredSubInfo
-        },
-        company: {}
-      });
-    })
-  );
-}
+      })
+    .then(() => {
 
-function findCompany(user) {
-  const companyId = mongoose.Types.ObjectId(user.company);
-  console.log(companyId);
-  Company.find({_id: companyId})
-    .then((company) => console.log(company));
-}
+    // Finding subordinates with loggedin user's id
+    User.find({ manager: managerId })
+      .then(subs => {
+        subs.forEach((sub) => {
+          // Add subordinate info here.
+          filteredSubInfo.push({
+            id: sub._id,
+            firstName: sub.firstName,
+            lastName: sub.lastName,
+            email: sub.email
+          });
+          // finding all the tasks of subordinates.
+          Task.find({user: sub._id})
+            .then((tasks) => {
+               tasks.forEach((task) => {
+                taskObj[task._id] = {
+                  user: task.user,
+                  results: task.results,
+                  transcript: task.transcript
+                };
+              });
 
+              // console.log("taskObj");
+              // console.log(taskObj);       
+              // console.log("Sub Info:");
+              // console.log(filteredSubInfo);
+              // console.log("company:");
+              // console.log(company);
+              // console.log("industry:");
+              // console.log(industry);
+            });
+          });
+        }).then(() =>
+        jsonwebtoken.sign(payload, keys.secretOrKey,
+          // Tell the key to expire in one hour
+          { expiresIn: "24h" },
+          (err, token) => {
+            res.json({
+              currentUser: {
+                success: true,
+                token: 'Bearer ' + token,
+                userId: payload.id,
+                FirstName: payload.firstName,
+                lastName: payload.lastName,
+                email: payload.email,
+                subordinates: filteredSubInfo
+              },
+              company: company,
+              industry: industry,
+              tasks: taskObj
+            });
+          })
+        );
+    });   
+
+}
 
 
 
