@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import TaskPage from './task';
 
 const mapStateToProps = state => ({
-  token: state.session.currentUser.token
+  // token: state.session.currentUser.token
 })
 
 

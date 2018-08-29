@@ -40,16 +40,16 @@ class TaskPage extends React.Component {
           }
         });
         // Vanilla DOM to select the stop button and give it an onclick function to stop the stream.
-        document.querySelector(".stop-button").onclick = this.stopStream(stream.stop.bind(stream));
+        document.querySelector(".stop-button").onclick = stream.stop.bind(stream);
       });
   }
 
 
-  stopStream(stream) {
-    stream 
-    taskText = document.querySelector(".live-text".innerText);
-    this.props.createTask({transcript: taskText, token: this.props.token});
-  }
+  // stopStream(stream) {
+  //   stream 
+  //   taskText = document.querySelector(".live-text".innerText);
+  //   // this.props.createTask({transcript: taskText, token: this.props.token});
+  // }
 
   render() {
     return (
