@@ -48,7 +48,7 @@ class TaskPage extends React.Component {
   // stopStream(stream) {
   //   stream 
   //   taskText = document.querySelector(".live-text".innerText);
-  //   // this.props.createTask({transcript: taskText, token: this.props.token});
+  //   this.props.createTask({transcript: taskText, token: this.props.token});
   // }
 
   render() {
