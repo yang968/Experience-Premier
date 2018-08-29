@@ -5,7 +5,7 @@ const SocialMediaLinks = () => (
   <div className="social-media-links">
     <ul>
       <li>Github</li>
-      <li>Angellist</li>
+      <li>AngelList</li>
       <li>LinkedIn</li>
     </ul>
   </div>

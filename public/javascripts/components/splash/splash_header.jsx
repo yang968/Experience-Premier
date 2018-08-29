@@ -2,6 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
 
+// import LoginFormContainer from "./login_form_container";
+import SessionForm from './session_form.jsx';
+
 class SplashHeader extends React.Component { // ({ currentUser, logout, login }) => {
   constructor(props) {
     super(props);
@@ -44,10 +47,9 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
       <nav className="header-login-demo">
         <Link to="/contact" className="session-button">Contact Us</Link>
         &nbsp;
-        <Link to="/login" className="session-button">Log In</Link>
+        <Link to="#" className="session-button form-toggle-button js-modal-open">Log In</Link>
         &nbsp;
         <button className="session-button" onClick={this.demoLogin}>Experience the Glory</button>
-        {/* <button className="session-button" onClick={console.log("Demo not yet implemented")}>Demo</button> */}
       </nav>
     );
 
@@ -71,6 +73,8 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
           {this.props.currentUser ? userNav() : sessionLinks()}
         </header>
         <section className="splash-header-spacer" />
+        <SessionForm />
+        {/* <LoginFormContainer /> */}
       </div>
     );
   }

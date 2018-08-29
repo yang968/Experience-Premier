@@ -11,7 +11,7 @@ const Tagline = () => (
         and never stop improving. 
       </p>
       <Link to="/signup" className="session-button">
-        Sign Up - It's free
+        Demo ExP - It's free
       </Link>
       <span>
         Already use ExP?&nbsp;

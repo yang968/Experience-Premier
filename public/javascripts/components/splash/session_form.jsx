@@ -1,19 +1,19 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+
 
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: "",
-      email: ""
+      email: "",
+      password: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    this.props.clearFormErrors();
+    // this.props.clearFormErrors();
   }
 
   update(field) {
@@ -46,40 +46,27 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const emailInput = () => (
-      <div>
-        <label>Email
-          <br />
-          <input type="text"
-            value={this.state.email}
-            onChange={this.update('email')}
-            className="login-input"
-            placeholder="e.g., gandalf@istar.edu"
-          />
-        </label>
-        <br />
-      </div>
-    );
 
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          <section className="session-form-error">
+          <span className="modal-close js-modal-close">&times;</span>
+          {/* <section className="session-form-error">
             {this.renderErrors()}
-          </section>
-          <h1>{this.props.sessionFormHeader}</h1>
-          <h3>or {this.props.navLink}</h3>
+          </section> */}
+          <h1>Sign in</h1>
+          <h3>or <Link to="/contact">contact us</Link> to create an account</h3>
           <div className="login-form">
-            <label>Username
+            <label>Email
+            <br />
               <input type="text"
-                value={this.state.username}
-                onChange={this.update('username')}
+                value={this.state.email}
+                onChange={this.update('email')}
                 className="login-input"
-                placeholder="e.g., Gandalf the Grey"
+                placeholder="e.g., tony.stark@starkindustries.com"
               />
             </label>
             <br />
-            {this.props.formType === "Log In" ? '' : emailInput()}
             <label>Password
               <br />
               <input type="password"
@@ -90,7 +77,13 @@ class SessionForm extends React.Component {
               />
             </label>
             <br />
-            <input className="session-button" type="submit" value={this.props.formType} />
+            <input 
+              className={"session-button " + 
+                this.state.email && this.state.password ? "form-submit-enabled" : "form-submit-disabled"}
+              type="submit"
+              value="Sign in"
+              disabled={!(this.state.email && this.state.password)}
+            />
           </div>
         </form>
       </div>
