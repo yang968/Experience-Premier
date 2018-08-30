@@ -13,11 +13,10 @@ const keys = require('../../config/keys');
 
 /* 
   Users can post Tasks if authorized. It will check if the task input is valid
-  and create a new instance of Task and save into the database
+  and create a new instance of Task and save into the database.
+  It will also fetch or create a new Performance to record the analysis results from IBM Watson.
 */
 router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
-  // console.log(req.body);
-  
   const {errors, isValid} = validateTaskInput(req.body);
 
   if (!isValid) {
@@ -51,8 +50,10 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   // Calling IBM Watson from Backend
   let results = {};
   apiCall.analyze(parameters, function(error, response) {
-    if (error)
+    if (error) {
       console.log('Failed to get transcript analyzed: ' + error);
+      response.json({Fail: "Failed to analyze the transcript"});
+    }
     else {
       results.sentiment = response.sentiment.document;
       results.keywords = response.keywords;
@@ -98,7 +99,9 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
           }
           );
         })
-        .catch();
+        .catch(error => {
+          console.log("Failed to find or create a new performance: " + error);
+        });
     }
   })
 })
@@ -129,59 +132,33 @@ router.delete(
     Task.findById(req.params.id)
       .then(task => 
         {
-          // taskOwner = User.findById(task.user);
-          // if (taskOwner.manager == req.user.id) {
-          //   Performance.findOne({ user: req.user.id, month: newTask.date.getMonth(), year: newTask.date.getFullYear() })
-          //     .then(performance => {
-          //       let item = performance;
-          //       if (item != undefined) {
-          //         item.tasks -= 1;
-          //         item.sentimentScore -= results.sentiment.score;
-          //         item.sadness -= results.emotion.sadness;
-          //         item.joy -= results.emotion.joy;
-          //         item.anger -= results.emotion.anger;
-          //         item.fear -= results.emotion.fear;
-          //         item.disgust -= results.emotion.disgust;
-          //       }
-          //       if (results.sentiment.label === "positive") item.positive -= 1;
-          //       else if (results.sentiment.label === "negative") item.negative -= 1;
-          //       else item.neutral -= 1;
+          taskOwner = User.findById(task.user);
+          if (taskOwner.manager == req.user.id) {
+            Performance.findOne({ user: req.user.id, month: newTask.date.getMonth(), year: newTask.date.getFullYear() })
+              .then(performance => {
+                let item = performance;
+                if (item != undefined) {
+                  item.tasks -= 1;
+                  item.sentimentScore -= results.sentiment.score;
+                  item.sadness -= results.emotion.sadness;
+                  item.joy -= results.emotion.joy;
+                  item.anger -= results.emotion.anger;
+                  item.fear -= results.emotion.fear;
+                  item.disgust -= results.emotion.disgust;
+                }
+                if (results.sentiment.label === "positive") item.positive -= 1;
+                else if (results.sentiment.label === "negative") item.negative -= 1;
+                else item.neutral -= 1;
 
-          //       item.keywords = removeKeywords(item.keywords, task.keywords);
+                item.keywords = removeKeywords(JSON.parse(item.keywords), task.results.keywords);
 
-          //       item.save();
-          //     });
+                item.save();
+              });
 
-          //   task.remove().then(res.json(task));
-          // } else {
-          //   res.status(400).json({ invalidPrevilege: "User can't delete the task" })
-          // }
-          Performance.findOne({
-            user: req.user.id,
-            month: task.date.getMonth(),
-            year: task.date.getFullYear()
-          }).then(performance => {
-            let item = performance;
-            if (item != undefined) {
-              item.tasks -= 1;
-              item.sentimentScore -= task.results.sentiment.score;
-              item.sadness -= task.results.emotion.sadness;
-              item.joy -= task.results.emotion.joy;
-              item.anger -= task.results.emotion.anger;
-              item.fear -= task.results.emotion.fear;
-              item.disgust -= task.results.emotion.disgust;
-            }
-            if (task.results.sentiment.label === "positive") item.positive -= 1;
-            else if (task.results.sentiment.label === "negative") item.negative -= 1;
-            else item.neutral -= 1;
-
-            item.keywords = removeKeywords(JSON.parse(item.keywords), task.results.keywords);
-
-            // console.log(item.keywords);
-            item.save();
-          });
-
-          task.remove().then(res.json(task));
+            task.remove().then(res.json(task));
+          } else {
+            res.status(400).json({ invalidPrevilege: "User can't delete the task" })
+          }
         })
       .catch(error => 
         res.status(404).json({ noTaskFound: "No Task found with that Id" })

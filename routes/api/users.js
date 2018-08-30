@@ -16,6 +16,7 @@ const Task = require('../../models/Task');
 const UserSession = require('../../models/Session');
 const Company = require('../../models/Company');
 const Industry = require('../../models/Industry');
+const Performance = require('../../models/Performance');
 
 // Private Auth route
 router.get('/overview', passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -27,6 +28,7 @@ router.get('/overview', passport.authenticate('jwt', { session: false }), (req, 
     // Send username and key for API here to the Frontend user
     // use env vars for Heroku deployment
     // emotionUsername: process.env.emotionUsername
+    // emotionPassword: process.env.emotionPassword
     emotionUsername: keys.emotionUsername,
     emotionPassword: keys.emotionPassword
   });
@@ -156,11 +158,37 @@ function getUserInfoAndToken(res, user) {
   };
 
   // Constants.
-  const company = {};
-  const industry = {};
-  const taskObj = {};
-  const managerId = mongoose.Types.ObjectId(user._id);
-  const filteredSubInfo = [];
+  let company = {};
+  let industry = {};
+  let taskObj = {};
+  let managerId = mongoose.Types.ObjectId(user._id);
+  let filteredSubInfo = [];
+
+  // Company.findOne({_id: user.company}, 'id name', (error, result) => {
+  //   company = result;
+  // });
+
+  // Industry.findOne({_id: company.industry}, 'id name', (error, result) => {
+  //   industry = result;
+  // });
+
+  // Task.find({user: user._id}, 'user transcript date results', (error, results) => {
+  //   taskObj[user._id] = results;
+  // });
+
+  // User.find({manager: managerId}, 'firstName lastName email', (error, subordinates) => {
+  //   subordinates.forEach(subordinate => {
+  //     filteredSubInfo.push(subordinate);
+
+  //     Task.find({ user: subordinate._id }, 'user transcript date results', (error, tasks) => {
+  //       taskObj[subordinate._id] = tasks;
+  //     });
+
+  //     Performance.find({ user: subordinate._id }, '', (error, results) => {
+
+  //     });
+  //   });
+  // });
 
   Company.find({_id: user.company})
     .then((companyFound) => {
