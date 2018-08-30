@@ -45,4 +45,8 @@ table {
 }
 button {
   background: none;
+
+  &:focus {
+    outline: none;
+  }
 }
