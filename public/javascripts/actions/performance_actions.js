@@ -1,12 +1,23 @@
 import * as performanceUtil from '../util/performance_api_util';
+export const RECEIVE_PERFORMANCE = "RECEIVE_PERFORMANCE";
 export const RECEIVE_PERFORMANCES = "RECEIVE_PERFORMANCES";
 
-export const fetchPerformances = (performanceData) => dispatch => (
+export const fetchPerformance = (performanceData) => dispatch => (
   performanceUtil.fetchPerformance(performanceData)
-  .then(performances => dispatch(receivePerformance(performances)))
+  .then(performance => dispatch(receivePerformance(performance)))
 );
 
-const receivePerformance = (performances) => ({
-  type: RECEIVE_PERFORMANCES,
+export const fetchTeamPerformances = (performanceData) => dispatch => (
+  performanceUtil.fetchTeamPerformances(performanceData)
+  .then(performances => dispatch(receivePerformances(performances)))
+)
+
+const receivePerformance = (performance) => ({
+  type: RECEIVE_PERFORMANCE,
   performance
+});
+
+const receivePerformances = (performances) => ({
+  type: RECEIVE_PERFORMANCES,
+  performances
 });
