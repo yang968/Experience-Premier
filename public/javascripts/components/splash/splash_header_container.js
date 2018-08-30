@@ -1,24 +1,19 @@
 import { connect } from 'react-redux';
-
-// Auth functionality not yet working 
-// import { login, logout } from '../../actions/session_actions';
-
+import { login, logout } from '../../actions/employee_actions';
 import SplashHeader from './splash_header';
 
-// const mapStateToProps = ({ session, entities: { users } }) => {
-//   return {
-//     currentUser: users[session.id]
-//   };
-// };
+const mapStateToProps = ({ session, entities: { users } }) => {
+  return {
+    currentUser: session.currentUser
+  };
+};
 
-// const mapDispatchToProps = dispatch => ({
-//   login: user => dispatch(login(user)),
-//   logout: () => dispatch(logout())
-// });
+const mapDispatchToProps = dispatch => ({
+  login: user => dispatch(login(user)),
+  logout: (token) => dispatch(logout(token))
+});
 
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(SplashHeader);
-
-export default SplashHeader;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SplashHeader);
