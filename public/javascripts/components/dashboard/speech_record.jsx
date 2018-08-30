@@ -67,7 +67,7 @@ class SpeechRecord extends React.Component {
       <div className="speech-record-container">
         <div className="speech-record-box">
 
-          <h1>SPEECH RECORD</h1>
+          <h1>Record Conversation</h1>
           <button className="record-button">
             Record / Stop
           </button>

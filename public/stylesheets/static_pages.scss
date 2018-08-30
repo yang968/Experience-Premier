@@ -7,13 +7,9 @@
 
 // Styles
 
-body, html {
+html, body {
   font-family: $montserrat;
-  height: 100%;
-  margin: 0;
   background: lighten($light-color, 40%);
-  // background: #fff;
-  // background: $light-color;
 }
 
 header {

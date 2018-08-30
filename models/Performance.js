@@ -7,44 +7,55 @@ const PerformanceSchema = new Schema({
     ref: "users"
   },
   month: {
-    type: Integer,
+    type: Number,
     required: true
   },
-  sentiment: {
-    type: Float,
+  year: {
+    type: Number,
+    required: true
+  },
+  tasks: {
+    type: Number,
+    default: 1
+  },
+  sentimentScore: {
+    type: Number,
     default: 0.0
   },
   negative: {
-    type: Integer,
+    type: Number,
+    default: 0
+  },
+  neutral: {
+    type: Number,
     default: 0
   },
   positive: {
-    type: Integer,
+    type: Number,
     default: 0
   },
   sadness: {
-    type: Float,
+    type: Number,
     default: 0.0
   },
   joy: {
-    type: Float,
+    type: Number,
     default: 0.0
   },
   anger: {
-    type: Float,
+    type: Number,
     default: 0.0
   },
   fear: {
-    type: Float,
+    type: Number,
     default: 0.0
   },
   disgust: {
-    type: Float,
+    type: Number,
     default: 0.0
   },
   keywords: {
-    type: Object,
-    default: {}
+    type: String
   }
 });
 
