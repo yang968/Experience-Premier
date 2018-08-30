@@ -1,5 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { 
+  Link,
+  withRouter
+} from 'react-router-dom';
 
 class DashboardSidebar extends React.Component {
   constructor(props) {
@@ -15,7 +18,7 @@ class DashboardSidebar extends React.Component {
     this.props.logout(this.props.currentUser.token);
     window.localStorage.currentUser = "undefined";
     window.localStorage.token = "undefined";
-    this.props.history.push("/")
+    // this.props.history.push("/");
   };
 
 
@@ -39,7 +42,7 @@ class DashboardSidebar extends React.Component {
                 <Link to="/dashboard/employees">Employees</Link>
               </li>
               <li>
-                <Link to="/" onClick={this.handleLogout}>Log out</Link>
+                <button onClick={this.handleLogout}>Log out</button>
               </li>
             </ul>
           </nav>
@@ -49,4 +52,5 @@ class DashboardSidebar extends React.Component {
   }
 }
 
-export default DashboardSidebar;
+export default withRouter(DashboardSidebar);
+// export default DashboardSidebar;
