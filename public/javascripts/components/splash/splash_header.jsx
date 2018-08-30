@@ -20,7 +20,8 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
     this.props.login(demoUser).then(obj => {
       window.localStorage.currentUser = JSON.stringify(obj.payload.currentUser);
       window.localStorage.token = obj.payload.currentUser.token;
-    }).then(() => this.props.history.push("/dashboard"));
+    });
+    // .then(() => this.props.history.push("/dashboard"))
   };
 
   componentDidMount() {
