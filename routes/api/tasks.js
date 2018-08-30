@@ -5,6 +5,7 @@ const passport = require('passport');
 
 const Task = require('../../models/Task');
 const User = require('../../models/User');
+const Performance = require('../../models/Performance');
 const validateTaskInput = require('../../validation/task');
 
 const NaturalLanguageUnderstandingV1 = require("watson-developer-cloud/natural-language-understanding/v1.js");
@@ -53,15 +54,51 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
     if (error)
       console.log('Failed to get transcript analyzed: ' + error);
     else {
-      // console.log(JSON.stringify(response));
       results.sentiment = response.sentiment.document;
       results.keywords = response.keywords;
       results.entities = response.entities;
       results.emotion = response.emotion.document.emotion;
       newTask.results = results;
-      console.log(newTask.date.getMonth());
-      
-      newTask.save().then(task => res.json(task));
+
+      // Find a performance (by user, month, and year) and update it
+      // or create a new performance
+      Performance.findOne({ user: req.user.id, month: newTask.date.getMonth(), year: newTask.date.getFullYear()})
+        .then(performance => {
+          let item = performance;
+          if (item === null) {
+            item = new Performance({
+              tasks: 1,
+              user: req.user.id,
+              month: newTask.date.getMonth(),
+              year: newTask.date.getFullYear(),
+              sentimentScore: results.sentiment.score,
+              sadness: results.emotion.sadness,
+              joy: results.emotion.joy,
+              anger: results.emotion.anger,
+              fear: results.emotion.fear,
+              disgust: results.emotion.disgust
+            });
+          } else {
+            item.tasks += 1;
+            item.sentimentScore += results.sentiment.score;
+            item.sadness += results.emotion.sadness;
+            item.joy += results.emotion.joy;
+            item.anger += results.emotion.anger;
+            item.fear += results.emotion.fear;
+            item.disgust += results.emotion.disgust;
+          }
+          if (results.sentiment.label === "positive") item.positive += 1;
+          else if (results.sentiment.label === "negative") item.negative += 1;
+          else item.neutral += 1;
+
+          item.keywords = mapKeywords((item.keywords) ? JSON.parse(item.keywords) : undefined, results.keywords);
+
+          item.save().then((data) => {
+            newTask.save().then(task => res.json(task));
+          }
+          );
+        })
+        .catch();
     }
   })
 })
@@ -90,17 +127,89 @@ router.delete(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Task.findById(req.params.id)
-      .then(task => {
-        taskOwner = User.findById(task.user);
-        if (taskOwner.manager == req.user.id) {
-          task.remove();
-          res.json(task);
-        }
-      })
+      .then(task => 
+        {
+          // taskOwner = User.findById(task.user);
+          // if (taskOwner.manager == req.user.id) {
+          //   Performance.findOne({ user: req.user.id, month: newTask.date.getMonth(), year: newTask.date.getFullYear() })
+          //     .then(performance => {
+          //       let item = performance;
+          //       if (item != undefined) {
+          //         item.tasks -= 1;
+          //         item.sentimentScore -= results.sentiment.score;
+          //         item.sadness -= results.emotion.sadness;
+          //         item.joy -= results.emotion.joy;
+          //         item.anger -= results.emotion.anger;
+          //         item.fear -= results.emotion.fear;
+          //         item.disgust -= results.emotion.disgust;
+          //       }
+          //       if (results.sentiment.label === "positive") item.positive -= 1;
+          //       else if (results.sentiment.label === "negative") item.negative -= 1;
+          //       else item.neutral -= 1;
+
+          //       item.keywords = removeKeywords(item.keywords, task.keywords);
+
+          //       item.save();
+          //     });
+
+          //   task.remove().then(res.json(task));
+          // } else {
+          //   res.status(400).json({ invalidPrevilege: "User can't delete the task" })
+          // }
+          Performance.findOne({
+            user: req.user.id,
+            month: task.date.getMonth(),
+            year: task.date.getFullYear()
+          }).then(performance => {
+            let item = performance;
+            if (item != undefined) {
+              item.tasks -= 1;
+              item.sentimentScore -= task.results.sentiment.score;
+              item.sadness -= task.results.emotion.sadness;
+              item.joy -= task.results.emotion.joy;
+              item.anger -= task.results.emotion.anger;
+              item.fear -= task.results.emotion.fear;
+              item.disgust -= task.results.emotion.disgust;
+            }
+            if (task.results.sentiment.label === "positive") item.positive -= 1;
+            else if (task.results.sentiment.label === "negative") item.negative -= 1;
+            else item.neutral -= 1;
+
+            item.keywords = removeKeywords(JSON.parse(item.keywords), task.results.keywords);
+
+            // console.log(item.keywords);
+            item.save();
+          });
+
+          task.remove().then(res.json(task));
+        })
       .catch(error => 
         res.status(404).json({ noTaskFound: "No Task found with that Id" })
       );
   }
 );
+
+function mapKeywords(hash, keywords) {
+  if (keywords === undefined) return hash;
+  let object = (hash === undefined) ? {} : hash;
+
+  keywords.forEach(word => {
+    if (object[word.text] === undefined) object[word.text] = 1;
+    else object[word.text] += 1;
+  });
+  
+  return JSON.stringify(object);
+}
+
+function removeKeywords(hash, keywords) {
+  let object = hash;
+  
+  keywords.forEach(word => {
+    object[word.text] -= 1;
+    if (object[word.text] === 0) delete object[word.text];
+  });
+  
+  return JSON.stringify(object);
+}
 
 module.exports = router;
