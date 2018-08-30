@@ -10,16 +10,17 @@ import "../stylesheets/index.scss";
 document.addEventListener("DOMContentLoaded", () => { 
   const root = document.getElementById("root")
   let store;
-  if (window.currentUser) {
+  let currentUser = window.localStorage.currentUser;
+  if (currentUser && currentUser !== "undefined") {
     const preloadedState = {
-      session: { currentUser: window.currentUser }
+      session: { currentUser: JSON.parse(currentUser) }
     }
     store = configureStore(preloadedState);
   } else {
     store = configureStore();
   }
   window.login = login;
-  window.logout = logout
+  window.logout = logout;
   window.createUser = createUser;
   window.createTask = createTask;
   window.fetchTask = fetchTask;

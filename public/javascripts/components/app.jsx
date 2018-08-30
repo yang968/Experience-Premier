@@ -14,12 +14,12 @@ import { Route,
 
 const App = () => (
   <div>
-      <Route exact path="/" component={SplashHeaderContainer} />
-      <Route exact path="/" component={SplashBody} />
-      <Route exact path="/" component={FooterBody} />
-      <Route exact path="/" component={LoginFormContainer} />
+      <AuthRoute exact path="/" component={SplashHeaderContainer} />
+      <AuthRoute exact path="/" component={SplashBody} />
+      <AuthRoute exact path="/" component={FooterBody} />
+      <AuthRoute exact path="/" component={LoginFormContainer} />
       {/* <Switch> */}
-      <Route path="/dashboard" component={DashboardPage} />
+      <ProtectedRoute path="/dashboard" component={DashboardPage} />
         {/* <Route exact path="/dashboard" component={DashboardMain} /> */}
       {/* </Switch> */}
   </div>
