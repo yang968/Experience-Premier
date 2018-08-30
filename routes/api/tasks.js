@@ -16,7 +16,6 @@ const keys = require('../../config/keys');
   and create a new instance of Task and save into the database
 */
 router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
-  // console.log(req.body);
   
   const {errors, isValid} = validateTaskInput(req.body);
 
@@ -177,7 +176,6 @@ router.delete(
 
             item.keywords = removeKeywords(JSON.parse(item.keywords), task.results.keywords);
 
-            // console.log(item.keywords);
             item.save();
           });
 
