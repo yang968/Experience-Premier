@@ -1,13 +1,6 @@
 .dashboard-main-container {
   grid-column-start: 2;
-  display: grid;
-  grid-template-columns: 1fr 70% 1fr;
-  grid-template-rows: 100%;
-  grid-gap: 0.5em;
-  background: $dark-color;
-}
-
-.test-div {
-  display: none;
-  height: 8000px;
+  min-height: 100vh;
+  // margin-top: 1em;
+  background: $light-color;
 }

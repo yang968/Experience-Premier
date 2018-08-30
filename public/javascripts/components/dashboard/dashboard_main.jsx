@@ -13,7 +13,6 @@ const DashboardMain = () => (
       <Route path="/dashboard/performance" component={() => <div></div>} />
       <Route path="/dashboard/employees" component={() => <div></div>} />
     </Switch>
-    <div className="test-div"></div>
   </div>
 )
 
