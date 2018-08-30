@@ -108,7 +108,6 @@ router.post('/logout', passport.authenticate('jwt', { session: false }), (req, r
     UserSession.find({userId: user._id})
     .then((session) => {
       sess = session;
-      console.log(sess[0]);
       if (session.length === 0) {
         return res.status(400).json({
           error: "Could not logout, user session not found"
@@ -117,7 +116,6 @@ router.post('/logout', passport.authenticate('jwt', { session: false }), (req, r
       UserSession.findOneAndRemove(
         sess, 
         (session1) => {
-          console.log(session1);
           return res.send({
             success: true,
             message: 'Thank you for visiting!'
@@ -200,7 +198,6 @@ function getUserInfoAndToken(res, user) {
           userSession.token = token;
           userSession.save((error, doc) => {
               if (error) {
-                console.log(error);
                 return res.send({
                   success: false,
                   message: 'Error: server error'

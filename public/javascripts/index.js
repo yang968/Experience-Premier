@@ -10,7 +10,7 @@ import "../stylesheets/index.scss";
 document.addEventListener("DOMContentLoaded", () => { 
   const root = document.getElementById("root")
   let store;
-  if (window.localStorage.currentUser != "undefined") {
+  if (typeof window.localStorage.currentUser != "undefined") {
     const preloadedState = {
       session: { currentUser: JSON.parse(window.localStorage.currentUser) }
     }
