@@ -1,4 +1,61 @@
 .dashboard-sidebar-container {
-  background: lightblue;
+  position: fixed;
+  width: 25vw;
+  background: $primary-color;
   height: 100%;
+}
+
+.dashboard-sidebar {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 20px;
+}
+
+.dashboard-home-link {
+  text-decoration: none;
+  
+  h1 {
+    font-size: 40px;
+    color: set-text-color($primary-color);
+  }
+}
+
+.dashboard-sidebar-nav-container {
+  padding: 2em 1em 2em 1em;
+  margin: auto;
+  
+  .dashboard-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    
+    &:last-child {
+      margin-top: auto;
+    }
+
+    li {
+      width: 100%;
+      font-size: 18px;
+      line-height: 1.5em;
+      border: none;
+      border-radius: 1.5px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 6px 40px 6px 10px;
+      margin-bottom: 8px;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+      }
+      
+      a {
+        color: set-text-color($primary-color);
+        text-decoration: none;
+        
+      }
+    }
+  }
 }

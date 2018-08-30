@@ -1,7 +1,4 @@
 .dashboard-page-container {
-  height: 100%;
-  // display: grid;
-  grid-template-columns: 30% auto;
-  // grid-template-rows: repeat(2, 100px);
-  grid-gap: 1em;
+  display: grid;
+  grid-template-columns: 25vw auto;
 }

@@ -5,7 +5,7 @@ const EmployeeReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      if (action.user.employees) return action.payload.user.employees;
+      if (action.payload.currentUser.subordinates) return action.payload.currentUser.subordinates;
       return oldState;
     default:
       return oldState;

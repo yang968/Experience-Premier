@@ -1,0 +1,24 @@
+.speech-record-container {
+  width: 80%;
+  height: 50vw;
+  margin: auto;
+  margin-top: 5vw;
+  border: none;
+  border-radius: 3px;
+
+  background: $primary-color-dark;
+}
+
+.speech-record-box {
+  padding: 25px;
+  
+  h1 {
+    font-size: 36;
+    color: set-text-color($primary-color-dark);
+  }
+
+  button {
+    margin: auto;
+  
+  }
+}
