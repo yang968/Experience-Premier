@@ -84,20 +84,18 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
       </nav>
     );
 
-    return (
-      <div className="splash-header-container">
+    return <div className="splash-header-container">
         <header className="splash-header">
-          <a href="/" className="home-link">
-            <i className="icon-home"></i>
-            ExP
-          </a>
+          <Link to="/" className="home-link">
+            <i className="icon-home" />
+            <h1>ExP</h1>
+          </Link>
           {this.props.currentUser ? userNav() : sessionLinks()}
         </header>
         <section className="splash-header-spacer" />
         <SessionForm />
         {/* <LoginFormContainer /> */}
-      </div>
-    );
+      </div>;
   }
 };
 

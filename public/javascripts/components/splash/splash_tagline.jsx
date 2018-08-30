@@ -7,7 +7,7 @@ const Tagline = () => (
       <h1>Take your customer service to the next level with ExP</h1>
       <p>
         ExP lets you analyze your own customer interactions and 
-        visualize your data so that you know how to move forward 
+        visualize your data so you know how to move forward 
         and never stop improving. 
       </p>
       <Link to="/signup" className="session-button">
