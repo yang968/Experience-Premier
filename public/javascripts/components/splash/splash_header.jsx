@@ -1,14 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
-
-// import LoginFormContainer from "./login_form_container";
 import SessionForm from './session_form.jsx';
+import LoginFormContainer from './login_form_container'
 
 class SplashHeader extends React.Component { // ({ currentUser, logout, login }) => {
   constructor(props) {
     super(props);
-    // this.handleLogout = this.handleLogout.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
   }
 
@@ -17,24 +16,7 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
       email: 'manager@manager.com',
       password: '12341234'
     };
-    // axios({
-    //   method: 'POST', 
-    //   url: 'http://localhost:5000/api/users/login',
-    //   data: demoUser, 
-    //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-    // })
-    var instance = axios.create({
-      loginUrl: '/api/users/login'
-    });
-    instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-    // instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-    instance.post("http://localhost:5000/api/users/login", {
-        email: "manager@manager.com",
-        password: "12341234"
-      })
-      .then(data => console.log(data), err => console.log(err));
-    // .catch(err => console.log(err));
-    // this.props.login(demoUser);
+    this.props.login(demoUser);
   };
 
   componentDidMount() {
@@ -54,10 +36,10 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
     });
   }
 
-  // handleLogout() {
-  //   this.props.history.push("/"); // not working 
-  //   this.props.logout();
-  // };
+  handleLogout() {
+    this.props.logout(this.props.currentUser.token);
+    this.props.history.push("/"); // not working 
+  };
 
   render() {
     const sessionLinks = () => (
@@ -79,8 +61,7 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
         {/* <h2 className="header-name">{ this.props.currentUser.username }</h2> */}
         <h2 className="header-name">Test Username</h2>
         &nbsp;&nbsp;
-        {/* <button className="session-button" onClick={this.handleLogout}>Log Out</button> */}
-        <button className="session-button" onClick={"Logout not yet implemented"}>Log Out</button>
+        <button className="session-button" onClick={this.handleLogout}>Log Out</button>
       </nav>
     );
 
@@ -94,8 +75,8 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
           {this.props.currentUser ? userNav() : sessionLinks()}
         </header>
         <section className="splash-header-spacer" />
-        <SessionForm />
-        {/* <LoginFormContainer /> */}
+        {/* <SessionForm /> */}
+        <LoginFormContainer />
       </div>
     );
   }
