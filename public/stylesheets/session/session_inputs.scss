@@ -38,6 +38,10 @@ nav.header-login-demo {
     opacity: 1;
     cursor: pointer;
   }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .user-nav {

@@ -3,9 +3,6 @@
   width: 25vw;
   background: $primary-color;
   height: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-
 }
 
 .dashboard-header-spacer {
@@ -19,7 +16,7 @@
   top: 0;
   left: 0;
   z-index: 1;
-  height: 100%;
+  padding: 20px;
 }
 
 .dashboard-link {

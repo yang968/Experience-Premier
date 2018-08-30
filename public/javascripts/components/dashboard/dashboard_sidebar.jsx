@@ -6,6 +6,10 @@ class DashboardSidebar extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    window.currentUser = this.props.currentUser;
+  }
+
   render() {
 
     return (
