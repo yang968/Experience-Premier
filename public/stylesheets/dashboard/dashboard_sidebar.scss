@@ -3,49 +3,51 @@
   width: 25vw;
   height: 100vh;
   background: $primary-color;
-}
 
-.dashboard-sidebar {
-  position: fixed;
-  overflow: hidden;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  padding: 20px;
-  color: set-text-color($primary-color);
-}
-
-.dashboard-home-link {
-  text-decoration: none;
-  margin-bottom: 0.5em;
-  
-  h1 {
-    font-size: 40px;
+  .dashboard-sidebar {
+    position: fixed;
+    overflow: hidden;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 20px;
     color: set-text-color($primary-color);
+  
+    .dashboard-home-link {
+      text-decoration: none;
+      font-size: 40px;
+      color: set-text-color($primary-color); 
+    }
+  
+    .welcome-message {
+      padding-left: 3px;
+      font-size: 16px;
+    }
   }
 }
 
-.welcome-message {
 
-}
+
 
 .dashboard-sidebar-nav-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2em 1em 2em 1em;
-  
+  padding: 2em 0.5em 2em 1em;
+
   .dashboard-sidebar-nav {
     width: 100%;
-
+    
     li {
-      width: 18vw;
+      width: 100%;
       font-size: 18px;
       line-height: 1.5em;
       margin-bottom: 12px;
       
-      a, button {
+
+      * {
+        display: block;
         width: 10vw;
         border: none;
         border-radius: 1.5px;
@@ -57,7 +59,7 @@
         transition: 0.1s;
 
         &:hover {
-          padding-right: 3vw;
+          width: 100%;
           background: rgba(255, 255, 255, 0.3);
           cursor: pointer;
         }
@@ -65,6 +67,11 @@
       
       a {
         text-decoration: none;
+      }
+
+      button {
+        display: block;
+        text-align: left;
       }
     }
   }
