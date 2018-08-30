@@ -1,7 +1,6 @@
 import React from 'react';
 import { 
   Link,
-  withRouter
 } from 'react-router-dom';
 
 class DashboardSidebar extends React.Component {
@@ -18,13 +17,11 @@ class DashboardSidebar extends React.Component {
     this.props.logout(this.props.currentUser.token);
     window.localStorage.currentUser = "undefined";
     window.localStorage.token = "undefined";
-    // this.props.history.push("/");
   };
 
 
   render() {
-    return (
-      <div className="dashboard-sidebar-container">
+    return <div className="dashboard-sidebar-container">
         <div className="dashboard-sidebar">
           <Link to="/dashboard" className="dashboard-home-link">
             <i className="icon-dashboard" />
@@ -41,16 +38,16 @@ class DashboardSidebar extends React.Component {
               <li>
                 <Link to="/dashboard/employees">Employees</Link>
               </li>
+            </ul>
+            <ul className="dashboard-sidebar-nav">
               <li>
                 <button onClick={this.handleLogout}>Log out</button>
               </li>
             </ul>
           </nav>
         </div>
-      </div>
-    );
+      </div>;
   }
 }
 
-export default withRouter(DashboardSidebar);
-// export default DashboardSidebar;
+export default DashboardSidebar;

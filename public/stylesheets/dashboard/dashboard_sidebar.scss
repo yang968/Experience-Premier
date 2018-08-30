@@ -2,12 +2,13 @@
   position: fixed;
   width: 25vw;
   background: $primary-color;
-  height: 100%;
+  height: 100vh;
 }
 
 .dashboard-sidebar {
   position: fixed;
   overflow: hidden;
+  height: 100%;
   top: 0;
   left: 0;
   z-index: 1;
@@ -24,37 +25,39 @@
 }
 
 .dashboard-sidebar-nav-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 2em 1em 2em 1em;
-  margin: auto;
   
   .dashboard-sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    
-    &:last-child {
-      margin-top: auto;
-    }
 
     li {
-      width: 100%;
+      width: 18vw;
       font-size: 18px;
       line-height: 1.5em;
-      border: none;
-      border-radius: 1.5px;
-      background: rgba(255, 255, 255, 0.2);
-      padding: 6px 40px 6px 10px;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       
-      &:hover {
-        background: rgba(255, 255, 255, 0.3);
-        cursor: pointer;
+      a, button {
+        width: 10vw;
+        border: none;
+        border-radius: 1.5px;
+        padding: 6px 0 6px 10px;
+        padding-right: 2vw;
+        margin: 0;
+        background: rgba(255, 255, 255, 0.2);
+        color: set-text-color($primary-color);
+        transition: 0.1s;
+
+        &:hover {
+          padding-right: 3vw;
+          background: rgba(255, 255, 255, 0.3);
+          cursor: pointer;
+        }
       }
       
       a {
-        color: set-text-color($primary-color);
         text-decoration: none;
-        
       }
     }
   }
