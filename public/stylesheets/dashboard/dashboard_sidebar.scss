@@ -1,8 +1,8 @@
 .dashboard-sidebar-container {
   position: fixed;
   width: 25vw;
-  background: $primary-color;
   height: 100vh;
+  background: $primary-color;
 }
 
 .dashboard-sidebar {
@@ -13,15 +13,21 @@
   left: 0;
   z-index: 1;
   padding: 20px;
+  color: set-text-color($primary-color);
 }
 
 .dashboard-home-link {
   text-decoration: none;
+  margin-bottom: 0.5em;
   
   h1 {
     font-size: 40px;
     color: set-text-color($primary-color);
   }
+}
+
+.welcome-message {
+
 }
 
 .dashboard-sidebar-nav-container {

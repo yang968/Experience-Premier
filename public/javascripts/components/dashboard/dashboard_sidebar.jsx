@@ -10,7 +10,7 @@ class DashboardSidebar extends React.Component {
   }
 
   componentDidMount() {
-
+    console.log(this.props.currentUser);
   }
 
   handleLogout() {
@@ -27,6 +27,9 @@ class DashboardSidebar extends React.Component {
             <i className="icon-dashboard" />
             <h1>ExP</h1>
           </Link>
+          <span className="welcome-message">
+            Hello {this.props.currentUser.FirstName}
+          </span>
           <nav className="dashboard-sidebar-nav-container">
             <ul className="dashboard-sidebar-nav">
               <li>
