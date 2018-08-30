@@ -9,10 +9,6 @@ class DashboardSidebar extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
   }
 
-  componentDidMount() {
-    console.log(this.props.currentUser);
-  }
-
   handleLogout() {
     this.props.logout(this.props.currentUser.token);
     window.localStorage.currentUser = "undefined";

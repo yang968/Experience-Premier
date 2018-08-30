@@ -1,5 +1,4 @@
 import * as taskUtil from '../util/task_api_util';
-
 export const RECEIVE_TASK = "RECEIVE_TASK";
 export const REMOVE_TASK = "REMOVE_TASK";
 export const RECEIVE_TASK_ERRORS = "RECEIVE_TASK_ERRORS";

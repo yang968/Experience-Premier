@@ -19,8 +19,11 @@ class SpeechRecord extends React.Component {
     if (this.stream) {
       this.stream.stop.bind(this.stream);
       this.stream.stop();
-      this.stream = null
-      // this.props.history.push("/")
+      this.stream = null;
+      const token = this.props.currentUser.token;
+      const transcript = document.querySelector(".live-text").innerText;
+      const task = {token: token, transcript: transcript};
+      this.props.createTask(task);
       return;
     }
     // Fetching the token from our back-end
