@@ -7,10 +7,11 @@ class DashboardIndexStats extends React.Component {
   }
 
   render () {
+    console.log(this.props);
     return (
       <div className="dashboard-index-stats-container">
       </div>
-    )
+    );
   }
 }
 

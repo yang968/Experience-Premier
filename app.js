@@ -22,7 +22,6 @@ const companies = require('./routes/api/companies');
 // const Authentication = require('./routes/authentication');
 const router = require('express').Router();
 
-
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB successfully"))
