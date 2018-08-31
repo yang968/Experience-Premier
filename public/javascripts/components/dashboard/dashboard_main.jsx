@@ -6,6 +6,8 @@ import {
 
 import DashboardIndex from "./index/dashboard_index";
 import SpeechRecordContainer from "./speech_record/speech_record_container";
+import PerformancePage from './performance/performance_page';
+import EmployeesPage from './employees/employees_page';
 
 import { AuthRoute, ProtectedRoute } from "../../util/route_util";
 
@@ -18,6 +20,6 @@ const DashboardMain = () => (
       <ProtectedRoute path="/dashboard/employees" component={() => <div></div>} />
     </Switch>
   </div>
-)
+);
 
 export default DashboardMain;
