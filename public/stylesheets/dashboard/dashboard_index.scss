@@ -6,8 +6,17 @@
   height: 100vh;
   padding: 1em;
   box-sizing: border-box;
-  text-align: center;
 
+  div {
+    border: 1px solid darken($light-color, 5%);
+    border-radius: 2px;
+    padding: 15px;
+
+    h1 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
 }
 
 .dashboard-index-stats-container {
@@ -19,9 +28,10 @@
 }
 
 .dashboard-index-employees-container {
-  background: lightgreen;
+  background: #fff;
   grid-row: 2;
   grid-column: 1 / 2;
+  
 }
 
 .dashboard-index-something-container {

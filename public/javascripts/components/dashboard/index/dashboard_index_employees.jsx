@@ -9,7 +9,7 @@ class DashboardIndexEmployees extends React.Component {
   render() {
     return (
     <div className="dashboard-index-employees-container">
-      EMPLOYEES
+        <h1>EMPLOYEES</h1>
     </div>
     );
   }
