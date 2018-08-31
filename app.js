@@ -1,20 +1,27 @@
 const mongoose = require("mongoose");
 const express = require('express');
-// const router = require('express').Router();
-const app = express();
-const db = require("./config/keys").mongoURI;
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const cors = require('cors');
+const watson = require('watson-developer-cloud');
+const vcapServices = require('vcap_services');
+const app = express();
+
+// config 
+const db = require("./config/keys").mongoURI;
+const watsonUsername = require("./config/keys").username
+const watsonPassword = require("./config/keys").password
+
+// Api routes
 const users = require("./routes/api/users");
 const tasks = require('./routes/api/tasks');
 const industries = require('./routes/api/industries');
 const companies = require('./routes/api/companies');
-const Authentication = require('./routes/authentication');
-const cors = require('cors');
-const watson = require('watson-developer-cloud');
-const vcapServices = require('vcap_services');
-const watsonUsername = require("./config/keys").username
-const watsonPassword = require("./config/keys").password
+
+// Normal routes
+// const Authentication = require('./routes/authentication');
+const router = require('express').Router();
+
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -30,9 +37,7 @@ require("./config/passport")(passport);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
-
-// Normal routes
+// // Normal routes
 // router.get('/register', Authentication.register);
 // router.get('/login', Authentication.login);
 
