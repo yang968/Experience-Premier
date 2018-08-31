@@ -24,7 +24,7 @@ class DashboardSidebar extends React.Component {
             <h1>ExP</h1>
           </Link>
           <span className="animated infinite bounce welcome-message">
-            Hello {this.props.currentUser.FirstName}
+            Hello {this.props.currentUser.firstName}
           </span>
           <nav className="dashboard-sidebar-nav-container">
             <ul className="dashboard-sidebar-nav">
@@ -34,12 +34,12 @@ class DashboardSidebar extends React.Component {
               <li>
                 <Link to="/dashboard/call">Record call</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/dashboard/performance">Performance</Link>
               </li>
               <li>
                 <Link to="/dashboard/employees">Employees</Link>
-              </li>
+              </li> */}
             </ul>
             <ul className="dashboard-sidebar-nav">
               <li>
