@@ -11,7 +11,7 @@ const TaskReducer = (oldState = {}, action) => {
       delete newState[action.task._id]
       return newState;
     case RECEIVE_CURRENT_USER:
-      return action.payload.tasks;
+      return action.payload.currentUser.myTasks;
     default: 
       return oldState;
   }
