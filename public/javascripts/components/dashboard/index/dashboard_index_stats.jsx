@@ -9,6 +9,7 @@ class DashboardIndexStats extends React.Component {
   render () {
     return (
       <div className="dashboard-index-stats-container">
+        <canvas id='ownStats'></canvas>
       </div>
     );
   }
