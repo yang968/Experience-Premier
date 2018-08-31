@@ -6,8 +6,8 @@ import SocialMediaLinks from "./social_media_links.jsx";
 const FooterBody = () => (
   <div className="footer-body">
     <a href="/" className="home-link">
-      <i className="icon-home"></i>
-      ExP
+      <i className="icon-home" />
+      <h1>ExP</h1>
     </a>
     <FooterLinks />
     <SocialMediaLinks />

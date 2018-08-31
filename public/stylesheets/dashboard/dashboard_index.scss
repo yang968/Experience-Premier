@@ -39,6 +39,7 @@
 
     .employee-list-item {
       background: $primary-color;
+      border-radius: 2px;
       color: set-text-color($primary-color);
       padding: 5px 10px;
       transition: 0.05s;

@@ -28,25 +28,33 @@
   }
 }
 
-
-
-
 .dashboard-sidebar-nav-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   padding: 2em 0.5em 2em 1em;
-
+  
   .dashboard-sidebar-nav {
     width: 100%;
+    bottom: 0;
     
+    &:first-child {
+      height: 100%;
+    }
+  
+    // &:last-child {
+    //   position: fixed;
+    //   bottom: 30px;
+    // }
+
     li {
       width: 100%;
       font-size: 18px;
       line-height: 1.5em;
       margin-bottom: 12px;
       
+      a {
+        text-decoration: none;
+      }
 
+      
       * {
         display: block;
         width: 10vw;
@@ -58,22 +66,19 @@
         background: rgba(255, 255, 255, 0.2);
         color: set-text-color($primary-color);
         transition: 0.1s;
-
+        
         &:hover {
           width: 100%;
           background: rgba(255, 255, 255, 0.3);
           cursor: pointer;
         }
       }
-      
-      a {
-        text-decoration: none;
-      }
 
       button {
         display: block;
         text-align: left;
       }
+      
     }
   }
 }
