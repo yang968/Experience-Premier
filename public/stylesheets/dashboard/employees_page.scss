@@ -1,0 +1,19 @@
+.employees-page-container {
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+
+  .employees-page-index {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1em;
+    overflow: scroll;
+
+  }
+
+  h1 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+}
