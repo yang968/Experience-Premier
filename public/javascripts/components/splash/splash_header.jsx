@@ -51,7 +51,6 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
     this.props.logout(this.props.currentUser.token);
     window.localStorage.currentUser = "undefined";
     window.localStorage.token = "undefined";
-    this.props.history.push("/"); // not working 
   };
 
   render() {

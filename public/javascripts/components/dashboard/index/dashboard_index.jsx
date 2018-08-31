@@ -1,13 +1,13 @@
 import React from 'react';
 
-import DashboardIndexStats from './dashboard_index_stats';
-import DashboardIndexEmployees from './dashboard_index_employees';
+import DashboardIndexStatsContainer from './dashboard_index_stats_container';
+import DashboardIndexEmployeesContainer from './dashboard_index_employees_container';
 import DashboardIndexSomething from './dashboard_index_something';
 
 const DashboardIndex = () => (
   <div className="dashboard-index-container">
-    <DashboardIndexStats />
-    <DashboardIndexEmployees />
+    <DashboardIndexStatsContainer />
+    <DashboardIndexEmployeesContainer />
     <DashboardIndexSomething />
   </div>
 );

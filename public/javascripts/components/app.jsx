@@ -7,6 +7,7 @@ import FooterBody from './global_footer/footer_body';
 import LoginFormContainer from './splash/login_form_container';
 import ContactPage from './info/contact_page';
 import DashboardPage from './dashboard/dashboard_page';
+import OverviewPage from './overview/overview_page';
 
 import { Route,
          Switch } from 'react-router-dom';
@@ -19,6 +20,7 @@ const App = () => (
       <AuthRoute exact path="/" component={LoginFormContainer} />
       <Route path="/contact" component={ContactPage} />
       <ProtectedRoute path="/dashboard" component={DashboardPage} />
+      <ProtectedRoute path="/overview" component={OverviewPage} />
   </div>
 )
 
