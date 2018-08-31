@@ -7,7 +7,6 @@ class EmployeeListItem extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    console.log(this.props);
   }
   
   handleClick() {
@@ -19,7 +18,7 @@ class EmployeeListItem extends React.Component {
     let employee = this.props.employee;
     return (
       <li 
-        className="employee-index-item"
+        className="employee-list-item"
         onClick={this.handleClick}
       >
         {employee.firstName}&nbsp;{employee.lastName}
