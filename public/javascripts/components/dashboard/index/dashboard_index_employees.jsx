@@ -3,7 +3,7 @@ import React from 'react';
 class DashboardIndexEmployees extends React.Component {
 
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   render() {
@@ -13,6 +13,6 @@ class DashboardIndexEmployees extends React.Component {
     </div>
     );
   }
-};
+}
 
 export default DashboardIndexEmployees;
