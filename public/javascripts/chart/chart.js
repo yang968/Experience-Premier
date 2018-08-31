@@ -1,6 +1,3 @@
-let ownChart = document.getElementById("ownStats");
-console.log(ownChart);
-
 const COLOR = [
   'rgba(255, 99, 132, 0.72)',
   'rgba(255, 230, 50, 0.72)',
