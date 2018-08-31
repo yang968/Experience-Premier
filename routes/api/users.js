@@ -17,7 +17,7 @@ const UserSession = require('../../models/Session');
 const Company = require('../../models/Company');
 const Industry = require('../../models/Industry');
 const Performance = require('../../models/Performance');
-const Promise = require('promise')
+const Promise = require('promise');
 
 // Private Auth route
 router.get('/overview', passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -169,15 +169,15 @@ function getUserInfoAndToken(res, user) {
       Industry.findById(payload.company.industry, "id, name", (error, results) => {
         payload.industry = results;
         resolve(payload);
-      })
-    })
+      });
+    });
   });
 
   let findTasks = new Promise((resolve, reject) => {
     Task.find({ user: payload.id }, 'user transcript date results', (error, result) => {
       if (error) reject(error);
       resolve(result);
-    })
+    });
   });
 
   let findMyPerformance = new Promise((resolve, reject) => {
@@ -196,7 +196,7 @@ function getUserInfoAndToken(res, user) {
       if (error) reject(error);
       payload.subordinates = results;
       resolve(payload);
-    })
+    });
   });
 
   let promises = [findCompany, findTasks, findMyPerformance, findSubordinates];
@@ -252,9 +252,9 @@ function getUserInfoAndToken(res, user) {
               subordinatePerformances
             });
           }
-        )
-      })
-    })
+        );
+      });
+    });
 }
 
 
