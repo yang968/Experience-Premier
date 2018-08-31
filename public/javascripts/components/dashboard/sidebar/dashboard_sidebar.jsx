@@ -24,7 +24,7 @@ class DashboardSidebar extends React.Component {
             <h1>ExP</h1>
           </Link>
           <span className="animated infinite bounce welcome-message">
-            Hello {this.props.currentUser.FirstName}
+            Hello {this.props.currentUser.firstName}
           </span>
           <nav className="dashboard-sidebar-nav-container">
             <ul className="dashboard-sidebar-nav">
