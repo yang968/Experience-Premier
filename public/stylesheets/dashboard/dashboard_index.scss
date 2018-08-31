@@ -15,6 +15,7 @@
     h1 {
       font-size: 16px;
       font-weight: 700;
+      margin-bottom: 15px;
     }
   }
 }
@@ -32,6 +33,27 @@
   grid-row: 2;
   grid-column: 1 / 2;
   
+  .dashboard-index-employees-list {
+    font-size: 18px;
+    overflow: auto;
+
+    .employee-list-item {
+      background: $primary-color;
+      color: set-text-color($primary-color);
+      padding: 5px 10px;
+      transition: 0.05s;
+
+      &:nth-child(even) {
+        background: $primary-color-dark;
+      }
+
+      &:hover {
+        cursor: pointer;
+        opacity: 0.9;
+      }
+    }
+  }
+
 }
 
 .dashboard-index-something-container {
