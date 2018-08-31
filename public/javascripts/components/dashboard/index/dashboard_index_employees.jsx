@@ -2,8 +2,8 @@ import React from 'react';
 
 class DashboardIndexEmployees extends React.Component {
 
-  construtor(props) {
-    super(props)
+  constructor(props) {
+    super(props);
   }
 
   render() {
