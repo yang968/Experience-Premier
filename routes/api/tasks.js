@@ -63,14 +63,18 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
 
       // Find a performance (by user, month, and year) and update it
       // or create a new performance
-      Performance.findOne({ user: req.user.id, month: newTask.date.getMonth(), year: newTask.date.getFullYear()})
+      Performance.findOne({
+        user: req.user.id,
+        month: newTask.date.getMonth() + 1,
+        year: newTask.date.getFullYear()
+      })
         .then(performance => {
           let item = performance;
           if (item === null) {
             item = new Performance({
               tasks: 1,
               user: req.user.id,
-              month: newTask.date.getMonth(),
+              month: newTask.date.getMonth() + 1,
               year: newTask.date.getFullYear(),
               sentimentScore: results.sentiment.score,
               sadness: results.emotion.sadness,
@@ -92,12 +96,11 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
           else if (results.sentiment.label === "negative") item.negative += 1;
           else item.neutral += 1;
 
-          item.keywords = mapKeywords((item.keywords) ? JSON.parse(item.keywords) : undefined, results.keywords);
+          item.keywords = mapKeywords(item.keywords ? JSON.parse(item.keywords) : undefined, results.keywords);
 
-          item.save().then((data) => {
+          item.save().then(data => {
             newTask.save().then(task => res.json(task));
-          }
-          );
+          });
         })
         .catch(error => {
           console.log("Failed to find or create a new performance: " + error);
@@ -108,6 +111,7 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
 
 /* 
   Users can fetch a specific Task and see the associated Data and transcript
+  /api/tasks/:id
 */
 router.get(
   "/:id",
@@ -134,26 +138,29 @@ router.delete(
         {
           taskOwner = User.findById(task.user);
           if (taskOwner.manager == req.user.id) {
-            Performance.findOne({ user: req.user.id, month: newTask.date.getMonth(), year: newTask.date.getFullYear() })
-              .then(performance => {
-                let item = performance;
-                if (item != undefined) {
-                  item.tasks -= 1;
-                  item.sentimentScore -= results.sentiment.score;
-                  item.sadness -= results.emotion.sadness;
-                  item.joy -= results.emotion.joy;
-                  item.anger -= results.emotion.anger;
-                  item.fear -= results.emotion.fear;
-                  item.disgust -= results.emotion.disgust;
-                }
-                if (results.sentiment.label === "positive") item.positive -= 1;
-                else if (results.sentiment.label === "negative") item.negative -= 1;
-                else item.neutral -= 1;
+            Performance.findOne({
+              user: req.user.id,
+              month: newTask.date.getMonth() + 1,
+              year: newTask.date.getFullYear()
+            }).then(performance => {
+              let item = performance;
+              if (item != undefined) {
+                item.tasks -= 1;
+                item.sentimentScore -= results.sentiment.score;
+                item.sadness -= results.emotion.sadness;
+                item.joy -= results.emotion.joy;
+                item.anger -= results.emotion.anger;
+                item.fear -= results.emotion.fear;
+                item.disgust -= results.emotion.disgust;
+              }
+              if (results.sentiment.label === "positive") item.positive -= 1;
+              else if (results.sentiment.label === "negative") item.negative -= 1;
+              else item.neutral -= 1;
 
-                item.keywords = removeKeywords(JSON.parse(item.keywords), task.results.keywords);
+              item.keywords = removeKeywords(JSON.parse(item.keywords), task.results.keywords);
 
-                item.save();
-              });
+              item.save();
+            });
 
             task.remove().then(res.json(task));
           } else {

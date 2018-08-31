@@ -131,6 +131,7 @@ router.post('/logout', passport.authenticate('jwt', { session: false }), (req, r
 
 /* 
   Get all tasks for a user id. 
+  GET /api/users/:id
 */
 router.get('/:id', (req, res) => {
   User.findById(req.params.id)
@@ -139,6 +140,7 @@ router.get('/:id', (req, res) => {
         return res.status(404).json({invalidUser: 'User does not exist!'});
       }
 
+      // Sending an array of the user's task
       Task.find({user: user._id}).then(tasks => {
         let obj = {}
         obj[user._id] = tasks;
@@ -156,23 +158,18 @@ function getUserInfoAndToken(res, user) {
     email: user.email
   };
 
-  // Constants.
-  let company = {};
-  let industry = {};
-  let taskObj = {};
-  let filteredSubInfo = [];
-  let myPerformances = [];
-  let subordinatePerformances = {};
-
   let findCompany = new Promise((resolve, reject) => {
-    Company.findOne({ _id: user.company }, "id name", (error, result) => {
-      resolve(result);
-    })
-  });
-
-  let findIndustry = new Promise((resolve, reject) => {
-    Industry.findOne({ _id: company.industry }, "id name", (error, result) => {
-      resolve(result);
+    let payload = {};
+    payload.company = {};
+    payload.industry = {};
+    Company.findOne({ _id: user.company }, "id name industry", (error, result) => {
+      if (error) reject(error);
+      payload.company = result;
+    }).exec(() => {
+      Industry.findById(payload.company.industry, "id, name", (error, results) => {
+        payload.industry = results;
+        resolve(payload);
+      })
     })
   });
 
@@ -190,72 +187,74 @@ function getUserInfoAndToken(res, user) {
     });
   });
 
-  let findSubordinatesInfo = new Promise((resolve, reject) => {
-    User.find({ manager: payload.id }, "firstName lastName email", (error, subordinates) => {
-        let payload = {};
-        payload.subordinates = subordinates;
-        subordinates.forEach(subordinate => {
+  let findSubordinates = new Promise((resolve, reject) => {
+    let payload = {};
+    payload.subordinates = [];
+    payload.subordinatePerformances = [];
 
-          payload.tasks = {};
-          Task.find({ user: subordinate._id }, "user transcript date results", (error, tasks) => {
-              // taskObj[subordinate._id] = tasks;
-              payload.tasks[subordinate._id] = tasks;
-            }
-          );
+    User.find({ manager: payload.id }, "id firstName lastName email", (error, results) => {
+      if (error) reject(error);
+      payload.subordinates = results;
+      resolve(payload);
+    })
+  });
 
-          payload.subordinatePerformances = {};
-          Performance.find({ user: subordinate._id }, null, (error, results) => {
-              // subordinatePerformances[subordinate._id] = results;
-              payload.subordinatePerformances[subordinate._id] = results;
-            }
-          );
-        });
-        resolve(payload);
-      }
-    );
-  })
-
-  let promises = [findCompany, findIndustry, findTasks, findMyPerformance, findSubordinatesInfo];
+  let promises = [findCompany, findTasks, findMyPerformance, findSubordinates];
   
+  let company, industry, tasks, myPerformances, subordinates, subordinatePerformances;
+
   Promise.all(promises)
     .then((array) => {
-      taskObj = Object.assign({}, array[2], array[4].tasks);
-      
-      jsonwebtoken.sign(
-      payload,
-      keys.secretOrKey,
-      { expiresIn: "24h" },
-      (err, token) => {
-        const userSession = new UserSession();
-        userSession.userId = user._id;
-        userSession.token = token;
-        userSession.save((error, doc) => {
-          if (error) {
-            return res.send({
-              success: false,
-              message: "Error: server error"
+      company = array[0].company;
+      industry = array[0].industry;
+      tasks = array[1];
+      myPerformances = array[2];
+      subordinates = array[3].subordinates;
+
+    })
+    .then(() => {
+      let ids = subordinates.map(sub => sub._id);
+      Performance.find({user: ids}, null, (error, results) => {
+        subordinatePerformances = results;
+      })
+      .exec(() => {
+        jsonwebtoken.sign(
+          payload,
+          keys.secretOrKey,
+          { expiresIn: "24h" },
+          (err, token) => {
+            const userSession = new UserSession();
+            userSession.userId = user._id;
+            userSession.token = token;
+            userSession.save((error, doc) => {
+              if (error) {
+                return res.send({
+                  success: false,
+                  message: "Error: server error"
+                });
+              }
+            });
+            res.json({
+              currentUser: {
+                success: true,
+                manager: (subordinates.length > 0),
+                token: "Bearer " + token,
+                userId: payload.id,
+                firstName: payload.firstName,
+                lastName: payload.lastName,
+                email: payload.email,
+                myTasks: tasks,
+                myPerformances,
+                subordinates
+              },
+              company,
+              industry,
+              subordinatePerformances
             });
           }
-        });
-        res.json({
-          currentUser: {
-            success: true,
-            token: "Bearer " + token,
-            userId: payload.id,
-            FirstName: payload.firstName,
-            lastName: payload.lastName,
-            email: payload.email,
-            myPerformances: array[3],
-            subordinates: array[4].subordinates
-          },
-          company: array[0],
-          industry: array[1],
-          tasks: taskObj,
-          subordinatePerformances: array[4].subordinatePerformances
-        });
-      }
-    )}
-  );
+        )
+      })
+    })
 }
 
 
