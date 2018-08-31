@@ -9,24 +9,19 @@
 // Styles
 
 nav.header-login-demo {
-  // display: flex;
-  // justify-content: space-between;
-  // margin-left: 10px;
 
-  button {
+  button:last-child {
     color: $primary-color-dark;
+  }
 
-    &:hover {
-      color: lighten($primary-color-dark, 10%)
-    }
+  *:hover {
+    opacity: 0.7;
   }
 }
 
 .session-button {
   font-family: $montserrat, sans-serif;
   font-size: 1.2em;
-  // width: 300px;
-  // margin: 0 4px 0;
   border: none;
   color: set-text-color($secondary-color);
   text-decoration: none;
