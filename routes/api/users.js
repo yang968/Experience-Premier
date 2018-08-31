@@ -16,6 +16,8 @@ const Task = require('../../models/Task');
 const UserSession = require('../../models/Session');
 const Company = require('../../models/Company');
 const Industry = require('../../models/Industry');
+const Performance = require('../../models/Performance');
+const Promise = require('promise')
 
 // Private Auth route
 router.get('/overview', passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -27,6 +29,7 @@ router.get('/overview', passport.authenticate('jwt', { session: false }), (req, 
     // Send username and key for API here to the Frontend user
     // use env vars for Heroku deployment
     // emotionUsername: process.env.emotionUsername
+    // emotionPassword: process.env.emotionPassword
     emotionUsername: keys.emotionUsername,
     emotionPassword: keys.emotionPassword
   });
@@ -154,73 +157,105 @@ function getUserInfoAndToken(res, user) {
   };
 
   // Constants.
-  const company = {};
-  const industry = {};
-  const taskObj = {};
-  const managerId = mongoose.Types.ObjectId(user._id);
-  const filteredSubInfo = [];
+  let company = {};
+  let industry = {};
+  let taskObj = {};
+  let filteredSubInfo = [];
+  let myPerformances = [];
+  let subordinatePerformances = {};
 
-  Company.find({_id: user.company})
-    .then((companyFound) => {
-      company.id = companyFound[0]._id;
-      company.name = companyFound[0].name;
+  let findCompany = new Promise((resolve, reject) => {
+    Company.findOne({ _id: user.company }, "id name", (error, result) => {
+      resolve(result);
+    })
+  });
 
-      // Getting industry with company information.
-      Industry.find({_id: companyFound[0].industry})
-        .then((industryFound) => {
-          industry.id = industryFound[0]._id;
-          industry.name = industryFound[0].name;
+  let findIndustry = new Promise((resolve, reject) => {
+    Industry.findOne({ _id: company.industry }, "id name", (error, result) => {
+      resolve(result);
+    })
+  });
+
+  let findTasks = new Promise((resolve, reject) => {
+    Task.find({ user: payload.id }, 'user transcript date results', (error, result) => {
+      if (error) reject(error);
+      resolve(result);
+    })
+  });
+
+  let findMyPerformance = new Promise((resolve, reject) => {
+    Performance.find({ user: payload.id }, null, (error, results) => {
+      if (error) reject(error);
+      resolve(results);
+    });
+  });
+
+  let findSubordinatesInfo = new Promise((resolve, reject) => {
+    User.find({ manager: payload.id }, "firstName lastName email", (error, subordinates) => {
+        let payload = {};
+        payload.subordinates = subordinates;
+        subordinates.forEach(subordinate => {
+
+          payload.tasks = {};
+          Task.find({ user: subordinate._id }, "user transcript date results", (error, tasks) => {
+              // taskObj[subordinate._id] = tasks;
+              payload.tasks[subordinate._id] = tasks;
+            }
+          );
+
+          payload.subordinatePerformances = {};
+          Performance.find({ user: subordinate._id }, null, (error, results) => {
+              // subordinatePerformances[subordinate._id] = results;
+              payload.subordinatePerformances[subordinate._id] = results;
+            }
+          );
         });
-      // Getting all the users' tasks
-      Task.find({user: user._id})
-        .then((tasks) => { taskObj[user._id] = tasks; });
-      })
-    .then(() => {
-    // Finding subordinates with loggedin user's id
-    User.find({ manager: managerId })
-      .then(subs => {
-        subs.forEach((sub) => {
-          // Add subordinate info here.
-          filteredSubInfo.push({
-            id: sub._id,
-            firstName: sub.firstName,
-            lastName: sub.lastName,
-            email: sub.email
-          });
+        resolve(payload);
+      }
+    );
+  })
+
+  let promises = [findCompany, findIndustry, findTasks, findMyPerformance, findSubordinatesInfo];
+  
+  Promise.all(promises)
+    .then((array) => {
+      taskObj = Object.assign({}, array[2], array[4].tasks);
+      
+      jsonwebtoken.sign(
+      payload,
+      keys.secretOrKey,
+      { expiresIn: "24h" },
+      (err, token) => {
+        const userSession = new UserSession();
+        userSession.userId = user._id;
+        userSession.token = token;
+        userSession.save((error, doc) => {
+          if (error) {
+            return res.send({
+              success: false,
+              message: "Error: server error"
+            });
+          }
         });
-      })
-      .then(() => jsonwebtoken.sign(payload, keys.secretOrKey,
-          // Tell the key to expire in one hour
-        { expiresIn: "24h" },
-        (err, token) => {
-          const userSession = new UserSession();
-          userSession.userId = user._id;
-          userSession.token = token;
-          userSession.save((error, doc) => {
-              if (error) {
-                return res.send({
-                  success: false,
-                  message: 'Error: server error'
-                });
-              }
-            });
-            res.json({
-              currentUser: {
-                success: true,
-                token: 'Bearer ' + token,
-                userId: payload.id,
-                FirstName: payload.firstName,
-                lastName: payload.lastName,
-                email: payload.email,
-                subordinates: filteredSubInfo
-              },
-              company: company,
-              industry: industry,
-              tasks: taskObj
-            });
-          })
-        );
-    }); 
+        res.json({
+          currentUser: {
+            success: true,
+            token: "Bearer " + token,
+            userId: payload.id,
+            FirstName: payload.firstName,
+            lastName: payload.lastName,
+            email: payload.email,
+            myPerformances: array[3],
+            subordinates: array[4].subordinates
+          },
+          company: array[0],
+          industry: array[1],
+          tasks: taskObj,
+          subordinatePerformances: array[4].subordinatePerformances
+        });
+      }
+    )}
+  );
 }
 
 
