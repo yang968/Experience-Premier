@@ -4,7 +4,7 @@ import {
   Switch
 } from 'react-router-dom';
 
-import SpeechRecordContainer from "./speech_record_container";
+import SpeechRecordContainer from "./speech_record/speech_record_container";
 
 const DashboardMain = () => (
   <div className="dashboard-main-container">

@@ -1,5 +1,5 @@
-import {fetchSpeechToken} from '../../actions/auth_actions';
-import {createTask} from '../../actions/task_actions';
+import {fetchSpeechToken} from '../../../actions/auth_actions';
+import {createTask} from '../../../actions/task_actions';
 import {connect} from 'react-redux';
 import SpeechRecord from './speech_record';
 

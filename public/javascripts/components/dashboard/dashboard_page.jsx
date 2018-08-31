@@ -1,6 +1,6 @@
 import React from 'react';
 
-import DashboardSidebarContainer from "./dashboard_sidebar_container";
+import DashboardSidebarContainer from "./sidebar/dashboard_sidebar_container";
 import DashboardMain from './dashboard_main';
 
 class DashboardPage extends React.Component {
