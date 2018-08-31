@@ -1,12 +1,17 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
+import LoginFormContainer from "./login_form_container";
 
 class TagLine extends React.Component {
 
   constructor (props) {
     super(props);
     this.demoLogin = this.demoLogin.bind(this);
-    // this.sessionTriggers = this.sessionTriggers.bind(this);
+    this.sessionTriggers = this.sessionTriggers.bind(this);
+  }
+
+  componentDidMount() {
+    this.sessionTriggers();
   }
 
   demoLogin() {
@@ -17,8 +22,30 @@ class TagLine extends React.Component {
     });
   }
 
+  sessionTriggers(e) {
+    // e.preventDefault();
+    if (!this.props.currentUser) {
+      let modal = document.querySelector(".modal");
+      let modalOverlay = document.querySelector(".modal-overlay");
+      let openButton = document.querySelector(".js-modal-open2");
+      let closeButton = document.querySelector(".js-modal-close");
+
+      openButton.addEventListener("click", function () {
+        modal.classList.toggle("is-open", true);
+        modalOverlay.classList.toggle("is-open", true);
+      });
+
+      closeButton.addEventListener("click", function () {
+        modal.classList.toggle("is-open", false);
+        modalOverlay.classList.toggle("is-open", false);
+      })
+    }
+  }
+
+
   render() {
     return <div className="splash-tagline">
+        <LoginFormContainer />
         <section className="splash-tagline-box">
           <h1>Take your customer service to the next level with ExP</h1>
           <p>
@@ -31,7 +58,7 @@ class TagLine extends React.Component {
           </Link>
           <span>
             Already use ExP?&nbsp;
-            <button onClick={this.sessionTriggers}>
+            <button className="session-button js-modal-open2">
               Log in.
             </button>
           </span>
