@@ -20,19 +20,12 @@ const Performance = require('../../models/Performance');
 const Promise = require('promise');
 
 // Private Auth route
-router.get('/overview', passport.authenticate('jwt', { session: false }), (req, res) => {
-  res.json({
-    id: req.user.id,
-    firstName: req.user.firstName,
-    lastName: req.user.lastName,
-    email: req.user.email,
-    // Send username and key for API here to the Frontend user
-    // use env vars for Heroku deployment
-    // emotionUsername: process.env.emotionUsername
-    // emotionPassword: process.env.emotionPassword
-    emotionUsername: keys.emotionUsername,
-    emotionPassword: keys.emotionPassword
-  });
+router.get('/dashboard', passport.authenticate('jwt', { session: false }), (req, res) => {
+  User.findById(req.user.id).then(user => {
+    if (!user) { return res.status(404).json({ email: 'Failed to get information for user' }); }
+
+    getUserInfoAndToken(res, user, false);
+  })
 });
 
 // New user.
@@ -65,7 +58,7 @@ router.post('/register', (req, res) => {
             newUser.save()
               .then(() => {
                 // helper function that gives user's info with user token
-                getUserInfoAndToken(res, newUser);
+                getUserInfoAndToken(res, newUser, true);
               })
               .catch(err1 => console.log(err1));
           });
@@ -90,8 +83,8 @@ router.post('/login', (req, res) => {
         .then(isMatch => {
           if (isMatch) {
 
-        // helper function that gives user's info with user token
-            getUserInfoAndToken(res, user);
+          // helper function that gives user's info with user token
+            getUserInfoAndToken(res, user, true);
           } else {
             return res.status(400).json({
               password: 'Incorrect password'
@@ -139,7 +132,7 @@ router.get('/:id', (req, res) => {
       if (!user) {
         return res.status(404).json({invalidUser: 'User does not exist!'});
       }
-
+      getUserInfoAndToken(res, user)
       // Sending an array of the user's task
       Task.find({user: user._id}).then(tasks => {
         let obj = {}
@@ -150,7 +143,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Helper function to return necessary information for the frontend.
-function getUserInfoAndToken(res, user) {
+function getUserInfoAndToken(res, user, needToken) {
   const payload = {
     id: user.id,
     firstName: user.firstName,
@@ -214,41 +207,61 @@ function getUserInfoAndToken(res, user) {
         subordinatePerformances = results;
       })
       .exec(() => {
-        jsonwebtoken.sign(
-          payload,
-          keys.secretOrKey,
-          { expiresIn: "24h" },
-          (err, token) => {
-            const userSession = new UserSession();
-            userSession.userId = user._id;
-            userSession.token = token;
-            userSession.save((error, doc) => {
-              if (error) {
-                return res.send({
-                  success: false,
-                  message: "Error: server error"
-                });
-              }
-            });
-            res.json({
-              currentUser: {
-                success: true,
-                manager: (subordinates.length > 0),
-                token: "Bearer " + token,
-                userId: payload.id,
-                firstName: payload.firstName,
-                lastName: payload.lastName,
-                email: payload.email,
-                myTasks: tasks,
-                myPerformances,
-                subordinates
-              },
-              company,
-              industry,
-              subordinatePerformances
-            });
-          }
-        );
+        if (needToken) {
+          jsonwebtoken.sign(
+            payload,
+            keys.secretOrKey,
+            { expiresIn: "24h" },
+            (err, token) => {
+              const userSession = new UserSession();
+              userSession.userId = user._id;
+              userSession.token = token;
+              userSession.save((error, doc) => {
+                if (error) {
+                  return res.send({
+                    success: false,
+                    message: "Error: server error"
+                  });
+                }
+              });
+              res.json({
+                currentUser: {
+                  success: true,
+                  manager: (subordinates.length > 0),
+                  token: "Bearer " + token,
+                  userId: payload.id,
+                  firstName: payload.firstName,
+                  lastName: payload.lastName,
+                  email: payload.email,
+                  myTasks: tasks,
+                  myPerformances,
+                  subordinates
+                },
+                company,
+                industry,
+                subordinatePerformances
+              });
+            }
+          );
+        } else {
+          res.json({
+            currentUser: {
+              success: true,
+              manager: (subordinates.length > 0),
+              token: "Bearer " + token,
+              userId: payload.id,
+              firstName: payload.firstName,
+              lastName: payload.lastName,
+              email: payload.email,
+              myTasks: tasks,
+              myPerformances,
+              subordinates
+            },
+            company,
+            industry,
+            subordinatePerformances
+          });
+        }
       });
     });
 }

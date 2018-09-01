@@ -1,15 +1,10 @@
-.employees-page-container {
+.employee-page-container {
   height: 100vh;
   padding: 20px;
   box-sizing: border-box;
-
-  .employees-page-index {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 1em;
-    overflow: scroll;
-
-  }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
 
   h1 {
     font-size: 17px;
