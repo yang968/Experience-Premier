@@ -1,15 +1,11 @@
 import React from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
-<<<<<<< HEAD:public/javascripts/components/dashboard/index/dashboard_index_stats.jsx
 import { 
   POSITIVITY_COLOR, 
   SENTIMENT_COLOR, 
   POSITIVITY_LABELS, 
   SENTIMENT_LABELS 
-} from "../../../chart/chart_constants";
-=======
-import { COLOR, POSITIVITY_LABELS, SENTIMENT_LABELS } from "../../../../chart/chart_constants";
->>>>>>> 5783054dd3c025b8791fb2eecb5a8f1d4369388e:public/javascripts/components/dashboard/index/team_stats/dashboard_index_stats.jsx
+} from "../../../../chart/chart_constants";
 import { ENGINE_METHOD_DIGESTS } from 'constants';
 
 class DashboardIndexStats extends React.Component {
