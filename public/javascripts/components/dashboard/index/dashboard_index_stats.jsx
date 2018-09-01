@@ -1,6 +1,11 @@
 import React from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
-import { COLOR, POSITIVITY_LABELS, SENTIMENT_LABELS } from "../../../chart/chart_constants";
+import { 
+  POSITIVITY_COLOR, 
+  SENTIMENT_COLOR, 
+  POSITIVITY_LABELS, 
+  SENTIMENT_LABELS 
+} from "../../../chart/chart_constants";
 import { ENGINE_METHOD_DIGESTS } from 'constants';
 
 class DashboardIndexStats extends React.Component {
@@ -10,14 +15,14 @@ class DashboardIndexStats extends React.Component {
       chartData1: {
         labels: POSITIVITY_LABELS,
         datasets: [{
-           backgroundColor: COLOR
+          backgroundColor: POSITIVITY_COLOR
         }]
       },
       chartData2: {
         labels: SENTIMENT_LABELS,
         datasets: [{
           label: "Sentiment Analysis",
-          backgroundColor: COLOR
+          backgroundColor: SENTIMENT_COLOR
         }],
       }
     };

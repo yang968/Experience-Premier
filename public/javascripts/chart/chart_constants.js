@@ -1,10 +1,15 @@
-export const COLOR = [
+export const POSITIVITY_COLOR = [
   'rgba(255, 99, 132, 0.72)',
   'rgba(255, 230, 50, 0.72)',
-  'rgba(54, 162, 235, 0.72)',
-  'rgba(75, 192, 192, 0.72)',
-  'rgba(153, 102, 132, 0.72)',
-  'rgba(255, 130, 64, 0.72)',
+  'rgba(54, 162, 235, 0.72)'
+];
+
+export const SENTIMENT_COLOR = [
+  'rgba(40, 122, 255, 0.72)',
+  'rgba(245, 250, 30, 0.72)',
+  'rgba(255, 40, 100, 0.72)',
+  'rgba(150, 40, 170, 0.72)',
+  'rgba(35, 225, 0, 0.72)',
 ];
 
 export const SENTIMENT_LABELS = ["Sadness", "Joy", "Anger", "Fear", "Disgust"];
