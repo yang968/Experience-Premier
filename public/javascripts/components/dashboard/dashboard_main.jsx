@@ -6,8 +6,8 @@ import {
 
 import DashboardIndex from "./index/dashboard_index";
 import SpeechRecordContainer from "./speech_record/speech_record_container";
-import PerformancePage from './performance/performance_page';
-import EmployeesPage from './employees/employees_page';
+// import PerformancePage from './performance/performance_page';
+// import EmployeesPageContainer from './employees/employees_page_container';
 
 import { AuthRoute, ProtectedRoute } from "../../util/route_util";
 
@@ -16,8 +16,8 @@ const DashboardMain = () => (
     <Switch>
       <ProtectedRoute exact path="/dashboard" component={DashboardIndex} />
       <ProtectedRoute path="/dashboard/call" component={SpeechRecordContainer} />
-      <ProtectedRoute path="/dashboard/performance" component={() => <div></div>} />
-      <ProtectedRoute path="/dashboard/employees" component={() => <div></div>} />
+      {/* <ProtectedRoute path="/dashboard/performance" component={PerformancePage} />
+      <ProtectedRoute path="/dashboard/employees" component={EmployeesPageContainer} /> */}
     </Switch>
   </div>
 );
