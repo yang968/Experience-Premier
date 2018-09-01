@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
-import { COLOR, POSITIVITY_LABELS, SENTIMENT_LABELS } from "../../../chart/chart";
+import { COLOR, POSITIVITY_LABELS, SENTIMENT_LABELS } from "../../../chart/chart_constants";
 import { ENGINE_METHOD_DIGESTS } from 'constants';
 
 class DashboardIndexStats extends React.Component {
@@ -24,11 +24,18 @@ class DashboardIndexStats extends React.Component {
   }
 
   componentWillMount() {
+    console.log(this.props.stats);
     if (this.props.stats.length > 0) {
-      let count = this.props.stats[0].tasks;
-      let stats = this.props.stats[0];
-      let [neg, neu, pos] = [stats.negative, stats.neutral, stats.positive];
-      let [s, j, a, f, d] = [stats.sadness, stats.joy, stats.anger, stats.fear, stats.disgust];
+      let count = 0;
+      this.props.stats.forEach((stat) => {count += stat.tasks});
+      let stats = this.props.stats;
+      let [neg, neu, pos, s, j, a, f, d] = [0, 0, 0, 0, 0, 0, 0, 0];
+      stats.forEach((stat) => {
+        neg += stat.negative; neu += stat.neutral;
+        pos += stat.positive; s += stat.sadness;
+        j += stat.joy; a += stat.anger;
+        f += stat.fear; d += stat.disgust;
+      });
       let data = [s, j, a, f, d].map((el) => (el/count).toFixed(3));
       this.state.chartData1.datasets[0].data = [neg, neu, pos];
       this.state.chartData2.datasets[0].data = data;
@@ -48,16 +55,15 @@ class DashboardIndexStats extends React.Component {
         <h1>You have no data to show :(</h1>
       </div>;
     } else {
-
 		return <div className="dashboard-index-stats-container">
           <div className="dashboard-index-stats-graph-pie">
-            <Pie data={this.state.chartData1} />
-            <div className='stats-graph-title'>x
+            <Pie data={this.state.chartData1} options={{legend: {position: 'right'}}}/>
+            <div className='stats-graph-title'>
               <h6>{this.returnTitleText()} Cumulative Outcome </h6>
             </div>
           </div>
           <div className="dashboard-index-stats-graph-bar">
-            <Bar data={this.state.chartData2} options={{ legend: false }} />
+            <Bar data={this.state.chartData2} options={{legend: false}} />
             <div className='stats-graph-title'>
               <h6>{this.returnTitleText()} Average Sentiment Analysis </h6>
             </div>
