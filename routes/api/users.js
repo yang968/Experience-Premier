@@ -248,7 +248,6 @@ function getUserInfoAndToken(res, user, needToken) {
             currentUser: {
               success: true,
               manager: (subordinates.length > 0),
-              token: "Bearer " + token,
               userId: payload.id,
               firstName: payload.firstName,
               lastName: payload.lastName,
