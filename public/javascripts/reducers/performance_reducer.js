@@ -1,5 +1,5 @@
 import RECEIVE_PERFORMANCES from '../actions/performance_actions';
-// import RECEIVE_CURRENT_USER from '../actions/employee_actions';
+import RECEIVE_CURRENT_USER from '../actions/employee_actions';
 
 const PerformanceReducer = (oldState = [], action) => {
   Object.freeze(oldState);

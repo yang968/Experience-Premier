@@ -43,7 +43,7 @@ class DashboardIndexStats extends React.Component {
   }
 
 	render() {
-    if (this.props.stats.length === 0) {
+    if (this.props.stats === 0) {
       return <div className="dashboard-index-stats-container">
         <h1>You have no data to show :(</h1>
       </div>;
