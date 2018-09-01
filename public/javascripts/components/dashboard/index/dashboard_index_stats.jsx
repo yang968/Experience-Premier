@@ -33,16 +33,18 @@ class DashboardIndexStats extends React.Component {
   }
 
 	render() {
-		return <div className="dashboard-index-stats-container">
-          <div className="dashboard-index-stats-graph">
-            <Pie data={this.state.chartData1} />
-            <h6> Cumulative Positivity </h6>
-          </div>
-          <div className="dashboard-index-stats-graph">
-            <Bar data={this.state.chartData2} options={{ legend: false }} />
-          <h6> Averge Sentiment Analysis</h6>
+		return (
+      <div className="dashboard-index-stats-container">
+        <div className="dashboard-index-stats-graph-pie">
+          <Pie data={this.state.chartData1} />
+          <h6> Cumulative Positivity </h6>
         </div>
-			</div>;
+        <div className="dashboard-index-stats-graph-bar">
+          <Bar data={this.state.chartData2} options={{ legend: false }} />
+          <h6> Average Sentiment Analysis</h6>
+        </div>
+      </div>
+    );
 	}
 }
 
