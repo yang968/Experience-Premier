@@ -6,13 +6,11 @@ class EmployeePage extends React.Component {
 
   constructor(props) {
     super(props);
-    // console.log(params);
     console.log(this.props);
     console.log(this.props.match.params);
   }
 
   render() {
-
 
     return (
       <div className="employee-page-container">
