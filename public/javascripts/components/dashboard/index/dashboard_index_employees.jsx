@@ -25,6 +25,6 @@ class DashboardIndexEmployees extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default DashboardIndexEmployees;

@@ -188,14 +188,11 @@ function getUserInfoAndToken(res, user) {
   });
 
   let findSubordinates = new Promise((resolve, reject) => {
-    let payload = {};
-    payload.subordinates = [];
-    payload.subordinatePerformances = [];
 
     User.find({ manager: payload.id }, "id firstName lastName email", (error, results) => {
       if (error) reject(error);
-      payload.subordinates = results;
-      resolve(payload);
+      // payload.subordinates = results;
+      resolve(results);
     });
   });
 
@@ -209,7 +206,7 @@ function getUserInfoAndToken(res, user) {
       industry = array[0].industry;
       tasks = array[1];
       myPerformances = array[2];
-      subordinates = array[3].subordinates;
+      subordinates = array[3];
 
     })
     .then(() => {
