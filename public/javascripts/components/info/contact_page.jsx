@@ -25,6 +25,7 @@ const ContactPage = () => (
           <h3>Nick Matison</h3>
           <p>Does things</p>
 
+          
         </section>
       </li>
       <li className="team-member">
