@@ -3,6 +3,7 @@ export const RECEIVE_USER = "RECEIVE_USER";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_EMPLOYEE_ERRORS = "RECEIVE_EMPLOYEE_ERRORS";
 export const LOGOUT_USER = "LOGOUT_USER";
+export const RECEIVE_DASHBOARD = "RECEIVE_DASHBOARD";
 
 export const createUser = user => dispatch => (
   userUtil.createUser(user)
@@ -20,6 +21,16 @@ export const logout = token => dispatch => (
   userUtil.logout(token)
   .then(res => dispatch(logoutUser(res)))
 );
+
+export const getDashboard = token => dispatch => (
+  userUtil.getDashboard(token)
+  .then(res => dispatch(receiveDashboard(res)))
+);
+
+const receiveDashboard = payload => ({
+  type: RECEIVE_DASHBOARD,
+  payload: payload.data
+})
 
 const logoutUser = (res) => ({
   type: LOGOUT_USER,

@@ -9,7 +9,7 @@ const ErrorsReducer = (oldState = [], action) => {
     case RECEIVE_TASK_ERRORS:
       return action.errors
     default: 
-      return oldState;
+      return [];
   }
 }
 
