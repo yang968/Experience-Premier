@@ -7,27 +7,40 @@ class SpeechRecord extends React.Component {
     this.state = {
       stream: false
     };
+
+    this.transcript = "";
   }
 
   componentDidMount() {
-    let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    this.recognition = new SpeechRecognition();
-    this.recognition.interimResults = true;
+    // this.recognition = new SpeechRecognition();
+    // this.recognition.interimResults = true;
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
+    const texts = document.querySelector(".live-text");
+    let p;
     if (this.state.stream) {
       this.setState({ stream: false });
       this.recognition.stop();
       this.recognition.removeEventListener("end", this.recognition.start);
+
+      this.recognition = null;
+      console.log(this.transcript);
+      
+      let children = Array.from(document.querySelectorAll(".live-text > p"));
+
+      children.forEach(child => {
+        child.parentNode.removeChild(child);
+      })
     } else {
       this.setState({ stream: true });
-      
-      let p = document.createElement('p');
-      const texts = document.querySelector('.live-text');
-      texts.appendChild(p);
+
+      this.recognition = new SpeechRecognition();
+      this.recognition.interimResults = true;
+      this.transcript = "";
 
       this.recognition.addEventListener('result', e => {
         const transcript = Array.from(e.results)
@@ -35,11 +48,11 @@ class SpeechRecord extends React.Component {
           .map(result => result.transcript)
           .join('')
 
+        let p = document.createElement("p");
         p.textContent = transcript;
-        if (e.results[0].isFinal) {
-          // console.log(transcript);
 
-          p = document.createElement('p');
+        if (e.results[0].isFinal) {
+          this.transcript += (p.textContent + ".");
           texts.appendChild(p);
         }
       });
