@@ -30,6 +30,15 @@
     padding: 0;
     text-align: center;
 
+    .dashboard-index-stats-graph {
+      width: 45%;
+      min-width: 450px;
+      height: 45vh;
+      display: inline-block;
+      padding: 5px;
+      margin: 15px 20px;
+      border: none;
+      
     [class^="dashboard-index-stats-graph-"] {
       background: #fff;
       border: 1px solid darken($light-color, 5%);

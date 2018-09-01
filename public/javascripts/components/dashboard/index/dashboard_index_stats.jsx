@@ -49,7 +49,7 @@ class DashboardIndexStats extends React.Component {
           </div>
           <div className="dashboard-index-stats-graph-bar">
             <Bar data={this.state.chartData2} options={{ legend: false }} />
-            <h6> Average Sentiment Analysis</h6>
+          <h6> Average Sentiment Analysis</h6>
         </div>
       </div>;
     }
