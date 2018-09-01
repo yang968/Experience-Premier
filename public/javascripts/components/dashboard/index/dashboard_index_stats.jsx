@@ -35,6 +35,13 @@ class DashboardIndexStats extends React.Component {
     }
   }
 
+  returnTitleText() {
+    if (this.props.manger) {
+      return <span>Your</span>;
+    }
+    return <span>Team</span>;
+  }
+
 	render() {
     if (this.props.stats === 0) {
       return <div className="dashboard-index-stats-container">
@@ -45,11 +52,15 @@ class DashboardIndexStats extends React.Component {
 		return <div className="dashboard-index-stats-container">
           <div className="dashboard-index-stats-graph-pie">
             <Pie data={this.state.chartData1} />
-            <h6> Cumulative Positivity </h6>
+            <div className='stats-graph-title'>x
+              <h6>{this.returnTitleText()} Cumulative Outcome </h6>
+            </div>
           </div>
           <div className="dashboard-index-stats-graph-bar">
             <Bar data={this.state.chartData2} options={{ legend: false }} />
-          <h6> Average Sentiment Analysis</h6>
+            <div className='stats-graph-title'>
+              <h6>{this.returnTitleText()} Average Sentiment Analysis </h6>
+            </div>
         </div>
       </div>;
     }

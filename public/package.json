@@ -20,6 +20,7 @@
     "form-urlencoded": "^3.0.0",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
+    "microsoft-speech-browser-sdk": "0.0.12",
     "normalize.css": "^8.0.0",
     "react": "^16.4.2",
     "react-chartjs-2": "^2.7.4",

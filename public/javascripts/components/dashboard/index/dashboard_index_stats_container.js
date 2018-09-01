@@ -3,9 +3,13 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = ({ session: { currentUser } }) => {
   if (currentUser.manager) {
-    return {stats: Object.values(currentUser.myPerformances)}
+    return {stats: Object.values(currentUser.myPerformances),
+    manager: currentUser.manager
+    };
   }
-  return {stats: Object.values(currentUser.myPerformances)}
+  return {stats: Object.values(currentUser.myPerformances),
+    manager: currentUser.manager
+  };
 };
 
 export default connect( mapStateToProps, null )(DashboardIndexStats);
