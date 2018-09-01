@@ -27,7 +27,6 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1em;
     padding: 0;
-    border: none;
     text-align: center;
     // min-width: 1000px;
 
@@ -36,7 +35,13 @@
       border-radius: 2px;
       display: inline-block;
       padding: 5px;
+<<<<<<< HEAD
       
+=======
+      margin: 15px 20px;
+      border: none;
+
+>>>>>>> 50714d6a79f4e6a4b8067115d5cad643ebd5af5e
       h6 {
         // display: block;
         padding-top: 4px;
