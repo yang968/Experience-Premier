@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from 'react-dom';
-import Root from './components/root'
+import Favicon from 'react-favicon';
+import Root from './components/root';
 import configureStore from "./store/store";
 import {createUser, login, logout} from './actions/employee_actions';
 import {createTask, fetchTask, deleteTask} from './actions/task_actions';
@@ -27,5 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
   window.deleteTask = deleteTask;
   window.dispatch = store.dispatch;
   window.getState = store.getState;
-  ReactDOM.render(<Root store={store}/>, root)
+  ReactDOM.render(<div>
+      <Favicon url="https://i.imgur.com/QhiuZTl.png" />
+      <Root store={store} />
+    </div>, root);
 });

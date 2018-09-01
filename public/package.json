@@ -24,6 +24,7 @@
     "react": "^16.4.2",
     "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.4.2",
+    "react-favicon": "0.0.14",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
@@ -38,10 +39,11 @@
     "webpack-merge": "^4.1.4"
   },
   "devDependencies": {
-    "nodemon": "^1.18.3",
     "css-loader": "^1.0.0",
     "mini-css-extract-plugin": "^0.4.2",
     "node-sass": "^4.9.3",
+    "nodemon": "^1.18.3",
+    "resolve-url-loader": "^2.3.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.22.1"
   }

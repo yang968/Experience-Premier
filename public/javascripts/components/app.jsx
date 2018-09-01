@@ -8,8 +8,7 @@ import LoginFormContainer from './splash/login_form_container';
 import ContactPage from './info/contact_page';
 import DashboardPage from './dashboard/dashboard_page';
 
-import { Route,
-         Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 const App = () => (
   <div>
