@@ -1,8 +1,8 @@
 import React from "react";
 
-import DashboardIndexStatsContainer from "./dashboard_index_stats_container";
-import DashboardIndexEmployeesContainer from "./dashboard_index_employees_container";
-import DashboardIndexCallHistoryContainer from "./dashboard_index_call_history_container";
+import DashboardIndexStatsContainer from "./team_stats/dashboard_index_stats_container";
+import DashboardIndexEmployeesContainer from "./employee_list/dashboard_index_employees_container";
+import DashboardIndexCallHistoryContainer from "./call_history/dashboard_index_call_history_container";
 import CallPerformanceContainer from '../call_performance/call_performace_container';
 
 class DashboardIndex extends React.Component {

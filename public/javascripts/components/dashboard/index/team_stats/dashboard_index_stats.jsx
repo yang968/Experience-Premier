@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
-import { COLOR, POSITIVITY_LABELS, SENTIMENT_LABELS } from "../../../chart/chart_constants";
+import { COLOR, POSITIVITY_LABELS, SENTIMENT_LABELS } from "../../../../chart/chart_constants";
 import { ENGINE_METHOD_DIGESTS } from 'constants';
 
 class DashboardIndexStats extends React.Component {
