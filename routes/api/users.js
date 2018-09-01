@@ -207,7 +207,6 @@ function getUserInfoAndToken(res, user) {
       tasks = array[1];
       myPerformances = array[2];
       subordinates = array[3];
-
     })
     .then(() => {
       let ids = subordinates.map(sub => sub._id);
