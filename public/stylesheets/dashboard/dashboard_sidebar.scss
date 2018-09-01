@@ -76,6 +76,10 @@
       button {
         display: block;
         text-align: left;
+
+        &:hover {
+          width: 160%;
+        }
       }
     }
   }
