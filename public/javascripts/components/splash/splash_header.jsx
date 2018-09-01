@@ -1,7 +1,5 @@
 import React from 'react';
-import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
-import SessionForm from './session_form.jsx';
 import LoginFormContainer from './login_form_container'
 
 class SplashHeader extends React.Component { // ({ currentUser, logout, login }) => {
@@ -59,11 +57,6 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
           Contact Us
         </Link>
         &nbsp;
-        {/* <Link to="/" 
-          className="session-button js-modal-open"
-          disabled="true">
-          Log In
-        </Link> */}
         <button className="session-button js-modal-open" onClick={this.sessionTriggers}>Log In</button>
         &nbsp;
         <button className="session-button" onClick={this.demoLogin}>
@@ -90,7 +83,6 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
           {this.props.currentUser ? userNav() : sessionLinks()}
         </header>
         <section className="splash-header-spacer" />
-        {/* <SessionForm /> */}
         <LoginFormContainer />
       </div>
     );

@@ -40,8 +40,8 @@ class DashboardSidebar extends React.Component {
               <li>
                 <Link to="/dashboard/employees">Employees</Link>
               </li> */}
-            </ul>
-            <ul className="dashboard-sidebar-nav">
+            {/* </ul> */}
+            {/* <ul className="dashboard-sidebar-nav"> */}
               <li>
                 <button onClick={this.handleLogout}>Log out</button>
               </li>

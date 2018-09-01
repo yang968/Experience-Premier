@@ -30,6 +30,17 @@
     margin: 1em 0 1em;
   }
 
+  button {
+    font-size: 1.2em;
+    padding: 10px 0.5em 10px;
+    color: darken(set-text-color($dark-color), 10%);
+    transition: 0.1s;
+    
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
   a {
     color: rgb(225, 225, 225);
     margin: 1em 0 1em;
@@ -48,5 +59,6 @@
       }
     }
   }
+
 
 }
