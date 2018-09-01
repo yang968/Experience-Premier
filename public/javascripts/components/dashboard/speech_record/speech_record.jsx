@@ -11,11 +11,6 @@ class SpeechRecord extends React.Component {
     this.transcript = "";
   }
 
-  componentDidMount() {
-    // this.recognition = new SpeechRecognition();
-    // this.recognition.interimResults = true;
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
