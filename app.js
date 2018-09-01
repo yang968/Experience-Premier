@@ -9,8 +9,9 @@ const app = express();
 
 // config 
 const db = require("./config/keys").mongoURI;
-const watsonUsername = require("./config/keys").username
-const watsonPassword = require("./config/keys").password
+// const watsonUsername = require("./config/keys").username
+// const watsonPassword = require("./config/keys").password
+const azure = require('./config/keys').azure;
 
 // Api routes
 const users = require("./routes/api/users");
@@ -50,31 +51,32 @@ app.use("/api/companies", companies);
 //Create an object that uses a watson username and password and 
 //create a new watson Authorization. This is to grab the token from watson.
 
-var sttAuthService = new watson.AuthorizationV1(
-  Object.assign(
-    {
-      username: watsonUsername,
-      password: watsonPassword
-    },
-    vcapServices.getCredentials("speech_to_text") // pulls credentials from environment in bluemix, otherwise returns {}
-  )
-);
+// var sttAuthService = new watson.AuthorizationV1(
+//   Object.assign(
+//     {
+//       username: watsonUsername,
+//       password: watsonPassword
+//     },
+//     vcapServices.getCredentials("speech_to_text") // pulls credentials from environment in bluemix, otherwise returns {}
+//   )
+// );
 
 //Create a route that allows the front-end to grab the Watson Token needed for the Speech to text.
 //If successful, send token, if not, send the 500 error.
 app.use('/api/speech-to-text/token', function (req, res) {
-  sttAuthService.getToken(
-    {
-      url: watson.SpeechToTextV1.URL
-    },
-    function (err, token) {
-      if (err) {
-        res.status(500).send('Error retrieving token');
-        return;
-      }
-      res.send(token);
-    }
-  );
+  // sttAuthService.getToken(
+  //   {
+  //     url: watson.SpeechToTextV1.URL
+  //   },
+  //   function (err, token) {
+  //     if (err) {
+  //       res.status(500).send('Error retrieving token');
+  //       return;
+  //     }
+  //     res.send(token);
+  //   }
+  // );
+  res.send(azure);
 });
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
