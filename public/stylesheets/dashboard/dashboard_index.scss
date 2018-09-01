@@ -100,16 +100,17 @@
   grid-column: 2 / 3;
   
   .dashboard-index-call-history-list {
-    font-size: 18px;
-    overflow: auto;
+    font-size: 16px;
+    // overflow: auto;
   }
     .call-history-item-list {
       background: $primary-color;
-      border-radius: 2px;
+      border-radius: 3px;
       color: set-text-color($primary-color);
-      padding: 5px 10px;
+      padding: 0 18px;
       transition: 0.05s;
-    
+      overflow: auto;
+      margin-bottom: 8px;
 
         &:nth-child(even) {
           background: $primary-color-dark;
