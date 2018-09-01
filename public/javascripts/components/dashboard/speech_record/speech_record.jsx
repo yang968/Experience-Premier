@@ -29,6 +29,11 @@ class SpeechRecord extends React.Component {
 
       this.recognition = null;
       console.log(this.transcript);
+      this.props.createTask({ 
+        token: this.props.currentUser.token, 
+        transcript: this.transcript
+      });
+      this.transcript = "";
       
       let children = Array.from(document.querySelectorAll(".live-text > p"));
 
@@ -52,7 +57,7 @@ class SpeechRecord extends React.Component {
         p.textContent = transcript;
 
         if (e.results[0].isFinal) {
-          this.transcript += (p.textContent + ".");
+          this.transcript += (p.textContent + ". ");
           texts.appendChild(p);
         }
       });
