@@ -24,12 +24,11 @@ class DashboardIndexStats extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.props.stats);
     if (this.props.stats.length > 0) {
-      let count = 0;
-      this.props.stats.forEach((stat) => {count += stat.tasks});
-      let stats = this.props.stats;
       let [neg, neu, pos, s, j, a, f, d] = [0, 0, 0, 0, 0, 0, 0, 0];
+      let count = 0;
+      let stats = this.props.stats;
+      this.props.stats.forEach((stat) => {count += stat.tasks;});
       stats.forEach((stat) => {
         neg += stat.negative; neu += stat.neutral;
         pos += stat.positive; s += stat.sadness;
