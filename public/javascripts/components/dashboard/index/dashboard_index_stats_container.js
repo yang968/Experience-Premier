@@ -7,13 +7,9 @@ const mapStateToProps = ({ session: { currentUser } }) => {
     manager: currentUser.manager
     };
   }
-<<<<<<< HEAD
-    return {stats: Object.values(currentUser.myPerformances)}
-=======
   return {stats: Object.values(currentUser.myPerformances),
     manager: currentUser.manager
   };
->>>>>>> 3c4265682ed0f4c6b730a77173c29a79a4c5a225
 };
 
 export default connect( mapStateToProps, null )(DashboardIndexStats);
