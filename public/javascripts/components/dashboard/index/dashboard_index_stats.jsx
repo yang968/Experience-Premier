@@ -36,7 +36,7 @@ class DashboardIndexStats extends React.Component {
   }
 
 	render() {
-    if (this.props.stats.length > 0) {
+    if (this.props.stats.length === 0) {
       return <div className="dashboard-index-stats-container">
         <h1>You have no data to show :(</h1>
       </div>;
@@ -49,7 +49,7 @@ class DashboardIndexStats extends React.Component {
           </div>
           <div className="dashboard-index-stats-graph">
             <Bar data={this.state.chartData2} options={{ legend: false }} />
-          <h6> Averge Sentiment Analysis</h6>
+          <h6> Average Sentiment Analysis</h6>
         </div>
       </div>;
     }
