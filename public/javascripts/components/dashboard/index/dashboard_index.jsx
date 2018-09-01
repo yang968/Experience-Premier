@@ -5,17 +5,31 @@ import DashboardIndexEmployeesContainer from "./dashboard_index_employees_contai
 import DashboardIndexCallHistoryContainer from "./dashboard_index_call_history_container";
 import CallPerformanceContainer from '../call_performance/call_performace_container';
 
-const renderEmployees = (employees) => {
-  if (employees.length > 0) return <DashboardIndexEmployeesContainer />;
-  return <CallPerformanceContainer />;
-};
+class DashboardIndex extends React.Component {
+  constructor(props) {
+    super(props);
 
-const DashboardIndex = ({employees}) => (
-  <div className="dashboard-index-container">
-    <DashboardIndexStatsContainer />
-    {renderEmployees(employees)}
-    <DashboardIndexCallHistoryContainer />
-  </div>
-);
+    this.renderEmployees = this.renderEmployees.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.getDashboard(this.props.token);
+  }
+
+  renderEmployees(employees) {
+    if (employees.length > 0) return <DashboardIndexEmployeesContainer />;
+    return <CallPerformanceContainer />;
+  }
+
+  render() {
+    return (
+      <div className="dashboard-index-container">
+        <DashboardIndexStatsContainer />
+        { this.renderEmployees(this.props.employees) }
+        <DashboardIndexCallHistoryContainer />
+      </div>
+    );
+  }
+}
 
 export default DashboardIndex;
