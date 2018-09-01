@@ -64,6 +64,7 @@
         margin: 0;
         background: rgba(255, 255, 255, 0.2);
         color: set-text-color($primary-color);
+        overflow: hidden;
         transition: 0.1s;
         
         &:hover {
