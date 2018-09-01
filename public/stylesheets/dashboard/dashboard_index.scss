@@ -88,8 +88,41 @@
 
 }
 
-.dashboard-index-something-container {
+.dashboard-index-call-history-container {
   background:#fff;
   grid-row: 2;
   grid-column: 2 / 3;
+  
+  .dashboard-index-call-history-list {
+    font-size: 18px;
+    overflow: auto;
+  }
+    .call-history-item-list {
+      background: $primary-color;
+      border-radius: 2px;
+      color: set-text-color($primary-color);
+      padding: 5px 10px;
+      transition: 0.05s;
+    
+
+        &:nth-child(even) {
+          background: $primary-color-dark;
+        }
+
+        &:hover {
+          cursor: pointer;
+          opacity: 0.9;
+        }
+
+        .history-item-div {
+          display: flex;
+          justify-content: space-around;
+          width: 70%;
+          border: none;
+        }
+
+        // .overall-score {
+        //   margin-left: 15px;
+        // }
+    }
 }

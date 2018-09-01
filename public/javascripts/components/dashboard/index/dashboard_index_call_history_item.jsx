@@ -11,9 +11,11 @@ const renderTaskDate = (taskDate) => {
 };
 
 const CallHistoryItem = ({task}) => (
-  <ul>
+  <ul className="call-history-item-list">
+  <div className="history-item-div">
     <li>{renderTaskDate(task.date)}</li>
-    <li>Overall Score: {`${task.results.sentiment.score}`}</li>
+    <li className="overall-score">Sentiment:  {`${(task.results.sentiment.score * 100).toFixed(2)}%`}</li>
+    </div>
   </ul>
   );
 
