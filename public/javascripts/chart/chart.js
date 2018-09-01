@@ -7,18 +7,6 @@ export const COLOR = [
   'rgba(255, 130, 64, 0.72)',
 ];
 
-// Sentiment Chart
-// const SENTIMENT_CUMULATIVE = [DATAOBJ.sadness, DATAOBJ.joy, DATAOBJ.anger, DATAOBJ.fear, DATAOBJ.disgust].map((d) => d * 100);
-// const SENTIMENT_LABEL = ["Sadness", "Joy", "Anger", "Fear", "Disgust"];
+export const SENTIMENT_LABELS = ["Sadness", "Joy", "Anger", "Fear", "Disgust"];
 
-// const myPolarArea = new Chart(myChart2, {
-// 	  type: 'polarArea',
-// 	  data: {
-//       labels: SENTIMENT_LABEL,
-// 	    datasets: [{
-// 	      label:'Sentiment Analysis',
-//         data: DATAOBJ,
-// 	      backgroundColor: COLOR
-// 	    }],
-// 	  },
-// });
+export const POSITIVITY_LABELS = ["Negative", "Neutral", "Positive"];

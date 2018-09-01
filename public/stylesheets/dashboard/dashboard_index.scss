@@ -18,9 +18,11 @@
   padding: 10px;
 
   .dashboard-index-stats-graph {
-    width: 40%;
+    width: 45%;
     min-width: 450px;
     display: inline-block;
+    padding: 5px;
+    margin: 5px 20px;
     
     canvas {
       background-color: white;
@@ -28,10 +30,6 @@
       min-width: 400px; 
       min-height: 300px;
       padding: 5px;
-    }
-
-    canvas:first-of-type {
-      margin-top: 20px;
     }
   }
 }
