@@ -99,23 +99,16 @@ router.post('/logout', passport.authenticate('jwt', { session: false }), (req, r
     const { rawHeaders } = req;
     const tokenIndex = rawHeaders.findIndex((el) => el === 'Authorization') + 1;
     const token = rawHeaders[tokenIndex].split(" ")[1];
-    let sess;
 
-    UserSession.find({userId: user._id})
-    .then((session) => {
-      sess = session;
-      if (session.length === 0) {
-        return res.status(400).json({
+    UserSession.findOneAndRemove({ userId: user._id, token: token }, (error, session) => {
+      if (error) {
+        return res.status(404).json({
           error: "Could not logout, user session not found"
         });
       } else {
-      UserSession.findOneAndRemove(
-        sess, 
-        (session1) => {
-          return res.send({
-            success: true,
-            message: 'Thank you for visiting!'
-          });
+        return res.send({
+          success: true,
+          message: 'Thank you for visiting!'
         });
       }
     });
@@ -132,11 +125,12 @@ router.get('/:id', (req, res) => {
       if (!user) {
         return res.status(404).json({invalidUser: 'User does not exist!'});
       }
-      getUserInfoAndToken(res, user)
+      
       // Sending an array of the user's task
-      Task.find({user: user._id}).then(tasks => {
-        let obj = {}
-        obj[user._id] = tasks;
+      Task.find({user: user._id}).sort({date: 'desc'}).then(tasks => {
+        let obj = {};
+        obj["user"] = user;
+        obj["tasks"] = tasks;
         res.json(obj);
       });
   });
@@ -190,7 +184,6 @@ function getUserInfoAndToken(res, user, needToken) {
   });
 
   let promises = [findCompany, findTasks, findMyPerformance, findSubordinates];
-  
   let company, industry, tasks, myPerformances, subordinates, subordinatePerformances;
 
   Promise.all(promises)

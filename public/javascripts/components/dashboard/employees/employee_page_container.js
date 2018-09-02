@@ -1,13 +1,19 @@
 import EmployeePage from './employee_page';
 import { connect } from 'react-redux';
+import { fetchUser } from '../../../actions/employee_actions';
 
-const mapStateToProps = ({ session }) => {
+const mapStateToProps = ({ entities }) => {
   return ({
-    employee: session.currentUser.subordinates
+    employee: entities.employees,
+    tasks: entities.tasks
   })
 };
 
+const mapDispatchToProps = dispatch => ({
+  fetchUser: userId => dispatch(fetchUser(userId))
+});
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(EmployeePage);

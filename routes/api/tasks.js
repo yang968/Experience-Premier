@@ -52,7 +52,7 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   apiCall.analyze(parameters, function(error, response) {
     if (error) {
       console.log('Failed to get transcript analyzed: ' + error);
-      response.json({Fail: "Failed to analyze the transcript"});
+      return res.status(400).json({Fail: "Failed to analyze the transcript"});
     }
     else {
       results.sentiment = response.sentiment.document;
@@ -164,7 +164,7 @@ router.delete(
 
             task.remove().then(res.json(task));
           } else {
-            res.status(400).json({ invalidPrevilege: "User can't delete the task" })
+            res.status(403).json({ invalidPrivilege: "User can't delete the task" })
           }
         })
       .catch(error => 

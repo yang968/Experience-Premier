@@ -11,8 +11,10 @@ class EmployeeListItem extends React.Component {
   
   handleClick() {
     const employeeId = this.props.employee._id;
-    this.props.history.push(
-      `/dashboard/employee/${employeeId}`, this.props);
+    this.props.history.push({
+      pathname: `/dashboard/employee/${employeeId}`, 
+      state: {employeeId: employeeId}
+    })
   }
 
   render() {
