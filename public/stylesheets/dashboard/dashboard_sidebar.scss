@@ -1,6 +1,8 @@
 .dashboard-sidebar-container {
   position: fixed;
+  grid-column: 1 / 2;
   width: 25vw;
+  min-width: 250px;
   height: 100vh;
   background: $primary-color;
 
@@ -42,18 +44,14 @@
     }
     
     li {
-      // width: 100%;
       font-size: 18px;
       line-height: 1.5em;
       margin-bottom: 12px;
+      overflow: hidden;
       
       &:last-child {
         position: fixed;
         bottom: 30px;
-      }
-
-      a {
-        text-decoration: none;
       }
       
       * {
@@ -66,7 +64,6 @@
         margin: 0;
         background: rgba(255, 255, 255, 0.2);
         color: set-text-color($primary-color);
-        overflow: hidden;
         transition: 0.1s;
         
         &:hover {
@@ -74,6 +71,11 @@
           background: rgba(255, 255, 255, 0.3);
           cursor: pointer;
         }
+      }
+
+      a {
+        text-decoration: none;
+        overflow: hidden;
       }
 
       button {
