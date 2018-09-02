@@ -1,7 +1,7 @@
 .splash-tagline {
   display: flex;
-  // background: image-url("cmu_splash.jpg");
-  background: linear-gradient(rgba(48, 57, 82, 0.75), $dark-color);
+  background:  linear-gradient(rgba(48, 57, 82, 0.6), $dark-color), url("https://images.pexels.com/photos/1162964/pexels-photo-1162964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  // background-image: linear-gradient(rgba(48, 57, 82, 0.75), $dark-color);
   background-size: cover;
   background-position: center;
   justify-content: center;
