@@ -10,10 +10,20 @@ class SessionForm extends React.Component {
       password: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
-  componentDidMount() {
-    // this.props.clearFormErrors();
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
+  handleClose(e) {
+    e.preventDefault();
+    this.props.clearErrors();
+    this.setState({
+      email: "",
+      password: ""
+    });
   }
 
   update(field) {
@@ -26,40 +36,21 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user).then((obj) => {
-      window.localStorage.currentUser = JSON.stringify(obj.payload.currentUser)
-      window.localStorage.token = obj.payload.currentUser.token;
-    })
-  }
-
-  renderErrors() {
-    const errors = this.props.errors;
-    const fullErrors = () => (
-      <ul>
-        {errors.map((error, idx) => (
-          <li key={`error-${idx}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
-
-    return (
-      <span>{errors[0]}</span>
-    );
+      if (obj.payload) {
+        window.localStorage.currentUser = JSON.stringify(obj.payload.currentUser)
+        window.localStorage.token = obj.payload.currentUser.token;
+      }
+    });
   }
 
   render() {
-
     return (
       <div className="modal">
         <div className="modal-overlay"></div>
-        <div className="login-form-container modal-form">
-          <span className="modal-close js-modal-close">&times;</span>
+        <div className="login-form-container modal-form animated bounceInDown">
+          <span className="modal-close js-modal-close" onClick={this.handleClose}>&times;</span>
           <form onSubmit={this.handleSubmit} className="login-form-box">
             <br />
-            {/* <section className="session-form-error">
-              {this.renderErrors()}
-            </section> */}
             <h1>Sign in</h1>
             <h3>or <Link to="/contact">contact us</Link> to create an account</h3>
             <div className="login-form">
@@ -83,6 +74,9 @@ class SessionForm extends React.Component {
                   />
               </label>
               <br />
+              <ul>
+                { this.props.errors && this.props.errors.map((error, idx) => (<li className="session-form-error animated fadeInDown" key={idx}>{error}</li>)) }
+              </ul>
               <input 
                 className={"session-button " + 
                 this.state.email && this.state.password ? "form-submit-enabled" : "form-submit-disabled"}

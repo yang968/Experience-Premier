@@ -13,13 +13,13 @@ class DashboardIndexCallHistory extends React.Component {
     if (tasks.length > 0) {
       return tasks.map((task) => <CallHistoryItem task={task} key={task._id} /> )
     } else {
-      <p>You have not recorded a call yet!</p>
+      return <p>You have not recorded a call yet!</p>
     }
   }
 
   render() {
     return <div className="dashboard-index-call-history-container">
-        <h1>My Calls</h1>
+        <h1>Your Calls:</h1>
         <ul className="dashboard-index-call-history-list">{this.displayTasks()}</ul>
       </div>;
   }

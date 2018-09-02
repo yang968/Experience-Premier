@@ -10,7 +10,7 @@ const FooterBody = () => (
       <h1>ExP</h1>
     </a>
     <FooterLinks />
-    <SocialMediaLinks />
+    {/* <SocialMediaLinks /> */}
   </div>
 );
 
