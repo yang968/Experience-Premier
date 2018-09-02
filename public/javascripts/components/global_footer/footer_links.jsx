@@ -5,25 +5,20 @@ const FooterLinks = () => (
   <div className="footer-links-container">
     <ul className="footer-links">
       <li>
-        <a href="https://github.com/yang968/ExP">About</a>
+        <a href="https://github.com/yang968/ExP">Github</a>
       </li>
       <li>
-        <Link to="/careers">Careers</Link>
+        <Link to="">Careers</Link>
       </li>
       <li>
-        <Link to="/terms">Terms</Link>
+        <Link to="">Terms</Link>
       </li>
       <li>
-        <Link to="/privacy">Privacy</Link>
+        <Link to="">Privacy</Link>
       </li>
       <li>
-        <Link to="/contact">Contact</Link>
+        <Link to="">Contact</Link>
       </li>
-      {/* <li>
-        <Link to="/blog">
-          Blog
-        </Link>
-      </li> */}
     </ul>
   </div>
 );

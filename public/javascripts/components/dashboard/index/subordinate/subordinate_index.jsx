@@ -1,12 +1,10 @@
 import React from 'react';
-
-import CallHistoryItem from '../call_history/dashboard_index_call_history_item'
-
+import CallPerformancePage from "../../call_performance/call_performance_page";
 
 class SubordinateIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { task: null }
+    this.state = { task: null };
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -18,11 +16,19 @@ class SubordinateIndex extends React.Component {
     const year = `${splitDate.slice(0, 4)}`;
     const date = `${month}${day}${year}`;
     return `${splitTime} ${date}`;
-  };
+  }
 
   handleClick(e, taskData) {
     e.preventDefault();
-    this.setState({ task: taskData })
+    this.setState({ task: taskData });
+  }
+
+  renderGraph() {
+    if (this.state.task) {
+      return <CallPerformancePage stats={this.state.task} />;
+    } else {
+      return null;
+    }
   }
 
   displayTasks() {
@@ -37,20 +43,22 @@ class SubordinateIndex extends React.Component {
       </ul>
       );
     } else {
-     return <p>You have not recorded a call yet!</p>
+     return <p>You have not recorded a call yet!</p>;
     }
   }
 
-
-
   render() {
-    return <div id="subordinate-index">
-        <div className="performance-data" />
+    return (
+    <div id="subordinate-index">
+        <div className="performance-data"> 
+          {this.renderGraph()}
+        </div>
         <div className="dashboard-index-call-history-div">
           <h1 className="stats-graph-title">My Calls</h1>
           <ul className="dashboard-index-call-history-list">{this.displayTasks()}</ul>
         </div>
-      </div>; 
+      </div>
+    );       
   }
 }
 
