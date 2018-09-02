@@ -11,9 +11,16 @@ class SpeechRecord extends React.Component {
     this.transcript = "";
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    this.props.clearErrors();
+
+    let SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (this.state.stream) {
       this.setState({ stream: false });
@@ -21,19 +28,17 @@ class SpeechRecord extends React.Component {
       this.recognition.removeEventListener("end", this.recognition.start);
 
       this.recognition = null;
-      console.log(this.transcript);
 
-      this.props.createTask({ 
-        token: this.props.currentUser.token, 
+      this.props.createTask({
+        token: this.props.currentUser.token,
         transcript: this.transcript
       });
       this.transcript = "";
-      
+
       let children = Array.from(document.querySelectorAll(".live-text > p"));
       children.forEach(child => {
         child.parentNode.removeChild(child);
       });
-
     } else {
       this.setState({ stream: true });
 
@@ -41,16 +46,14 @@ class SpeechRecord extends React.Component {
       this.recognition.interimResults = true;
 
       const texts = document.querySelector(".live-text");
-      let p = document.createElement('p');
-      // p.classList.add("animated");
-      // p.classList.add("fadeInUp");
+      let p = document.createElement("p");
       texts.appendChild(p);
 
-      this.recognition.addEventListener('result', e => {
+      this.recognition.addEventListener("result", e => {
         const transcript = Array.from(e.results)
           .map(result => result[0])
           .map(result => result.transcript)
-          .join('')
+          .join("");
 
         p.textContent = transcript;
         if (e.results[0].isFinal) {
@@ -67,15 +70,15 @@ class SpeechRecord extends React.Component {
   }
 
   render() {
-    let buttonText = (this.state.stream) ? "Stop" : "Record";
+    let buttonText = this.state.stream ? "Stop" : "Record";
     return (
       <div className="speech-record-container animated zoomIn">
         <div className="speech-record-box">
-
           <h1>Record Conversation</h1>
-          <div className="live-text">
-          
-          </div>
+          <div className="live-text" />
+          <ul>
+            {this.props.errors && this.props.errors.map((error, idx) => (<li className="task-fail animated fadeInDown" key={idx}>{error}</li>))}
+          </ul>
           <button className="record-button" onClick={this.handleSubmit}>
             {buttonText}
           </button>

@@ -1,6 +1,6 @@
 .speech-record-container {
   width: 90%;
-  height: 90vh;
+  height: auto;
   margin: 5vh auto 5vh auto;
   border: none;
   border-radius: 3px;
@@ -28,7 +28,30 @@
     border-radius: 2px;
     overflow: auto;
     box-sizing: border-box;
-    // background: grey;
+  }
+
+  .task-fail {
+    font-size: 16px;
+     color: #fff;
+     border: 1px solid none;
+     border-radius: 5px;
+     margin-bottom: 20px;
+     padding: 5px;
+     text-align: center;
+     opacity: 0.75;
+     background: rgba(235, 90, 70, 0.75)
+  }
+
+  .task-success {
+    font-size: 16px;
+     color: #fff;
+     border: 1px solid none;
+     border-radius: 5px;
+     margin-top: 20px;
+     padding-left: 10px;
+     text-align: center;
+     opacity: 0.75;
+     background: rgba(235, 90, 70, 0.75)
   }
 
   button {

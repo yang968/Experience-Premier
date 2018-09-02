@@ -7,7 +7,8 @@ const PerformanceReducer = (oldState = [], action) => {
     case RECEIVE_PERFORMANCES:
       return action.payload.performances;
     case RECEIVE_DASHBOARD:
-      return action.payload.subordinatePerformances;
+      if (action.payload.subordinatePerformances) return action.payload.subordinatePerformances;
+      return oldState;
     default:
       return oldState;
   }
