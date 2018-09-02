@@ -27,7 +27,6 @@ class EmployeePage extends React.Component {
     let date = new Date();
     let tasks = 0;
     this.props.tasks.forEach(task => {
-      console.log(task)
       if ((parseInt(task.date.slice(5,7))) === (date.getMonth() + 1)) tasks++;
     })
 
