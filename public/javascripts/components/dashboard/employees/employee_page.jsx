@@ -25,11 +25,14 @@ class EmployeePage extends React.Component {
   }
   
   render() {
+    console.log(this.props);
+    console.log(this.props.employee);
+    if (this.props.employee.length === undefined) return null; 
     let date = new Date();
     let tasks = 0;
     let imgUrl = this.imgUrl;
     this.props.tasks.forEach(task => {
-      console.log(task)
+      // console.log(task)
       if ((parseInt(task.date.slice(5,7))) === (date.getMonth() + 1)) tasks++;
     })
 
