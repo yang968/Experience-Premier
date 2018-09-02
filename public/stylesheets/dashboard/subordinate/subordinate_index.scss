@@ -7,7 +7,31 @@
   padding: 0;
   border: none;
 
-  .performance-data {
+  .back-button-div {
+    border: none;
+    margin-bottom: 8px;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+  }
+
+  .back-to-employees {
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0.5;
+    transition: 0.25s;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.9;
+    }
+  }
+
+}
+
+.performance-data {
     background-color: white;
 
     .performance-page {
@@ -52,36 +76,19 @@
         }
       }
 
-      .performance-page-chart {
-        border: none;
+      .performance-page-charts {
         padding: 0;
+        border: none;
+
+        .performance-page-chart {
+          border: none;
+          padding: 0;
+        }
       }
     }
   }
 
-  .back-button-div {
-    border: none;
-    margin-bottom: 8px;
-    margin-top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 10px;
-  }
-
-  .back-to-employees {
-    font-size: 16px;
-    font-weight: bold;
-    opacity: 0.5;
-    transition: 0.25s;
-
-    &:hover {
-      cursor: pointer;
-      opacity: 0.9;
-    }
-  }
-
-  .dashboard-index-call-history-div {
+  .call-history-container {
     background-color: white;
 
     .stats-graph-title {
@@ -89,11 +96,12 @@
       margin-top: 7px;
     }
 
-    .dashboard-index-call-history-list {
+    .call-history-list {
       font-size: 16px;
       overflow: auto;
     }
   }
+  
   .call-history-item-list {
     background: $primary-color;
     border-radius: 3px;
@@ -120,4 +128,3 @@
       width: 70%;
     }
   }
-}

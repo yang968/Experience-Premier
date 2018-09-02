@@ -48,11 +48,11 @@ class SubordinateIndex extends React.Component {
         <div className="performance-data">
           {this.renderGraph()}
         </div>
-        <div className="employee-call-index-history">
+        <div className="call-history-container">
           <h1 className="stats-graph-title">
             {employee.firstName}'s Calls
           </h1>
-          <ul className="dashboard-index-call-history-list">{this.displayTasks()}</ul>
+          <ul className="call-history-list">{this.displayTasks()}</ul>
         </div>
       </div>
     );
