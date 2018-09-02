@@ -25,7 +25,6 @@ class DashboardIndex extends React.Component {
 
   renderEmployees(employees) {
     if (employees.length > 0) return <DashboardIndexEmployeesContainer />;
-    // return <CallPerformanceContainer />;
   }
 
   renderSubordinateContainer(employees) {

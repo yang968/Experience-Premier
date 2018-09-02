@@ -19,7 +19,7 @@ class SubordinateIndex extends React.Component {
     if (this.state.task) {
       return <CallPerformancePage stats={this.state.task} />;
     } else {
-      return null;
+      return <p>Select a call to display data.</p>
     }
   }
 
