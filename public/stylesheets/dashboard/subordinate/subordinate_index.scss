@@ -9,6 +9,52 @@
 
   .performance-data {
     background-color: white;
+
+    .performance-page {
+      border: none;
+      padding: 0;
+
+      .performance-page-label {
+        border: none;
+        padding: 0;
+        font-size: 1em;
+
+        .negative {
+          color: red;
+        }
+
+        .positive {
+          color: rgb(0, 212, 0);
+        }
+      }
+
+      .performance-page-chart {
+        border: none;
+        padding: 0;
+      }
+    }
+  }
+
+  .back-button-div {
+    border: none;
+    margin-bottom: 8px;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+  }
+
+  .back-to-employees {
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0.5;
+    transition: 0.25s;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.9;
+    }
   }
 
   .dashboard-index-call-history-div {
@@ -21,6 +67,7 @@
 
     .dashboard-index-call-history-list {
       font-size: 16px;
+      overflow: auto;
     }
   }
   .call-history-item-list {

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Pie, Bar } from 'react-chartjs-2';
-import { 
-  POSITIVITY_COLOR, 
-  SENTIMENT_COLOR, 
-  POSITIVITY_LABELS, 
-  SENTIMENT_LABELS 
+import { Pie, Bar, Polar, HorizontalBar } from 'react-chartjs-2';
+import {
+	POSITIVITY_COLOR,
+	SENTIMENT_COLOR,
+	POSITIVITY_LABELS,
+	SENTIMENT_LABELS,
+	CALL_PERFORMANCE_PAGE
 } from "../../../../chart/chart_constants";
 
 class DashboardIndexStats extends React.Component {
@@ -60,15 +61,23 @@ class DashboardIndexStats extends React.Component {
     } else {
 		return <div className="dashboard-index-stats-container">
           <div className="dashboard-index-stats-graph-pie">
-            <Pie data={this.state.chartData1} options={{legend: {position: 'right'}}}/>
             <div className='stats-graph-title'>
-          <h6>{this.returnTitleText()} Cumulative Performance </h6>
+              <h6>{this.returnTitleText()} Cumulative Performance </h6>
             </div>
+            <Pie data={this.state.chartData1} options={{legend: {position: 'right'}}}/>
           </div>
           <div className="dashboard-index-stats-graph-bar">
-            <Bar data={this.state.chartData2} options={{legend: false}} />
-            <div className='stats-graph-title'>
-              <h6>{this.returnTitleText()} Average Sentiment Analysis </h6>
+            <h6>{this.returnTitleText()} Average Sentiment Analysis </h6>
+            <div className='top-right'>
+              <div className='stats-graph-title'>
+                <h6> Bar Graph </h6>
+              </div>
+              <Bar data={this.state.chartData2} options={{ legend: false }} />
+
+              <div className='stats-graph-title'>
+                <h6> Polar Area Chart </h6>
+              </div>
+              <Polar data={this.state.chartData2} options={{ legend: { position: 'right' } }}/>
             </div>
         </div>
       </div>;
