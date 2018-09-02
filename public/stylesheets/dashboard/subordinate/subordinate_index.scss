@@ -79,10 +79,12 @@
       .performance-page-charts {
         padding: 0;
         border: none;
+        overflow: auto;
 
         .performance-page-chart {
           border: none;
           padding: 0;
+          margin-bottom: 20px;
         }
       }
     }

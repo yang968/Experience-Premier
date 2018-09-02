@@ -16,7 +16,7 @@ export const SENTIMENT_LABELS = ["Sadness", "Joy", "Anger", "Fear", "Disgust"];
 
 export const POSITIVITY_LABELS = ["Negative", "Neutral", "Positive"];
 
-export const CALL_PERFORMANCE_PAGE = { 
+export const CALL_PERFORMANCE_PAGE1 = { 
   tooltips: {
     position: 'nearest',
     titleFontSize: 0,
@@ -35,4 +35,14 @@ export const CALL_PERFORMANCE_PAGE = {
       barPercentage: 0.4,
       gridLines: {display: false}
   }]},
+};
+
+Chart.defaults.scale.ticks.beginAtZero = true;
+
+export const CALL_PERFORMANCE_PAGE2 = {
+  tooltips: {
+    position: 'nearest',
+    titleFontSize: 0,    
+  }, 
+  legend: { display: false }
 };
