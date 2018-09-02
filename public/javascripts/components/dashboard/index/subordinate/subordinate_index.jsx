@@ -22,7 +22,6 @@ class SubordinateIndex extends React.Component {
 
   handleClick(e, taskData) {
     e.preventDefault();
-    console.log(taskData)
     this.setState({ task: taskData })
   }
 
@@ -45,15 +44,13 @@ class SubordinateIndex extends React.Component {
 
 
   render() {
-    return (
-    <div className="subordinate-index">
-        <div className="performance-data"></div>
-        <ul className="dashboard-index-call-history-list">
-          <h1>My Calls</h1>
-          {this.displayTasks()}
-        </ul>
-    </div>
-    ) 
+    return <div id="subordinate-index">
+        <div className="performance-data" />
+        <div className="dashboard-index-call-history-div">
+          <h1 className="stats-graph-title">My Calls</h1>
+          <ul className="dashboard-index-call-history-list">{this.displayTasks()}</ul>
+        </div>
+      </div>; 
   }
 }
 
