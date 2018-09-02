@@ -1,6 +1,5 @@
 import React from 'react';
-
-const dateFormat = require('dateformat');
+import dateFormat from 'dateformat';
 
 const CallHistoryItem = ({ task }) => (
   <ul className="call-history-item-list">

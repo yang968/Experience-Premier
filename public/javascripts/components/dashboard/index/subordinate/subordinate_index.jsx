@@ -1,4 +1,6 @@
 import React from 'react';
+import dateFormat from 'dateformat';
+
 import CallPerformancePage from "../../call_performance/call_performance_page";
 
 class SubordinateIndex extends React.Component {
@@ -6,16 +8,6 @@ class SubordinateIndex extends React.Component {
     super(props);
     this.state = { task: null };
     this.handleClick = this.handleClick.bind(this);
-  }
-
-  renderTaskDate (taskDate) {
-    const splitTime = taskDate.slice(11, 16);
-    const splitDate = taskDate.slice(0, 10);
-    const month = `${splitDate.slice(5, 8)}`;
-    const day = `${splitDate.slice(8, 10)}${splitDate.slice(4, 5)}`;
-    const year = `${splitDate.slice(0, 4)}`;
-    const date = `${month}${day}${year}`;
-    return `${splitTime} ${date}`;
   }
 
   handleClick(e, taskData) {
@@ -37,7 +29,7 @@ class SubordinateIndex extends React.Component {
       return tasks.map((task, i) => 
       <ul key={i} className="call-history-item-list" onClick={(e) => this.handleClick(e, task)}>
         <div className="history-item-div">
-          <li>{this.renderTaskDate(task.date)}</li>
+          <li>{dateFormat(task.date)}</li>
           <li className="overall-score">Sentiment:  {`${(task.results.sentiment.score * 100).toFixed(2)}%`}</li>
         </div>
       </ul>
