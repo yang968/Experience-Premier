@@ -42,6 +42,8 @@ class SpeechRecord extends React.Component {
 
       const texts = document.querySelector(".live-text");
       let p = document.createElement('p');
+      // p.classList.add("animated");
+      // p.classList.add("fadeInUp");
       texts.appendChild(p);
 
       this.recognition.addEventListener('result', e => {
@@ -52,7 +54,7 @@ class SpeechRecord extends React.Component {
 
         p.textContent = transcript;
         if (e.results[0].isFinal) {
-          this.transcript += (p.textContent + ". ");
+          this.transcript += p.textContent + ". ";
 
           p = document.createElement("p");
           texts.appendChild(p);
@@ -67,7 +69,7 @@ class SpeechRecord extends React.Component {
   render() {
     let buttonText = (this.state.stream) ? "Stop" : "Record";
     return (
-      <div className="speech-record-container">
+      <div className="speech-record-container animated zoomIn">
         <div className="speech-record-box">
 
           <h1>Record Conversation</h1>

@@ -16,6 +16,20 @@ export const SENTIMENT_LABELS = ["Sadness", "Joy", "Anger", "Fear", "Disgust"];
 
 export const POSITIVITY_LABELS = ["Negative", "Neutral", "Positive"];
 
+export const CALL_PERFORMANCE_PAGE = { 
+				legend: { display: false },
+				scales: { 
+					xAxes: [{ 
+						stacked: true,
+						display: false, 
+						gridLines: {display: false} }],
+					yAxes: [{ 
+						stacked: true,
+						display: false, 
+						gridLines: {display: false}
+					}]},
+			}
+
 export const DATA = {
   _id: {
     $oid: '5b883ebbe380eb5d1b6035dd'

@@ -13,7 +13,9 @@ const TaskReducer = (oldState = {}, action) => {
       let newState = merge({}, oldState);
       delete newState[action.task._id]
       return newState;
-    case RECEIVE_CURRENT_USER || RECEIVE_DASHBOARD:
+    case RECEIVE_CURRENT_USER:
+      return action.payload.currentUser.myTasks;
+    case RECEIVE_DASHBOARD:
       return action.payload.currentUser.myTasks;
     case RECEIVE_USER: 
       if (action.payload.tasks) return action.payload.tasks;

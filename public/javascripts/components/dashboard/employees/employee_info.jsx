@@ -16,7 +16,7 @@ const EmployeeInfo = (props) => {
         alt="employee-profile-pic"
         className="employee-profile-pic"
       />
-      <section>
+      <section className="employee-info">
         <h1>{employeeName}</h1>
         <h2>{email}</h2>
         <h3>Hire date: {date}</h3>

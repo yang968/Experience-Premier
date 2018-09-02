@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactPage = () => (
   <div className="contact-page-container">
-    <ul className="team-list">
+    <ul className="team-list animated bounceInLeft">
       <li className="team-member">
         <img
           src="https://media.licdn.com/dms/image/C5103AQG3yhiDLVqLqw/profile-displayphoto-shrink_800_800/0?e=1541030400&v=beta&t=qgACwJSC2LdxpbxUMb2hf_SIpPd9WZz7TXz_nxahjYw"

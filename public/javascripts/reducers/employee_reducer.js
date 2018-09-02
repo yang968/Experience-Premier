@@ -8,9 +8,11 @@ import {
 const EmployeeReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
-    case RECEIVE_CURRENT_USER || RECEIVE_DASHBOARD:
+    case RECEIVE_CURRENT_USER:
       if (action.payload.currentUser.subordinates) return action.payload.currentUser.subordinates;
       return oldState;
+    case RECEIVE_DASHBOARD:
+      if (action.payload.currentUser.subordinates) return action.payload.currentUser.subordinates;
     case RECEIVE_USER: 
       return action.payload.user;
     default:
