@@ -3,7 +3,6 @@ import React from "react";
 import DashboardIndexStatsContainer from "./team_stats/dashboard_index_stats_container";
 import DashboardIndexEmployeesContainer from "./employee_list/dashboard_index_employees_container";
 import DashboardIndexCallHistoryContainer from "./call_history/dashboard_index_call_history_container";
-import CallPerformanceContainer from '../call_performance/call_performance_container';
 import SubordinateIndexContainer from './subordinate/subordinate_index_container';
 
 class DashboardIndex extends React.Component {
@@ -21,7 +20,7 @@ class DashboardIndex extends React.Component {
   renderCallHistory (employees) {
     if (employees.length > 0) return (
       <DashboardIndexCallHistoryContainer />
-    ) 
+    );
   }
 
   renderEmployees(employees) {
@@ -30,7 +29,7 @@ class DashboardIndex extends React.Component {
   }
 
   renderSubordinateContainer(employees) {
-    if (employees.length === 0) return <SubordinateIndexContainer />
+    if (employees.length === 0) return <SubordinateIndexContainer />;
   }
 
   render() {

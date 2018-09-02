@@ -19,7 +19,7 @@ class CallPerformancePage extends React.Component {
 		};
 	}
 
-	componentWillMount() {
+	dataSetup() {
 		this.state.score = this.props.stats.results.sentiment.score;
 		this.state.label = this.props.stats.results.sentiment.label;
 
@@ -37,6 +37,7 @@ class CallPerformancePage extends React.Component {
 	}
 
 	render() {
+			this.dataSetup();
 			return <div>
 					<div>
 						<p>Label: {this.state.label}</p>

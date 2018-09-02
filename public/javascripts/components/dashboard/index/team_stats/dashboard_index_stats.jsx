@@ -6,7 +6,6 @@ import {
   POSITIVITY_LABELS, 
   SENTIMENT_LABELS 
 } from "../../../../chart/chart_constants";
-import { ENGINE_METHOD_DIGESTS } from 'constants';
 
 class DashboardIndexStats extends React.Component {
 	constructor(props) {
@@ -63,7 +62,7 @@ class DashboardIndexStats extends React.Component {
           <div className="dashboard-index-stats-graph-pie">
             <Pie data={this.state.chartData1} options={{legend: {position: 'right'}}}/>
             <div className='stats-graph-title'>
-            <h6>Cumulative {this.returnTitleText()} Performance </h6>
+          <h6>{this.returnTitleText()} Cumulative Performance </h6>
             </div>
           </div>
           <div className="dashboard-index-stats-graph-bar">
