@@ -54,7 +54,7 @@ class CallPerformancePage extends React.Component {
 
 	render() {
 			this.dataSetup();
-			return <div className='performance-page animated slideInLeft'>
+			return <div className='performance-page animated fadeIn'>
 					<div className='performance-page-label'>
 						<div className="performance-ls">
 							<pre> Label: {this.colorLabel()}</pre>

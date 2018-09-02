@@ -20,6 +20,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  border: 1px solid darken($light-color, 5%);
+  border-radius: 3px;
 
   .employee-profile-pic {
     width: 180px;
@@ -69,8 +71,13 @@
   border: none;
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(5, 20%);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 1em;
+
+  & > div {
+    border: 1px solid darken($light-color, 5%);
+    border-radius: 3px;
+  }
   
   .performance-data {
     padding: 20px;
@@ -82,6 +89,10 @@
     padding: 20px;
     box-sizing: border-box;
     grid-column: 4 / 6;
+
+    h1 {
+      margin-bottom: 1em;
+    }
   }
 
 }
