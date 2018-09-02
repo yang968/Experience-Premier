@@ -12,8 +12,8 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
 
   demoLogin() {
     const demoUser = {
-      email: 'manager@manager.com',
-      password: '12341234'
+      email: 'mscarn@difflin.com',
+      password: 'managermanager'
     };
     this.props.login(demoUser).then(obj => {
       window.localStorage.currentUser = JSON.stringify(obj.payload.currentUser);
