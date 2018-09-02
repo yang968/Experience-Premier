@@ -76,9 +76,14 @@
         }
       }
 
-      .performance-page-chart {
-        border: none;
+      .performance-page-charts {
         padding: 0;
+        border: none;
+
+        .performance-page-chart {
+          border: none;
+          padding: 0;
+        }
       }
     }
   }

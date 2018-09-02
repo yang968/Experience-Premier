@@ -25,9 +25,6 @@ class EmployeePage extends React.Component {
   }
   
   render() {
-    console.log(this.props);
-    console.log(this.props.employee);
-    if (this.props.employee.length === undefined) return null; 
     let date = new Date();
     let tasks = 0;
     let imgUrl = this.imgUrl;
