@@ -2,19 +2,28 @@ import React from "react";
 
 import { withRouter } from 'react-router-dom';
 
+import EmployeeInfo from './employee_info';
+import EmployeeCallStats from './employee_call_stats';
+
 class EmployeePage extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(this.props);
-    console.log(this.props.match.params);
   }
 
+  componentDidMount() {
+    this.props.fetchUser(this.props.match.params.employeeId);
+    console.log(this.props);
+  }
+  
   render() {
-
+    // if (!this.props.history.location) {
+    //   return null;
+    // }
     return (
       <div className="employee-page-container">
-        <h1>Name here</h1>
+        <EmployeeInfo />
+        <EmployeeCallStats />
       </div>
     );
   }

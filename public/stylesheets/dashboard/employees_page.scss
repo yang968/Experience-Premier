@@ -3,12 +3,30 @@
   padding: 20px;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  // grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
+  grid-gap: 1em;
+
+  div {
+    border-radius: 3px;
+    padding: 20px;
+    // border: 
+  }
 
   h1 {
     font-size: 17px;
     font-weight: 700;
     margin-bottom: 18px;
   }
+}
+
+.employee-info-container {
+  grid-row: 1 / 2;
+  background: #fff;
+  border: 1px solid darken($light-color, 5%);
+
+}
+
+.employee-call-stats-container {
+  grid-row: 2 / 3;
 }
