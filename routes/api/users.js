@@ -132,11 +132,12 @@ router.get('/:id', (req, res) => {
       if (!user) {
         return res.status(404).json({invalidUser: 'User does not exist!'});
       }
-      getUserInfoAndToken(res, user)
+      
       // Sending an array of the user's task
-      Task.find({user: user._id}).then(tasks => {
-        let obj = {}
-        obj[user._id] = tasks;
+      Task.find({user: user._id}).sort({date: 'desc'}).then(tasks => {
+        let obj = {};
+        obj["user"] = user;
+        obj["tasks"] = tasks;
         res.json(obj);
       });
   });
@@ -190,7 +191,6 @@ function getUserInfoAndToken(res, user, needToken) {
   });
 
   let promises = [findCompany, findTasks, findMyPerformance, findSubordinates];
-  
   let company, industry, tasks, myPerformances, subordinates, subordinatePerformances;
 
   Promise.all(promises)
