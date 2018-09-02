@@ -21,7 +21,7 @@ export const CALL_PERFORMANCE_PAGE = {
     position: 'nearest',
     titleFontSize: 0,
   },
-  legend: { position: 'bottom', padding: 20 },
+  legend: { position: 'bottom' },
   scales: { 
     xAxes: [{ 
       stacked: true,
