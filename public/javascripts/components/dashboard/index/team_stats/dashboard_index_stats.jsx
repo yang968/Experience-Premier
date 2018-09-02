@@ -61,10 +61,12 @@ class DashboardIndexStats extends React.Component {
     } else {
 		return <div className="dashboard-index-stats-container">
           <div className="dashboard-index-stats-graph-pie">
-            <div className='stats-graph-title'>
+            <div className='stats-graph-title-one'>
               <h6>{this.returnTitleText()} Cumulative Performance </h6>
             </div>
-            <Pie data={this.state.chartData1} options={{legend: {position: 'right'}}}/>
+            <div className="piechart">
+              <Pie data={this.state.chartData1} options={{legend: {position: 'right'}}}/>
+            </div>
           </div>
           <div className="dashboard-index-stats-graph-bar">
             <h6>{this.returnTitleText()} Average Sentiment Analysis </h6>

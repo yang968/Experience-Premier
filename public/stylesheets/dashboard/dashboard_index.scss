@@ -44,7 +44,6 @@
       .stats-graph-title {
         border: none;
         margin-bottom: 20px;
-        padding: 0;
       }
 
       .top-right {
@@ -67,6 +66,23 @@
 
     .dashboard-index-stats-graph-pie {
       grid-column: 1 / 2;
+      padding: 0;
+
+      .stats-graph-title-one {
+        padding: 0;
+        border: none;
+        position: relative;
+        bottom: 40px;
+        margin-bottom: 30px;
+      }
+
+      .piechart {
+        padding: 0;
+        padding-right: 20px;
+        border: none;
+        position: relative;
+        bottom: 30px;
+      }
     }
 
     .dashboard-index-stats-graph-bar {
@@ -107,7 +123,6 @@
       }
     }
   }
-
 }
 
 .dashboard-index-call-history-container {

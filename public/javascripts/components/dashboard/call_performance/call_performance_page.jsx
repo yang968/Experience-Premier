@@ -56,7 +56,12 @@ class CallPerformancePage extends React.Component {
 			this.dataSetup();
 			return <div className='performance-page animated slideInLeft'>
 					<div className='performance-page-label'>
-						<pre>Label: {this.colorLabel()}           Score: {this.colorScore()}</pre>
+						<div className="performance-ls">
+							<pre> Label: {this.colorLabel()}</pre>
+						</div>
+						<div className="performance-ls2">
+							<pre>Score: {this.colorScore()} </pre>
+						</div>
 					</div>
 					<div className='performance-page-chart'>
 						<HorizontalBar data={{ 
