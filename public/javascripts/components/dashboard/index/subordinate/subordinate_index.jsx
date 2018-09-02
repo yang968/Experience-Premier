@@ -39,7 +39,7 @@ class SubordinateIndex extends React.Component {
       </ul>
       );
     } else {
-     return <p>You have not recorded a call yet!</p>;
+      return <p>You have not recorded a call yet!</p>;
     }
   }
 
@@ -65,12 +65,14 @@ class SubordinateIndex extends React.Component {
         {this.backToEmployees()}
           {this.renderGraph()}
         </div>
-        <div className="dashboard-index-call-history-div">
+        <div className="dashboard-index-call-history-div animated fadeInUp">
           <h1 className="stats-graph-title">My Calls</h1>
-          <ul className="dashboard-index-call-history-list">{this.displayTasks()}</ul>
+          <ul className="dashboard-index-call-history-list">
+            {this.displayTasks()}
+          </ul>
         </div>
       </div>
-    );       
+    );
   }
 }
 
