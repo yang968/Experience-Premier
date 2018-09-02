@@ -49,10 +49,9 @@ class SubordinateIndex extends React.Component {
   }
 
   backToEmployees() {
-    console.log(this.props.managerTask)
     if (this.props.managerTask || this.props.currentUser.manager) {
       return (
-        <button onClick={(e) => this.employeesRender(e)}>Back to Employees</button>
+        <button className="back-to-employees" onClick={(e) => this.employeesRender(e)}>Back to Employees</button>
       );
     } else {
       return null;
@@ -62,7 +61,7 @@ class SubordinateIndex extends React.Component {
   render() {
     return (
     <div id="subordinate-index">
-        <div className="performance-data"> 
+        <div className="performance-data animated fadeInUp"> 
         {this.backToEmployees()}
           {this.renderGraph()}
         </div>
