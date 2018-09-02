@@ -63,10 +63,11 @@ class SubordinateIndex extends React.Component {
     <div id="subordinate-index">
         <div className="performance-data animated fadeInUp"> 
           <div className="back-button-div">{this.backToEmployees()}</div>
+          <h1></h1>
           {this.renderGraph()}
         </div>
         <div className="dashboard-index-call-history-div animated fadeInUp">
-          <h1 className="stats-graph-title">My Calls</h1>
+          <h1 className="stats-graph-title">Your Calls:</h1>
           <ul className="dashboard-index-call-history-list">
             {this.displayTasks()}
           </ul>
