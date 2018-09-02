@@ -13,7 +13,6 @@ class EmployeePage extends React.Component {
 
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.employeeId);
-    console.log(this.fetchProfileImg());
   }
 
   fetchProfileImg() {
@@ -26,11 +25,11 @@ class EmployeePage extends React.Component {
   }
   
   render() {
-    console.log(this.props);
     return (
       <div className="employee-page-container">
         <EmployeeInfo 
-          employee={this.props.employee} 
+          employee={this.props.employee}
+          callCount={this.props.tasks.length}
           imgUrl={this.fetchProfileImg()}
         />
         <EmployeeCallStats tasks={this.props.tasks}/>
