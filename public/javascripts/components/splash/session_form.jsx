@@ -26,9 +26,11 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user).then((obj) => {
-      window.localStorage.currentUser = JSON.stringify(obj.payload.currentUser)
-      window.localStorage.token = obj.payload.currentUser.token;
-    })
+      if (obj.payload) {
+        window.localStorage.currentUser = JSON.stringify(obj.payload.currentUser)
+        window.localStorage.token = obj.payload.currentUser.token;
+      }
+    });
   }
 
   renderErrors() {
@@ -53,13 +55,13 @@ class SessionForm extends React.Component {
     return (
       <div className="modal">
         <div className="modal-overlay"></div>
-        <div className="login-form-container modal-form">
+        <div className="login-form-container modal-form animated bounceInDown">
           <span className="modal-close js-modal-close">&times;</span>
           <form onSubmit={this.handleSubmit} className="login-form-box">
             <br />
-            {/* <section className="session-form-error">
-              {this.renderErrors()}
-            </section> */}
+            <ul>
+              <li className="session-form-error animated fadeInDown">Error</li>
+            </ul>
             <h1>Sign in</h1>
             <h3>or <Link to="/contact">contact us</Link> to create an account</h3>
             <div className="login-form">

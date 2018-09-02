@@ -34,13 +34,15 @@
   }
   
   .session-form-error {
-    font-size: 14px;
+    font-size: 16px;
     color: #fff;
     border: 1px solid none;
     border-radius: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     padding-left: 10px;
-    background: #EB5A46;
+    text-align: center;
+    opacity: 0.75;
+    background: rgba(235, 90, 70, 0.75)
   }
 
   input {

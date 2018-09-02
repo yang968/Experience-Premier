@@ -10,13 +10,15 @@ const renderTaskDate = (taskDate) => {
   return `${splitTime} ${date}`;
 };
 
-const CallHistoryItem = ({task}) => (
+const CallHistoryItem = ({ task }) => (
   <ul className="call-history-item-list">
-  <div className="history-item-div">
-    <li>{renderTaskDate(task.date)}</li>
-    <li className="overall-score">Sentiment:  {`${(task.results.sentiment.score * 100).toFixed(2)}%`}</li>
+    <div className="history-item-div animated slideInUp">
+      <li>{renderTaskDate(task.date)}</li>
+      <li className="overall-score">
+        Sentiment: {`${(task.results.sentiment.score * 100).toFixed(2)}%`}
+      </li>
     </div>
   </ul>
-  );
+);
 
 export default CallHistoryItem;

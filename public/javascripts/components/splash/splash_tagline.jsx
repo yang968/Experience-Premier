@@ -46,7 +46,7 @@ class TagLine extends React.Component {
   render() {
     return <div className="splash-tagline">
         <LoginFormContainer />
-        <section className="splash-tagline-box">
+        <section className="splash-tagline-box animated fadeIn">
           <h1>Take your customer service to the next level with ExP</h1>
           <p>
             ExP lets you analyze your own customer interactions and
