@@ -24,11 +24,18 @@ class EmployeePage extends React.Component {
   }
   
   render() {
+    let date = new Date();
+    let tasks = 0;
+    this.props.tasks.forEach(task => {
+      console.log(task)
+      if ((parseInt(task.date.slice(5,7))) === (date.getMonth() + 1)) tasks++;
+    })
+
     return (
       <div className="employee-page-container">
         <EmployeeInfo 
           employee={this.props.employee}
-          callCount={this.props.tasks.length}
+          callCount={tasks}
           imgUrl={this.fetchProfileImg()}
         />
         <EmployeeCallIndex 
