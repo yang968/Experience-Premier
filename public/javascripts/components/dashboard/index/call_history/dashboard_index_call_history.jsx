@@ -11,7 +11,7 @@ class DashboardIndexCallHistory extends React.Component {
   displayTasks() {
     let tasks = this.props.tasks;
     if (tasks.length > 0) {
-      return tasks.map((task) => <CallHistoryItem task={task} key={task._id} /> )
+      return tasks.map((task) => <CallHistoryItem task={task} triggerManager={this.props.triggerManager} key={task._id} /> )
     } else {
       return <p>You have not recorded a call yet!</p>
     }

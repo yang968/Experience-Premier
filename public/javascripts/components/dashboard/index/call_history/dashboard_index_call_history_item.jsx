@@ -1,8 +1,16 @@
 import React from 'react';
 import dateFormat from 'dateformat';
 
-const CallHistoryItem = ({ task }) => (
-  <ul className="call-history-item-list">
+const handleClick = (e, task, triggerManager) => {
+  console.log(triggerManager)
+  e.preventDefault();
+  triggerManager(task);
+}
+
+const CallHistoryItem = ({ task, triggerManager }) => {
+  console.log(triggerManager)
+  return (
+  <ul className="call-history-item-list" onClick={(e) => handleClick(e, task, triggerManager)}>
     <div className="history-item-div animated slideInUp">
       <li>{dateFormat(task.date)}</li>
       <li className="overall-score">
@@ -10,6 +18,7 @@ const CallHistoryItem = ({ task }) => (
       </li>
     </div>
   </ul>
-);
+  )
+};
 
 export default CallHistoryItem;
