@@ -27,7 +27,7 @@ export const CALL_PERFORMANCE_PAGE = {
 						stacked: true,
 						display: false, 
 						gridLines: {display: false}
-					}]},
+          }]},
 			}
 
 export const DATA = {
