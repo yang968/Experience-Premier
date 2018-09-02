@@ -2,7 +2,7 @@ import React from "react";
 
 const ContactPage = () => (
   <div className="contact-page-container">
-    <ul className="team-list animated bounceInLeft">
+    <ul className="team-list animated slideInLeft">
       <li className="team-member">
         <img
           src="https://media.licdn.com/dms/image/C5103AQG3yhiDLVqLqw/profile-displayphoto-shrink_800_800/0?e=1541030400&v=beta&t=qgACwJSC2LdxpbxUMb2hf_SIpPd9WZz7TXz_nxahjYw"
@@ -11,8 +11,7 @@ const ContactPage = () => (
         />
         <section>
           <h3>Victor Yang</h3>
-          <p>Tells people to do things</p>
-          <div className="logo-div">
+          <div className="logo-div animated fadeIn">
             <a
               className="github"
               href="https://github.com/yang968"
@@ -44,8 +43,7 @@ const ContactPage = () => (
         />
         <section>
           <h3>Nick Matison</h3>
-          <p>Does things</p>
-          <div className="logo-div">
+          <div className="logo-div animated fadeIn">
             <a
               className="github"
               href="https://github.com/nmatison"
@@ -77,8 +75,7 @@ const ContactPage = () => (
         />
         <section>
           <h3>Mark Lee</h3>
-          <p>Does things in Korean</p>
-          <div className="logo-div">
+          <div className="logo-div animated fadeIn">
             <a
               className="github"
               href="https://github.com/marklee9"
@@ -110,8 +107,7 @@ const ContactPage = () => (
         />
         <section>
           <h3>Jordan Yu</h3>
-          <p>Does things</p>
-          <div className="logo-div">
+          <div className="logo-div animated fadeIn">
             <a
               className="github"
               href="https://github.com/JordanYu4"
