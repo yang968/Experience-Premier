@@ -18,6 +18,14 @@
         border: none;
         padding: 0;
         font-size: 1em;
+
+        .negative {
+          color: red;
+        }
+
+        .positive {
+          color: rgb(0, 212, 0);
+        }
       }
 
       .performance-page-chart {

@@ -75,7 +75,7 @@ class DashboardIndexStats extends React.Component {
               <Bar data={this.state.chartData2} options={{ legend: false }} />
 
               <div className='stats-graph-title'>
-                <h6> Polar Chart </h6>
+                <h6> Polar Area Chart </h6>
               </div>
               <Polar data={this.state.chartData2} options={{ legend: { position: 'right' } }}/>
             </div>

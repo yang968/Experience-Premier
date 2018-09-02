@@ -38,11 +38,25 @@ class CallPerformancePage extends React.Component {
 		this.state.datasets = datasets;
 	}
 
+	colorLabel() {
+		if (this.state.label === 'negative') {
+			return <span className="negative">Negative. </span>;
+		} 
+		return <span className="positive">Positive. </span>;
+	}
+
+	colorScore() {
+		if (this.state.score < 0) {
+			return <span className="negative"> {this.state.score} </span>;
+		}
+		return <span className="positive"> +{this.state.score} </span>;
+	}
+
 	render() {
 			this.dataSetup();
 			return <div className='performance-page'>
 					<div className='performance-page-label'>
-						<p>Label: {this.state.label} Score: {this.state.score}</p>
+						<pre>Label: {this.colorLabel()}           Score: {this.colorScore()}</pre>
 					</div>
 					<div className='performance-page-chart'>
 						<HorizontalBar data={{ 
