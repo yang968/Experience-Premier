@@ -6,7 +6,11 @@ import CallPerformancePage from "../../call_performance/call_performance_page";
 class SubordinateIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { task: null };
+    if (this.props.managerTask) {
+      this.state = { task: this.props.managerTask};
+    } else {
+      this.state = { task: null };
+    }
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -39,10 +43,27 @@ class SubordinateIndex extends React.Component {
     }
   }
 
+  employeesRender(e) {
+    e.preventDefault();
+    this.props.triggerManager(false);
+  }
+
+  backToEmployees() {
+    console.log(this.props.managerTask)
+    if (this.props.managerTask || this.props.currentUser.manager) {
+      return (
+        <button onClick={(e) => this.employeesRender(e)}>Back to Employees</button>
+      );
+    } else {
+      return null;
+    }
+  }
+
   render() {
     return (
     <div id="subordinate-index">
         <div className="performance-data"> 
+        {this.backToEmployees()}
           {this.renderGraph()}
         </div>
         <div className="dashboard-index-call-history-div">
