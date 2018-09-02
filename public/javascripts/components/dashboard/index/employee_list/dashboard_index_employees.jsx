@@ -13,7 +13,7 @@ class DashboardIndexEmployees extends React.Component {
      
     return (
       <div className="dashboard-index-employees-container">
-        <h1>EMPLOYEES</h1>
+        <h1>Employees</h1>
         <ul className="dashboard-index-employees-list">
           {employees.map(employee => (
             <EmployeeListItem 
