@@ -12,6 +12,20 @@ const ContactPage = () => (
         <section>
           <h3>Victor Yang</h3>
           <p>Tells people to do things</p>
+          <a
+            className="github"
+            href="https://github.com/yang968"
+            target="_blank"
+          >
+            <img src={require("../../../images/github-logo.png")} />
+          </a>
+          <a
+            className="linked-in"
+            href="https://www.linkedin.com/in/yang53/"
+            target="_blank"
+          >
+            <img src={require("../../../images/linkedin-logo.png")} />
+          </a>
         </section>
       </li>
       <li className="team-member">
@@ -23,8 +37,19 @@ const ContactPage = () => (
         <section>
           <h3>Nick Matison</h3>
           <p>Does things</p>
-          <a href="https://github.com/nmatison" target="_blank">
+          <a
+            className="github"
+            href="https://github.com/nmatison"
+            target="_blank"
+          >
             <img src={require("../../../images/github-logo.png")} />
+          </a>
+          <a
+            className="linked-in"
+            href="https://www.linkedin.com/in/nicholas-matison-066359108/"
+            target="_blank"
+          >
+            <img src={require("../../../images/linkedin-logo.png")} />
           </a>
         </section>
       </li>
@@ -37,6 +62,20 @@ const ContactPage = () => (
         <section>
           <h3>Mark Lee</h3>
           <p>Does things in Korean</p>
+          <a
+            className="github"
+            href="https://github.com/marklee9"
+            target="_blank"
+          >
+            <img src={require("../../../images/github-logo.png")} />
+          </a>
+          <a
+            className="linked-in"
+            href="https://www.linkedin.com/in/m-arklee/"
+            target="_blank"
+          >
+            <img src={require("../../../images/linkedin-logo.png")} />
+          </a>
         </section>
       </li>
       <li className="team-member">
@@ -48,6 +87,20 @@ const ContactPage = () => (
         <section>
           <h3>Jordan Yu</h3>
           <p>Does things</p>
+          <a
+            className="github"
+            href="https://github.com/JordanYu4"
+            target="_blank"
+          >
+            <img src={require("../../../images/github-logo.png")} />
+          </a>
+          <a
+            className="linked-in"
+            href="https://www.linkedin.com/in/jordan-yu-a7119b80/"
+            target="_blank"
+          >
+            <img src={require("../../../images/linkedin-logo.png")} />
+          </a>
         </section>
       </li>
     </ul>
