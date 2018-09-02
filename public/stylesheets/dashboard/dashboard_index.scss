@@ -35,7 +35,7 @@
       border: 1px solid darken($light-color, 5%);
       border-radius: 3px;
       box-sizing: border-box;
-      // padding: 5px;
+      height: 100%;
       }
       
       .stats-graph-title {
@@ -43,9 +43,12 @@
         margin-top: 7px;
       }
 
-      canvas {
-        // box-sizing: border-box;
-        // padding: 5px;
+      .top-right {
+        height: 300px;
+        overflow: auto;
+        canvas {
+          margin-bottom: 110px;
+        }
       }
     }
 

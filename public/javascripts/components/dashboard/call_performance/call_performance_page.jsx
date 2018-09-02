@@ -20,17 +20,19 @@ class CallPerformancePage extends React.Component {
 	}
 
 	dataSetup() {
-		this.state.score = this.props.stats.results.sentiment.score;
+		console.log(this.props.stats);
+		this.state.score = this.props.stats.results.sentiment.score.toFixed(2);
 		this.state.label = this.props.stats.results.sentiment.label;
-
+		console.log(this.props.stats);
 		let emo = this.props.stats.results.emotion;
 		let data = [emo.sadness, emo.joy, emo.anger, emo.fear, emo.disgust];
+		let total = data.reduce(function(a,b){return a + b});
 		let datasets = [];
 		for (let i = 0; i < data.length; i++) {
 			let obj = {};
 			obj.label = SENTIMENT_LABELS[i];
 			obj.backgroundColor = SENTIMENT_COLOR[i];
-			obj.data = [data[i]];
+			obj.data = [(data[i] / total * 100).toFixed(2)];
 			datasets.push(obj);
 		}
 		this.state.datasets = datasets;
@@ -38,16 +40,17 @@ class CallPerformancePage extends React.Component {
 
 	render() {
 			this.dataSetup();
-			return <div>
-					<div>
-						<p>Label: {this.state.label}</p>
-						<p>Score: {this.state.score}</p>
+			return <div className='performance-page'>
+					<div className='performance-page-label'>
+						<p>Label: {this.state.label} Score: {this.state.score}</p>
 					</div>
-					<HorizontalBar data={{ 
-							labels: ['Sentiment Analysis'], 
-							datasets: this.state.datasets}} 
-						options={this.state.options} 
-					/>
+					<div className='performance-page-chart'>
+						<HorizontalBar data={{ 
+								labels: ['Sentiment Analysis'], 
+								datasets: this.state.datasets}} 
+							options={this.state.options} 
+						/>
+					</div>
 				</div>;
 	}
 }

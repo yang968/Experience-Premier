@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pie, Bar } from 'react-chartjs-2';
+import { Pie, Bar, PolarArea } from 'react-chartjs-2';
 import { 
   POSITIVITY_COLOR, 
   SENTIMENT_COLOR, 
@@ -60,15 +60,18 @@ class DashboardIndexStats extends React.Component {
     } else {
 		return <div className="dashboard-index-stats-container">
           <div className="dashboard-index-stats-graph-pie">
-            <Pie data={this.state.chartData1} options={{legend: {position: 'right'}}}/>
             <div className='stats-graph-title'>
-          <h6>{this.returnTitleText()} Cumulative Performance </h6>
+              <h6>{this.returnTitleText()} Cumulative Performance </h6>
             </div>
+            <Pie data={this.state.chartData1} options={{legend: {position: 'right'}}}/>
           </div>
           <div className="dashboard-index-stats-graph-bar">
-            <Bar data={this.state.chartData2} options={{legend: false}} />
             <div className='stats-graph-title'>
               <h6>{this.returnTitleText()} Average Sentiment Analysis </h6>
+            </div>
+            <div className='top-right'>
+              <Bar data={this.state.chartData2} options={{ legend: false }} />
+          <Pie data={this.state.chartData2} options={{ legend: { position: 'right' } }}/>
             </div>
         </div>
       </div>;

@@ -17,57 +17,19 @@ export const SENTIMENT_LABELS = ["Sadness", "Joy", "Anger", "Fear", "Disgust"];
 export const POSITIVITY_LABELS = ["Negative", "Neutral", "Positive"];
 
 export const CALL_PERFORMANCE_PAGE = { 
-				legend: { display: false },
-				scales: { 
-					xAxes: [{ 
-						stacked: true,
-						display: false, 
-						gridLines: {display: false} }],
-					yAxes: [{ 
-						stacked: true,
-						display: false, 
-						gridLines: {display: false}
-					}]},
-			}
-
-export const DATA = {
-  _id: {
-    $oid: '5b883ebbe380eb5d1b6035dd'
+  tooltips: {
+    position: 'nearest',
+    titleFontSize: 0,
   },
-  transcript: 'Jordan wants to go to in and out',
-  user: {
-    $oid: '5b874ba46d1e640dde49ba7e'
-  },
-  date: {
-    $date: '2018 - 08 - 30T19: 00: 11.619Z'
-  },
-  results: {
-    sentiment: {
-      score: -0.782117,
-      label: "negative"
-    },
-    keywords: [{
-      text: "Jordan",
-      sentiment: {
-        score: -0.782117,
-        label: "negative"
-      },
-      relevance: 0.976027,
-      emotion: {
-        sadness: 0.392147,
-        joy: 0.0506,
-        fear: 0.339423,
-        disgust: 0.210918,
-        anger: 0.176397
-      }
-    }],
-    emotion: {
-      sadness: 0.392147,
-      joy: 0.0506,
-      fear: 0.339423,
-      disgust: 0.210918,
-      anger: 0.176397
-    }
-  },
-  __v: 0
+  legend: { display: false },
+  scales: { 
+    xAxes: [{ 
+      stacked: true,
+      display: false, 
+      gridLines: {display: false} }],
+    yAxes: [{ 
+      stacked: true,
+      display: false, 
+      gridLines: {display: false}
+  }]},
 };
