@@ -1,10 +1,9 @@
 import React from "react";
-import axios from "axios";
 
 import { withRouter } from 'react-router-dom';
 
 import EmployeeInfo from './employee_info';
-import EmployeeCallStats from './employee_call_stats';
+import EmployeeCallIndex from './employee_call_index';
 
 class EmployeePage extends React.Component {
   constructor(props) {
@@ -32,7 +31,10 @@ class EmployeePage extends React.Component {
           callCount={this.props.tasks.length}
           imgUrl={this.fetchProfileImg()}
         />
-        <EmployeeCallStats tasks={this.props.tasks}/>
+        <EmployeeCallIndex 
+          tasks={this.props.tasks}
+          employee={this.props.employee}
+        />
       </div>
     );
   }
