@@ -28,7 +28,17 @@ module.exports = {
           "resolve-url-loader",
           "sass-loader?sourceMap"
         ]
-      }]
+      },
+      {
+        test: /\.(jpg|png)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "[path][name].[hash].[ext]",
+          },
+        },
+      }
+    ]
   }, 
   plugins: [
     new MiniCssExtractPlugin({

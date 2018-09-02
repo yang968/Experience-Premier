@@ -12,7 +12,6 @@ const ContactPage = () => (
         <section>
           <h3>Victor Yang</h3>
           <p>Tells people to do things</p>
-
         </section>
       </li>
       <li className="team-member">
@@ -24,8 +23,9 @@ const ContactPage = () => (
         <section>
           <h3>Nick Matison</h3>
           <p>Does things</p>
-
-          
+          <a href="https://github.com/nmatison" target="_blank">
+            <img src={require("../../../images/github-logo.png")} />
+          </a>
         </section>
       </li>
       <li className="team-member">
@@ -37,7 +37,6 @@ const ContactPage = () => (
         <section>
           <h3>Mark Lee</h3>
           <p>Does things in Korean</p>
-
         </section>
       </li>
       <li className="team-member">
@@ -49,7 +48,6 @@ const ContactPage = () => (
         <section>
           <h3>Jordan Yu</h3>
           <p>Does things</p>
-
         </section>
       </li>
     </ul>
