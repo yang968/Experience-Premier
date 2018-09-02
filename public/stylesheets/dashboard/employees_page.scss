@@ -6,12 +6,6 @@
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 1em;
 
-  div {
-    border-radius: 3px;
-    padding: 20px;
-    border: 1px solid darken($light-color, 5%);
-  }
-
   h1 {
     font-size: 17px;
     font-weight: 700;
@@ -71,45 +65,23 @@
 
 .employee-call-index-container {
   grid-row: 3 / 7;
+  grid-column: 1 / 2;
   border: none;
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(5, 20%);
-
-
-}
-
-.dashboard-index-call-history-container {
-  background:#fff;
-  grid-row: 2;
-  grid-column: 2 / 3;
+  grid-gap: 1em;
   
-  .dashboard-index-call-history-list {
-    font-size: 16px;
-    // overflow: auto;
+  .performance-data {
+    padding: 20px;
+    box-sizing: border-box;
+    grid-column: 1 / 4;
   }
-    .call-history-item-list {
-      background: $primary-color;
-      border-radius: 3px;
-      color: set-text-color($primary-color);
-      padding: 5px 10px;
-      transition: 0.05s;
-      overflow: auto;
-      margin-bottom: 8px;
+  
+  .call-history-container {
+    padding: 20px;
+    box-sizing: border-box;
+    grid-column: 4 / 6;
+  }
 
-        &:nth-child(even) {
-          background: $primary-color-dark;
-        }
-
-        &:hover {
-          cursor: pointer;
-          opacity: 0.9;
-        }
-
-        .history-item-div {
-          display: flex;
-          justify-content: space-around;
-          width: 70%;
-          border: none;
-        }
-    }
 }

@@ -10,20 +10,14 @@ class CallPerformancePage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			chartData: {
-        labels: SENTIMENT_LABELS,
-        datasets: [{
-        }]
-			},
+			chartData: { labels: SENTIMENT_LABELS },
 			options : CALL_PERFORMANCE_PAGE
 		};
 	}
 
 	dataSetup() {
-		console.log(this.props.stats);
 		this.state.score = this.props.stats.results.sentiment.score.toFixed(2);
 		this.state.label = this.props.stats.results.sentiment.label;
-		console.log(this.props.stats);
 		let emo = this.props.stats.results.emotion;
 		let data = [emo.sadness, emo.joy, emo.anger, emo.fear, emo.disgust];
 		let total = data.reduce(function(a,b){return a + b;});
@@ -36,6 +30,12 @@ class CallPerformancePage extends React.Component {
 			datasets.push(obj);
 		}
 		this.state.datasets = datasets;
+	}
+
+	keywordSetup() {
+		let keywords;
+		let kw = this.props.stats.results.keywords;
+		kw.forEach() 
 	}
 
 	colorLabel() {
@@ -53,19 +53,35 @@ class CallPerformancePage extends React.Component {
 	}
 
 	render() {
+			console.log(this.props.stats.results.keywords);
 			this.dataSetup();
-			return <div className='performance-page'>
+			return <div className='performance-page animated slideInLeft'>
 					<div className='performance-page-label'>
-						<pre>Label: {this.colorLabel()}           Score: {this.colorScore()}</pre>
+						<div className="performance-ls">
+							<pre> Label: {this.colorLabel()}</pre>
+						</div>
+						<div className="performance-ls2">
+							<pre>Score: {this.colorScore()} </pre>
+						</div>
 					</div>
-					<div className='performance-page-chart'>
-						<HorizontalBar data={{ 
-								labels: ['Sentiment Analysis'], 
-								datasets: this.state.datasets}} 
-							options={this.state.options} 
-						/>
-					</div>
-				</div>;
+					<div className="performance-page-charts">
+						<div className='performance-page-chart'>
+							<HorizontalBar data={{ 
+									labels: ['Sentiment Analysis'], 
+									datasets: this.state.datasets}} 
+								options={this.state.options} 
+							/>
+						</div>
+						<div className='performance-page-chart'>
+							<HorizontalBar data={{
+								labels: ['Sentiment Analysis'],
+								datasets: this.state.datasets
+							}}
+								options={this.state.options}
+							/>
+						</div>
+				</div>
+			</div>;
 	}
 }
 

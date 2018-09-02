@@ -7,34 +7,6 @@
   padding: 0;
   border: none;
 
-  .performance-data {
-    background-color: white;
-
-    .performance-page {
-      border: none;
-      padding: 0;
-
-      .performance-page-label {
-        border: none;
-        padding: 0;
-        font-size: 1em;
-
-        .negative {
-          color: red;
-        }
-
-        .positive {
-          color: rgb(0, 212, 0);
-        }
-      }
-
-      .performance-page-chart {
-        border: none;
-        padding: 0;
-      }
-    }
-  }
-
   .back-button-div {
     border: none;
     margin-bottom: 8px;
@@ -57,7 +29,66 @@
     }
   }
 
-  .dashboard-index-call-history-div {
+}
+
+.performance-data {
+    background-color: white;
+
+    .performance-page {
+      border: none;
+      padding: 0;
+
+      .performance-page-label {
+        border: none;
+        padding: 0;
+        font-size: 1em;
+        text-align: justify;
+
+        .performance-ls {
+          border: none;
+          padding: 0;
+          width: 50%;
+          display: inline-block;
+
+          .negative {
+            color: red;
+          }
+
+          .positive {
+            color: rgb(0, 212, 0);
+          }
+        }
+
+        .performance-ls2 {
+          border: none;
+          padding: 0;
+          width: 50%;
+          display: inline-block;
+          text-align: right;
+
+          .negative {
+            color: red;
+          }
+
+          .positive {
+            color: rgb(0, 212, 0);
+          }
+        }
+      }
+
+      .performance-page-charts {
+        padding: 0;
+        border: none;
+
+        .performance-page-chart {
+          border: none;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .call-history-container {
     background-color: white;
 
     .stats-graph-title {
@@ -65,11 +96,12 @@
       margin-top: 7px;
     }
 
-    .dashboard-index-call-history-list {
+    .call-history-list {
       font-size: 16px;
       overflow: auto;
     }
   }
+  
   .call-history-item-list {
     background: $primary-color;
     border-radius: 3px;
@@ -96,4 +128,3 @@
       width: 70%;
     }
   }
-}

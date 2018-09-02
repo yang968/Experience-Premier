@@ -5,7 +5,7 @@ const FooterLinks = () => (
   <div className="footer-links-container">
     <ul className="footer-links">
       <li>
-        <a href="https://github.com/yang968/ExP">Github</a>
+        <a href="https://github.com/yang968/ExP" target="_blank">Github</a>
       </li>
       <li>
         <Link to="">Careers</Link>

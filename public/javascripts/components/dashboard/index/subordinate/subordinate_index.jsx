@@ -61,14 +61,13 @@ class SubordinateIndex extends React.Component {
   render() {
     return (
     <div id="subordinate-index">
-        <div className="performance-data animated fadeInUp"> 
+        <div className="performance-data"> 
           <div className="back-button-div">{this.backToEmployees()}</div>
-          <h1></h1>
           {this.renderGraph()}
         </div>
-        <div className="dashboard-index-call-history-div animated fadeInUp">
+        <div className="call-history-container">
           <h1 className="stats-graph-title">Your Calls:</h1>
-          <ul className="dashboard-index-call-history-list">
+          <ul className="call-history-list">
             {this.displayTasks()}
           </ul>
         </div>

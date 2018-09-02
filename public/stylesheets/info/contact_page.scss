@@ -7,7 +7,8 @@
   width: 100%;
   height: 100%;
   top: 0;
-  background: linear-gradient(rgba(48, 57, 82, 0.25), lighten($dark-color, 30%)), url("https://images.pexels.com/photos/1068523/pexels-photo-1068523.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background: linear-gradient(rgba(48, 57, 82, 0.25), lighten($dark-color, 30%)),
+    url("https://images.pexels.com/photos/1068523/pexels-photo-1068523.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
   background-position: center;
 }
 
@@ -46,5 +47,23 @@
     height: 150px;
     margin-right: 20px;
     border-radius: 75px;
+  }
+
+  .logo-div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 175px;
+  }
+
+  .github-image {
+    object-fit: cover;
+    height: 75px;
+    width: 75px;
+  }
+
+  .linkedin-image {
+    height: 74px;
+    width: 80px;
   }
 }
