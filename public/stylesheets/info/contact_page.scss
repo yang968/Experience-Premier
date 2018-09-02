@@ -60,10 +60,20 @@
     object-fit: cover;
     height: 75px;
     width: 75px;
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 0.9
+    }
   }
 
   .linkedin-image {
     height: 74px;
     width: 80px;
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 0.9
+    }
   }
 }
