@@ -29,7 +29,7 @@ class DashboardSidebar extends React.Component {
           <nav className="dashboard-sidebar-nav-container">
             <ul className="dashboard-sidebar-nav">
               <li>
-                <Link to="/dashboard">Index</Link>
+                <Link to="/dashboard">Dashboard</Link>
               </li>
               <li>
                 <Link to="/dashboard/call">Record call</Link>

@@ -1,5 +1,6 @@
 .dashboard-main-container {
   grid-column-start: 2;
-  min-height: 100vh;
+  min-height: 100%;
   background: $light-color;
+  overflow: scroll;
 }
