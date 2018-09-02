@@ -1,11 +1,9 @@
 .splash-tagline {
   display: flex;
-  background: linear-gradient(rgba(48, 57, 82, 0.4), $dark-color), url("https://images.pexels.com/photos/1162964/pexels-photo-1162964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-  // background-image: linear-gradient(rgba(48, 57, 82, 0.75), $dark-color);
+  background: linear-gradient(rgba(48, 57, 82, 0.4), darken($dark-color, 5%)), url("https://images.pexels.com/photos/1162964/pexels-photo-1162964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
   background-size: cover;
   background-position: center;
   justify-content: center;
-  // box-shadow: inset 0 0 0 1000px rgba(99, 206, 131, 0.5);
 }
 
 .splash-tagline-box {
