@@ -164,7 +164,7 @@ router.delete(
 
             task.remove().then(res.json(task));
           } else {
-            res.status(400).json({ invalidPrevilege: "User can't delete the task" })
+            res.status(403).json({ invalidPrivilege: "User can't delete the task" })
           }
         })
       .catch(error => 
