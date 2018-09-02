@@ -26,7 +26,7 @@ class CallPerformancePage extends React.Component {
 		console.log(this.props.stats);
 		let emo = this.props.stats.results.emotion;
 		let data = [emo.sadness, emo.joy, emo.anger, emo.fear, emo.disgust];
-		let total = data.reduce(function(a,b){return a + b});
+		let total = data.reduce(function(a,b){return a + b;});
 		let datasets = [];
 		for (let i = 0; i < data.length; i++) {
 			let obj = {};
