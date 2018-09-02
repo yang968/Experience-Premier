@@ -47,4 +47,14 @@
     margin-right: 20px;
     border-radius: 75px;
   }
+
+  .logo-div {
+    display: flex;
+  }
+
+  .github-image {
+   object-fit: cover;
+  height: 60px;
+  width: 75px;
+  }
 }

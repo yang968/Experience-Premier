@@ -62,20 +62,22 @@ const ContactPage = () => (
         <section>
           <h3>Mark Lee</h3>
           <p>Does things in Korean</p>
-          <a
-            className="github"
-            href="https://github.com/marklee9"
-            target="_blank"
-          >
-            <img src={require("../../../images/github-logo.png")} />
-          </a>
-          <a
-            className="linked-in"
-            href="https://www.linkedin.com/in/m-arklee/"
-            target="_blank"
-          >
-            <img src={require("../../../images/linkedin-logo.png")} />
-          </a>
+          <div className="logo-div">
+            <a
+              className="github"
+              href="https://github.com/marklee9"
+              target="_blank"
+            >
+              <img className="github-image" src={require("../../../images/github-logo.png")} />
+            </a>
+            <a
+              className="linked-in"
+              href="https://www.linkedin.com/in/m-arklee/"
+              target="_blank"
+            >
+              <img className="linked-image" src={require("../../../images/linkedin-logo.png")} />
+            </a>
+          </div>
         </section>
       </li>
       <li className="team-member">
