@@ -21,15 +21,18 @@ export const CALL_PERFORMANCE_PAGE = {
     position: 'nearest',
     titleFontSize: 0,
   },
-  legend: { display: false },
+  legend: { position: 'bottom', padding: 20 },
   scales: { 
     xAxes: [{ 
       stacked: true,
       display: false, 
-      gridLines: {display: false} }],
+      barPercentage: 0.4,
+      gridLines: {display: false}
+    }],
     yAxes: [{ 
       stacked: true,
       display: false, 
+      barPercentage: 0.4,
       gridLines: {display: false}
   }]},
 };
