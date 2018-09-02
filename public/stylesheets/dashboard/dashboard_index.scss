@@ -52,9 +52,15 @@
         overflow: auto;
         border: none;
         font-size: 0.8em;
+        margin-top: 15px;
 
         canvas {
-          margin-bottom: 110px;
+          margin-bottom: 40px;
+        }
+
+        canvas:first-of-type {
+          margin-bottom: 100px;
+          padding-top: 10px;
         }
       }
     }
