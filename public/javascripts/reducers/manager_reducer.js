@@ -1,12 +1,12 @@
 import { RECEIVE_MANAGER_TRIGGER } from '../actions/manager_actions';
 
-const ManagerReducer = (oldState = false, action) => {
+const ManagerReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch(action.type) {
     case RECEIVE_MANAGER_TRIGGER:
       return action.selectedTask;
     default:
-      return oldState;
+      return false;
   }
 };
 
