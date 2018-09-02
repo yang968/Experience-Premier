@@ -18,17 +18,17 @@ class DashboardIndex extends React.Component {
   }
 
   renderCallHistory (employees) {
-    if (employees.length > 0) return (
+    if (!this.props.managerTask && employees.length > 0) return (
       <DashboardIndexCallHistoryContainer />
     );
   }
 
   renderEmployees(employees) {
-    if (employees.length > 0) return <DashboardIndexEmployeesContainer />;
+    if (!this.props.managerTask && employees.length > 0) return <DashboardIndexEmployeesContainer />;
   }
 
   renderSubordinateContainer(employees) {
-    if (employees.length === 0) return <SubordinateIndexContainer />;
+    if (this.props.managerTask || employees.length === 0) return <SubordinateIndexContainer />;
   }
 
   render() {
