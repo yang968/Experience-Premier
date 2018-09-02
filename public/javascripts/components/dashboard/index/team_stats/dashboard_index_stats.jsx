@@ -22,7 +22,7 @@ class DashboardIndexStats extends React.Component {
         labels: SENTIMENT_LABELS,
         datasets: [{
           label: "Sentiment Analysis",
-          backgroundColor: SENTIMENT_COLOR
+          backgroundColor: SENTIMENT_COLOR,
         }],
       }
     };
