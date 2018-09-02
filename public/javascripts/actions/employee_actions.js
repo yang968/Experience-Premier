@@ -5,9 +5,16 @@ export const RECEIVE_EMPLOYEE_ERRORS = "RECEIVE_EMPLOYEE_ERRORS";
 export const LOGOUT_USER = "LOGOUT_USER";
 export const RECEIVE_DASHBOARD = "RECEIVE_DASHBOARD";
 
+
 export const createUser = user => dispatch => (
   userUtil.createUser(user)
   .then(payload => dispatch(receiveUser(payload)), 
+  errors => dispatch(receiveErrors(errors)))
+);
+
+export const fetchUser = userId => dispatch => (
+  userUtil.fetchUser(userId)
+  .then(payload => dispatch(receiveUser(payload)),
   errors => dispatch(receiveErrors(errors)))
 );
 

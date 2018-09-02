@@ -99,23 +99,16 @@ router.post('/logout', passport.authenticate('jwt', { session: false }), (req, r
     const { rawHeaders } = req;
     const tokenIndex = rawHeaders.findIndex((el) => el === 'Authorization') + 1;
     const token = rawHeaders[tokenIndex].split(" ")[1];
-    let sess;
 
-    UserSession.find({userId: user._id})
-    .then((session) => {
-      sess = session;
-      if (session.length === 0) {
-        return res.status(400).json({
+    UserSession.findOneAndRemove({ userId: user._id, token: token }, (error, session) => {
+      if (error) {
+        return res.status(404).json({
           error: "Could not logout, user session not found"
         });
       } else {
-      UserSession.findOneAndRemove(
-        sess, 
-        (session1) => {
-          return res.send({
-            success: true,
-            message: 'Thank you for visiting!'
-          });
+        return res.send({
+          success: true,
+          message: 'Thank you for visiting!'
         });
       }
     });

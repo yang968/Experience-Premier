@@ -57,7 +57,13 @@
       grid-column: 2 / 3;
     }
   }
-
+  
+  
+  .managers-div{
+    display: flex;
+    justify-content: space-around;
+    border: none;
+  }
 
 .dashboard-index-employees-container {
   background: #fff;
@@ -121,9 +127,5 @@
           width: 70%;
           border: none;
         }
-
-        // .overall-score {
-        //   margin-left: 15px;
-        // }
     }
 }

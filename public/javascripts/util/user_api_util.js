@@ -26,3 +26,8 @@ export const getDashboard = (token) => {
   instance.defaults.headers.common[`Authorization`] = token;
   return instance.get("http://localhost:5000/api/users/dashboard");
 }
+export const fetchUser = (userId) => {
+  let instance = axios.create({});
+  instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; 
+  return instance.get(`http://localhost:5000/api/users/${userId}`);
+};
