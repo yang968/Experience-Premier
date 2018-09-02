@@ -8,6 +8,7 @@ import EmployeeCallIndex from './employee_call_index';
 class EmployeePage extends React.Component {
   constructor(props) {
     super(props);
+    this.imgUrl = this.imgUrl || this.fetchProfileImg();
   }
 
   componentDidMount() {
@@ -26,6 +27,7 @@ class EmployeePage extends React.Component {
   render() {
     let date = new Date();
     let tasks = 0;
+    let imgUrl = this.imgUrl;
     this.props.tasks.forEach(task => {
       console.log(task)
       if ((parseInt(task.date.slice(5,7))) === (date.getMonth() + 1)) tasks++;
@@ -36,7 +38,7 @@ class EmployeePage extends React.Component {
         <EmployeeInfo 
           employee={this.props.employee}
           callCount={tasks}
-          imgUrl={this.fetchProfileImg()}
+          imgUrl={imgUrl}
         />
         <EmployeeCallIndex 
           tasks={this.props.tasks}

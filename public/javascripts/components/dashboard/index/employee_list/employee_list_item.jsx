@@ -8,20 +8,27 @@ class EmployeeListItem extends React.Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
-  
+
   handleClick() {
     const employeeId = this.props.employee._id;
     this.props.history.push({
-      pathname: `/dashboard/employee/${employeeId}`, 
-      state: {employeeId: employeeId}
-    })
+      pathname: `/dashboard/employee/${employeeId}`,
+      state: { 
+        employeeId: employeeId
+      }
+    });
   }
 
   render() {
     let employee = this.props.employee;
     return (
-      <li className="employee-list-item animated fadeInUp" onClick={this.handleClick}>
-        {employee.firstName}&nbsp;{employee.lastName}
+      <li
+        className="employee-list-item animated fadeInUp"
+        onClick={this.handleClick}
+      >
+        {employee.firstName}
+        &nbsp;
+        {employee.lastName}
       </li>
     );
   }
