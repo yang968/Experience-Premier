@@ -48,9 +48,9 @@ class DashboardIndexStats extends React.Component {
 
   returnTitleText() {
     if (this.props.manger) {
-      return <span>Your</span>;
+      return <span>Team</span>;
     }
-    return <span>Team</span>;
+    return <span>Your</span>;
   }
 
 	render() {
