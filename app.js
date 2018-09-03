@@ -18,11 +18,6 @@ const companies = require('./routes/api/companies');
 // Heroku
 const path = require("path");
 
-app.use(express.static("public"));
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "public", "index.html"));
-});
-
 // Normal routes
 // const Authentication = require('./routes/authentication');
 const router = require('express').Router();
@@ -46,5 +41,10 @@ app.use("/api/users", users);
 app.use("/api/tasks", tasks);
 app.use("/api/industries", industries);
 app.use("/api/companies", companies);
+
+app.use(express.static("public"));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "public", "index.html"));
+});
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));

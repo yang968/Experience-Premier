@@ -17,14 +17,14 @@ export const login = (user) => {
 
 export const logout = (token) => {
   let instance = axios.create({});
-  instance.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+  // instance.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
   instance.defaults.headers.common[`Authorization`] = token;
   return instance.post("/api/users/logout")
 }
 
 export const getDashboard = (token) => {
   let instance = axios.create({});
-  instance.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+  // instance.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
   instance.defaults.headers.common[`Authorization`] = token;
   return instance.get("/api/users/dashboard");
 }
