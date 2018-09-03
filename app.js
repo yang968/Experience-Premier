@@ -15,6 +15,16 @@ const tasks = require('./routes/api/tasks');
 const industries = require('./routes/api/industries');
 const companies = require('./routes/api/companies');
 
+// Heroku
+const path = require("path");
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+}
+
 // Normal routes
 // const Authentication = require('./routes/authentication');
 const router = require('express').Router();
