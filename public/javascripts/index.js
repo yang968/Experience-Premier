@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
   
-  ReactDOM.render(<div>
+  ReactDOM.render(<div className="root-container">
       <Favicon url="https://i.imgur.com/QhiuZTl.png" />
       <Root store={store} />
     </div>, root);

@@ -1,9 +1,8 @@
 .employee-page-container {
-  height: 100vh;
-  padding: 20px;
+  height: 100%;
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 220px, ;
+  grid-template-rows: 220px, auto;
   grid-gap: 1em;
 
   h1 {

@@ -4,21 +4,24 @@ import { Link } from "react-router-dom";
 const FooterLinks = () => (
   <div className="footer-links-container">
     <ul className="footer-links">
-      <li>
-        <a href="https://github.com/yang968/ExP" target="_blank">Github</a>
-      </li>
-      <li>
-        <Link to="">Careers</Link>
-      </li>
-      <li>
-        <Link to="">Terms</Link>
-      </li>
-      <li>
-        <Link to="">Privacy</Link>
-      </li>
-      <li>
-        <Link to="/contact">Contact</Link>
-      </li>
+      <div className="internal-links">
+        <li className="footer-link">
+          <Link to="/contact">Careers</Link>
+        </li>
+        <li className="footer-link">
+          <Link to="/contact">Contact</Link>
+        </li>
+      </div>
+        <a
+          className="github-footer"
+          href="https://github.com/yang968/ExP"
+          target="_blank"
+        >
+          <img
+            className="github-footer-image"
+            src={require("../../../images/github-logo.png")}
+          />
+        </a>
     </ul>
   </div>
 );

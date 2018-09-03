@@ -5,8 +5,7 @@
 
 html, body {
   font-family: $montserrat;
-  background: lighten($light-color, 40%);
-  // overflow-y: hidden;
+  background: $light-color;
 }
 
 header {

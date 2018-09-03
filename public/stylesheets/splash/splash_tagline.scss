@@ -1,16 +1,24 @@
+.splash-body {
+  height: 100%;
+}
+
 .splash-tagline {
   display: flex;
-  background: linear-gradient(rgba(48, 57, 82, 0.4), darken($dark-color, 5%)), url("https://images.pexels.com/photos/1162964/pexels-photo-1162964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background: linear-gradient(rgba(48, 57, 82, 0.4), darken($dark-color, 5%)),
+    url("https://images.pexels.com/photos/1162964/pexels-photo-1162964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
   background-size: cover;
   background-position: center;
+  // align-items: center;
   justify-content: center;
   transition: 0.1s;
+  height: 100%;
 }
 
 .splash-tagline-box {
   display: flex;
   flex-direction: column;
-  margin: 8em 2em 7em 2em;
+  margin: 10em 2em 5em 2em;
+  // margin-bottom: 7em;
   width: 600px;
   align-items: center;
   text-align: center;
@@ -34,7 +42,7 @@
     padding: 10px 0.5em 10px;
     color: darken(set-text-color($dark-color), 10%);
     transition: 0.1s;
-    
+
     &:hover {
       color: $primary-color;
     }
@@ -44,7 +52,7 @@
     color: rgb(225, 225, 225);
     margin: 1em 0 1em;
 
-    &:hover{
+    &:hover {
       color: #fff;
     }
 
@@ -58,6 +66,4 @@
       }
     }
   }
-
-
 }
