@@ -48,12 +48,12 @@ class DashboardIndexStats extends React.Component {
   }
 
   returnTitleText() {
-    if (this.props.manger) {
+    if (this.props.manager) {
       return <span>Team</span>;
+    } else {
+    return <span>Your1</span>;
     }
-    return <span>Your</span>;
   }
-
 	render() {
     if (this.props.stats.length === 0) {
       return <div className="dashboard-index-stats-container">
@@ -76,7 +76,6 @@ class DashboardIndexStats extends React.Component {
                 <h6> Bar Graph </h6>
               </div>
               <Bar data={this.state.chartData2} options={{ legend: false }} />
-
               <div className='stats-graph-title'>
                 <h6> Polar Area Chart </h6>
               </div>

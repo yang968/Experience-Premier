@@ -8,7 +8,7 @@ import DashboardIndexContainer from "./index/dashboard_index_container";
 import SpeechRecordContainer from "./speech_record/speech_record_container";
 import EmployeePageContainer from './employees/employee_page_container';
 
-import { AuthRoute, ProtectedRoute } from "../../util/route_util";
+import { ProtectedRoute } from "../../util/route_util";
 
 const DashboardMain = () => (
   <div className="dashboard-main-container">

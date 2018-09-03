@@ -33,6 +33,7 @@
 
 .performance-data {
     background-color: white;
+    max-height: 50%;
 
     .performance-page {
       border: none;
@@ -79,10 +80,21 @@
       .performance-page-charts {
         padding: 0;
         border: none;
+        overflow: auto;
+        margin-top: 10px;
 
         .performance-page-chart {
           border: none;
           padding: 0;
+          margin-top: 5px;
+          margin-bottom: 20px;
+        }
+
+        .performance-page-chart-kw {
+          border: none;
+          padding: 0;
+          margin-bottom: 20px;
+          overflow: visible;
         }
       }
     }

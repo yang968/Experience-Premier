@@ -3,15 +3,32 @@ import { HorizontalBar } from "react-chartjs-2";
 import {
 	SENTIMENT_COLOR,
 	SENTIMENT_LABELS,
-	CALL_PERFORMANCE_PAGE
+	CALL_PERFORMANCE_PAGE1,
+	CALL_PERFORMANCE_PAGE2
 } from "../../../chart/chart_constants";
 
 class CallPerformancePage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			chartData: { labels: SENTIMENT_LABELS },
-			options : CALL_PERFORMANCE_PAGE
+			horizontalStacked : {
+				chartData: { labels: SENTIMENT_LABELS },
+				options : CALL_PERFORMANCE_PAGE1
+			},
+			keywords: {
+				labels: ["a", "b"],
+				chartData: [
+					{ label: "Sadness", data: [] },
+					{ label: "Joy", data: [] },
+					{ label: "Anger", data: [] },
+					{ label: "Fear", data: [] },
+					{ label: "Disgust", data: [] },
+				],
+				options: CALL_PERFORMANCE_PAGE2				
+			},
+			relevance: {
+				chartData: { labels: [] }
+			}
 		};
 	}
 
@@ -29,13 +46,38 @@ class CallPerformancePage extends React.Component {
 			obj.data = [(data[i] / total * 100).toFixed(2)];
 			datasets.push(obj);
 		}
-		this.state.datasets = datasets;
+		this.state.horizontalStacked.chartData.datasets = datasets;
 	}
 
-	keywordSetup() {
-		let keywords;
+	relevanceSetup() {
+		let datasets = [];
 		let kw = this.props.stats.results.keywords;
-		kw.forEach() 
+		this.state.relevance.chartData.labels = [];
+		for (let i = 0; i < kw.length; i++) {
+			let obj = {};
+			this.state.relevance.chartData.labels.push(kw[i].text);
+			obj.label = kw[i].text;
+			obj.backgroundColor = `rgba(40, 122, 255,` + kw[i].relevance + `)`,
+			obj.data = [(kw[i].relevance * 100).toFixed(3)];
+			datasets.push(obj);
+		}
+		this.state.relevance.chartData.datasets = datasets;
+	}
+
+	keywordSentimentSetup() {
+		let kw = this.props.stats.results.keywords;
+		this.state.keywords.labels = [];
+		for (let i = 0; i < 5; i++) {
+			this.state.keywords.chartData[i].data = [];
+			for (let j = 0; j < kw.length; j++) {
+				if (j > 2) {break;}
+				if (i === 0) {this.state.keywords.labels.push(kw[j].text);}
+				let k = String(this.state.keywords.chartData[i].label.toLowerCase());
+				if (kw[j].emotion === undefined) {continue;}
+				this.state.keywords.chartData[i].data.push(kw[j].emotion[k]);
+			}
+			this.state.keywords.chartData[i].backgroundColor = SENTIMENT_COLOR[i];
+		}
 	}
 
 	colorLabel() {
@@ -53,9 +95,10 @@ class CallPerformancePage extends React.Component {
 	}
 
 	render() {
-			console.log(this.props.stats.results.keywords);
 			this.dataSetup();
-			return <div className='performance-page animated fadeIn'>
+			this.keywordSentimentSetup();
+			this.relevanceSetup();
+			return <div className='performance-page animated slideInLeft'>
 					<div className='performance-page-label'>
 						<div className="performance-ls">
 							<pre> Label: {this.colorLabel()}</pre>
@@ -66,18 +109,28 @@ class CallPerformancePage extends React.Component {
 					</div>
 					<div className="performance-page-charts">
 						<div className='performance-page-chart'>
+							<h6>Overall Sentiment Score</h6>
 							<HorizontalBar data={{ 
 									labels: ['Sentiment Analysis'], 
-									datasets: this.state.datasets}} 
-								options={this.state.options} 
+								datasets: this.state.horizontalStacked.chartData.datasets}} 
+								options={this.state.horizontalStacked.options} 
 							/>
 						</div>
 						<div className='performance-page-chart'>
+								<h6>Keywords and Relevance</h6>
 							<HorizontalBar data={{
-								labels: ['Sentiment Analysis'],
-								datasets: this.state.datasets
+								datasets: this.state.relevance.chartData.datasets
 							}}
-								options={this.state.options}
+								options={this.state.keywords.options}
+							/>
+						</div>
+						<div className='performance-page-chart-kw'>
+							<h6>Sentiment Analysis of Each Keyword</h6>
+							<HorizontalBar data={{
+								labels: this.state.keywords.labels,
+								datasets: this.state.keywords.chartData
+							}}
+								options={this.state.keywords.options}
 							/>
 						</div>
 				</div>
