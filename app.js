@@ -19,9 +19,9 @@ const companies = require('./routes/api/companies');
 const path = require("path");
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("public/build"));
+  app.use(express.static("public"));
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "public", "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "public", "index.html"));
   });
 }
 
@@ -48,12 +48,5 @@ app.use("/api/users", users);
 app.use("/api/tasks", tasks);
 app.use("/api/industries", industries);
 app.use("/api/companies", companies);
-
-
-app.use(express.static(path.join(__dirname, './public')));
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, './public', 'index.html'));
-})
-
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
