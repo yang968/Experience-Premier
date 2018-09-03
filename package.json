@@ -4,9 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "postinstall": "npm install --prefix ./public",
     "start": "node app.js",
-    "server": "node app.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "server": "nodemon app.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix public && npm run build --prefix public"
   },
   "engines": {
     "node": "10.9.0"

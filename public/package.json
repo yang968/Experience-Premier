@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "postinstall": "webpack --mode=production",
     "server": "webpack-dev-server --mode=development --open --config webpack.dev.js",
     "webpack": "webpack --mode=development --watch"
   },

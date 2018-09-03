@@ -49,4 +49,11 @@ app.use("/api/tasks", tasks);
 app.use("/api/industries", industries);
 app.use("/api/companies", companies);
 
+
+app.use(express.static(path.join(__dirname, './public')));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, './public', 'index.html'));
+})
+
+
 app.listen(port, () => console.log(`Server is running on port ${port}`));
