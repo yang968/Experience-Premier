@@ -39,11 +39,11 @@
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.6",
-    "webpack-merge": "^4.1.4"
+    "webpack-merge": "^4.1.4",
+    "mini-css-extract-plugin": "^0.4.2"
   },
   "devDependencies": {
     "css-loader": "^1.0.0",
-    "mini-css-extract-plugin": "^0.4.2",
     "node-sass": "^4.9.3",
     "nodemon": "^1.18.3",
     "resolve-url-loader": "^2.3.0",
