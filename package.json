@@ -8,6 +8,9 @@
     "server": "node app.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
+  "engines": {
+    "node": "10.9.0"
+  },
   "author": "Victor Yang, Mark Lee, Nick Matison, Jordan Yu",
   "license": "MIT",
   "dependencies": {
