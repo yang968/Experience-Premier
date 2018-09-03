@@ -16,7 +16,7 @@ class CallPerformancePage extends React.Component {
 				options : CALL_PERFORMANCE_PAGE1
 			},
 			keywords: {
-				labels: [],
+				labels: ["a", "b"],
 				chartData: [
 					{ label: "Sadness", data: [] },
 					{ label: "Joy", data: [] },
@@ -64,15 +64,20 @@ class CallPerformancePage extends React.Component {
 		this.state.relevance.chartData.datasets = datasets;
 	}
 
-	keywordSetup() {
+	keywordSentimentSetup() {
 		let kw = this.props.stats.results.keywords;
 		this.state.keywords.labels = [];
-		for (let i = 0; i < kw.length; i++) {
-			this.state.keywords.labels.push(kw[i].text);
-			this.state.keywords.chartData[i].data.push(kw[i].emotion.sadness);
+		for (let i = 0; i < 5; i++) {
+			this.state.keywords.chartData[i].data = [];
+			for (let j = 0; j < kw.length; j++) {
+				if (j > 2) {break;}
+				if (i === 0) {this.state.keywords.labels.push(kw[j].text);}
+				let k = String(this.state.keywords.chartData[i].label.toLowerCase());
+				if (kw[j].emotion === undefined) {continue;}
+				this.state.keywords.chartData[i].data.push(kw[j].emotion[k]);
+			}
+			this.state.keywords.chartData[i].backgroundColor = SENTIMENT_COLOR[i];
 		}
-		// console.log(this.state.keywords.labels);
-		// console.log(this.state.keywords.chartData);
 	}
 
 	colorLabel() {
@@ -90,12 +95,10 @@ class CallPerformancePage extends React.Component {
 	}
 
 	render() {
-			console.log(this.props.stats);
+		console.log(this.props.stats);
 			this.dataSetup();
-			// this.keywordSetup();
+			this.keywordSentimentSetup();
 			this.relevanceSetup();
-		console.log(this.state.horizontalStacked);
-		console.log(this.state.relevance);
 			return <div className='performance-page animated slideInLeft'>
 					<div className='performance-page-label'>
 						<div className="performance-ls">
@@ -122,9 +125,11 @@ class CallPerformancePage extends React.Component {
 								options={this.state.keywords.options}
 							/>
 						</div>
-						<div className='performance-page-chart'>
+						<div className='performance-page-chart-kw'>
+							<h6>Sentiment Analysis of Each Keyword</h6>
 							<HorizontalBar data={{
-								datasets: this.state.horizontalStacked.chartData.datasets
+								labels: this.state.keywords.labels,
+								datasets: this.state.keywords.chartData
 							}}
 								options={this.state.keywords.options}
 							/>

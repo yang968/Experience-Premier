@@ -44,5 +44,10 @@ export const CALL_PERFORMANCE_PAGE2 = {
     position: 'nearest',
     titleFontSize: 0,    
   }, 
-  legend: { display: false }
+  legend: { display: false },
+  scales: {
+    yAxes: [{
+      barPercentage: 0.7,
+    }]
+  },
 };
