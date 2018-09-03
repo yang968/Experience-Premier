@@ -28,37 +28,36 @@ class DashboardIndexStats extends React.Component {
     };
   }
 
-  componentWillMount() {
-    if (this.props.stats.length > 0) {
-      let [neg, neu, pos, s, j, a, f, d] = [0, 0, 0, 0, 0, 0, 0, 0];
-      let count = 0;
-      let stats = this.props.stats;
-      this.props.stats.forEach((stat) => {count += stat.tasks;});
-      stats.forEach((stat) => {
-        neg += stat.negative; neu += stat.neutral;
-        pos += stat.positive; s += stat.sadness;
-        j += stat.joy; a += stat.anger;
-        f += stat.fear; d += stat.disgust;
-      });
-      let data = [s, j, a, f, d].map((el) => (el/count).toFixed(3));
-      this.state.chartData1.datasets[0].data = [neg, neu, pos];
-      this.state.chartData2.datasets[0].data = data;
-    }
+  getData() {
+    let [neg, neu, pos, s, j, a, f, d] = [0, 0, 0, 0, 0, 0, 0, 0];
+    let count = 0;
+    let stats = this.props.stats;
+    this.props.stats.forEach((stat) => {count += stat.tasks;});
+    stats.forEach((stat) => {
+      neg += stat.negative; neu += stat.neutral;
+      pos += stat.positive; s += stat.sadness;
+      j += stat.joy; a += stat.anger;
+      f += stat.fear; d += stat.disgust;
+    });
+    let data = [s, j, a, f, d].map((el) => (el/count).toFixed(3));
+    this.state.chartData1.datasets[0].data = [neg, neu, pos];
+    this.state.chartData2.datasets[0].data = data;
   }
 
   returnTitleText() {
     if (this.props.manager) {
       return <span>Team</span>;
     } else {
-    return <span>Your1</span>;
+    return <span>Your</span>;
     }
   }
 	render() {
-    if (this.props.stats === 0) {
+    if (this.props.stats.length === 0) {
       return <div className="dashboard-index-stats-container">
         <h1>You have no data to show :(</h1>
       </div>;
     } else {
+    this.getData();
 		return <div className="dashboard-index-stats-container">
           <div className="dashboard-index-stats-graph-pie">
             <div className='stats-graph-title-one'>
@@ -80,7 +79,7 @@ class DashboardIndexStats extends React.Component {
               </div>
               <Polar data={this.state.chartData2} options={{ legend: { position: 'right' } }}/>
             </div>
-        </div>
+         </div>
       </div>;
     }
 	}
