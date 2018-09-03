@@ -12,6 +12,7 @@
     height: 100%;
     top: 0;
     left: 0;
+    bottom: 0;
     z-index: 1;
     padding: 20px;
     color: set-text-color($primary-color);
@@ -39,10 +40,6 @@
     width: 100%;
     bottom: 0;
     
-    &:first-child {
-      height: 100%;
-    }
-    
     li {
       font-size: 18px;
       line-height: 1.5em;
@@ -55,19 +52,19 @@
       }
       
       * {
-        display: block;
         width: 10vw;
+        display: block;
         border: none;
         border-radius: 1.5px;
-        padding: 6px 0 6px 10px;
-        padding-right: 2vw;
+        padding: 6px 2vw 6px 10px;
         margin: 0;
         background: rgba(255, 255, 255, 0.2);
         color: set-text-color($primary-color);
         transition: 0.1s;
+        overflow: hidden;
         
         &:hover {
-          width: 140%;
+          padding-right: 5vw;
           background: rgba(255, 255, 255, 0.3);
           cursor: pointer;
         }
@@ -75,15 +72,15 @@
 
       a {
         text-decoration: none;
-        overflow: hidden;
       }
 
       button {
         display: block;
         text-align: left;
+        line-height: 1.7em;
 
         &:hover {
-          width: 160%;
+          width: 250%;
         }
       }
     }
