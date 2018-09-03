@@ -3,7 +3,7 @@
   grid-template-columns: repeat(2, 50%);
   grid-template-rows: repeat(2, 50%);
   grid-gap: 1em;
-  height: 100%;
+  max-height: 50%;
   box-sizing: border-box;
   padding-right: 1em;
   
@@ -25,9 +25,10 @@
     grid-column: 1 / 3;
     border: none;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 50%);
     grid-gap: 1em;
     padding: 0;
+    padding-right: 1em;
     box-sizing: border-box;
     text-align: center;
       
@@ -89,20 +90,20 @@
       grid-column: 2 / 3;
     }
   }
-  
-  
-  .managers-div{
+
+  .managers-div {
     display: flex;
     justify-content: space-around;
     border: none;
   }
 
-.dashboard-index-employees-container {
+.dashboard-index-employees-container { // edit 
   background: #fff;
-  grid-row: 2;
+  grid-row: 2 / 3;
   grid-column: 1 / 2;
   min-width: 0;
-  max-height: 100%;
+  max-height: 50%;
+  box-sizing: border-box;
   
   .dashboard-index-employees-list {
     font-size: 18px;
@@ -127,21 +128,24 @@
   }
 }
 
-.dashboard-index-call-history-container {
+.dashboard-index-call-history-container { // edit
   background:#fff;
-  grid-row: 2;
+  grid-row: 2 / 3;
   grid-column: 2 / 3;
   margin-bottom: 1em;
+  max-height: 50%;
+  box-sizing: border-box;
   
   .dashboard-index-call-history-list {
     font-size: 16px;
-    overflow: scroll;
-  }
-    .call-history-item-list {
+    overflow-y: scroll;
+    max-height: 100%;
+
+    .call-history-list-item {
       background: $primary-color;
       border-radius: 3px;
       color: set-text-color($primary-color);
-      padding: 5px 10px;
+      padding: 5px 5px;
       transition: 0.05s;
       margin-bottom: 8px;
 
@@ -156,9 +160,10 @@
 
         .history-item-div {
           display: flex;
-          justify-content: space-around;
-          width: 70%;
+          justify-content: space-between;
+          width: 80%;
           border: none;
         }
     }
+  }
 }
