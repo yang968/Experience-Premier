@@ -29,8 +29,7 @@ class DashboardIndexStats extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.props.stats)
-    if (this.props.stats.length === 0) {
+    if (this.props.stats && this.props.stats.length > 0) {
       let [neg, neu, pos, s, j, a, f, d] = [0, 0, 0, 0, 0, 0, 0, 0];
       let count = 0;
       let stats = this.props.stats;
