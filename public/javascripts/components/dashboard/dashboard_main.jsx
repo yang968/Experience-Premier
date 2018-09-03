@@ -15,7 +15,7 @@ const DashboardMain = () => (
     <Switch>
       <ProtectedRoute exact path="/dashboard" component={DashboardIndexContainer} />
       <ProtectedRoute path="/dashboard/call" component={SpeechRecordContainer} />
-      <ProtectedRoute path="/dashboard/employee/:employeeId" component={EmployeePageContainer} /> */}
+      <ProtectedRoute path="/dashboard/employee/:employeeId" component={EmployeePageContainer} /> 
     </Switch>
   </div>
 );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { TASK_SUBMITTED } from '../../../reducers/errors_reducer';
 
 class SpeechRecord extends React.Component {
   constructor(props) {
@@ -71,15 +72,23 @@ class SpeechRecord extends React.Component {
 
   render() {
     let buttonText = this.state.stream ? "Stop" : "Record";
+    let errors = null;
+    if (this.props.errors && this.props.errors[0] === TASK_SUBMITTED) {
+      errors = <li className="task-success animated fadeInDown">
+          {this.props.errors[0]}
+        </li>;
+    } else if (this.props.errors) {
+      errors = this.props.errors.map((error, idx) => (<li className="task-fail animated fadeInDown" key={idx}>{error}</li>));
+    }
     return (
       <div className="speech-record-container animated zoomIn">
         <div className="speech-record-box">
           <h1>Record Conversation</h1>
           <div className="live-text" />
           <ul>
-            {this.props.errors && this.props.errors.map((error, idx) => (<li className="task-fail animated fadeInDown" key={idx}>{error}</li>))}
+            {errors}
           </ul>
-          <button className="record-button" onClick={this.handleSubmit}>
+          <button className="record-button animated slideInUp" onClick={this.handleSubmit}>
             {buttonText}
           </button>
         </div>

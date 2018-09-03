@@ -95,7 +95,6 @@ class CallPerformancePage extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.stats);
 			this.dataSetup();
 			this.keywordSentimentSetup();
 			this.relevanceSetup();

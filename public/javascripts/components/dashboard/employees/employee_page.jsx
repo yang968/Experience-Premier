@@ -29,7 +29,7 @@ class EmployeePage extends React.Component {
     let tasks = 0;
     let imgUrl = this.imgUrl;
     this.props.tasks.forEach(task => {
-      console.log(task)
+      // console.log(task)
       if ((parseInt(task.date.slice(5,7))) === (date.getMonth() + 1)) tasks++;
     })
 

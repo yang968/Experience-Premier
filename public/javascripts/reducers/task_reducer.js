@@ -5,18 +5,23 @@ import {
   RECEIVE_DASHBOARD} from '../actions/employee_actions';
 import merge from 'lodash/merge'
 
-const TaskReducer = (oldState = {}, action) => {
+const TaskReducer = (oldState = [], action) => {
   switch (action.type) {
     case RECEIVE_TASK:
-      return merge({}, oldState, {[action.task._id]: action.task});
+      let newState = oldState;
+      return newState.concat(action.task);
     case REMOVE_TASK:
-      let newState = merge({}, oldState);
-      delete newState[action.task._id]
+      let i = 0;
+      for (i; i < oldState.length; i++) {
+        if (oldState[i]._id === action.task._id) break;
+      }
+      newState = oldState.splice(i, 1);
+      // delete newState[action.task._id]
       return newState;
     case RECEIVE_CURRENT_USER:
-      return action.payload.currentUser.myTasks;
+      return [];
     case RECEIVE_DASHBOARD:
-      return action.payload.currentUser.myTasks;
+      return [];
     case RECEIVE_USER: 
       if (action.payload.tasks) return action.payload.tasks;
       return oldState;
