@@ -8,9 +8,7 @@
   padding-right: 1em;
   
   div {
-    border: 1px solid darken($light-color, 5%);
     border-radius: 3px;
-    padding: 20px;
     
     h1 {
       font-size: 16px;
@@ -28,10 +26,12 @@
 
 .dashboard-index-employees-container { // edit 
   background: #fff;
+  border: 1px solid darken($light-color, 5%);
   grid-row: 2 / 3;
   grid-column: 1 / 2;
   min-width: 0;
   max-height: 65%;
+  padding: 20px;
   box-sizing: border-box;
   
   .dashboard-index-employees-list {
@@ -59,10 +59,12 @@
 
 .dashboard-index-call-history-container { // edit
   background:#fff;
+  border: 1px solid darken($light-color, 5%);
   grid-row: 2 / 3;
   grid-column: 2 / 3;
-  margin-bottom: 1em;
   max-height: 100%;
+  padding: 20px;
+  margin-bottom: 1em;
   box-sizing: border-box;
   
   .dashboard-index-call-history-list {
