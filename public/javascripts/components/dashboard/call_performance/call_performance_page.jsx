@@ -57,7 +57,7 @@ class CallPerformancePage extends React.Component {
 			let obj = {};
 			this.state.relevance.chartData.labels.push(kw[i].text);
 			obj.label = kw[i].text;
-			obj.backgroundColor = `rgba(40, 122, 255,` + kw[i].relevance + `)`,
+			obj.backgroundColor = `rgba(40, 122, 255,` + kw[i].relevance + `)`;
 			obj.data = [(kw[i].relevance * 100).toFixed(3)];
 			datasets.push(obj);
 		}
