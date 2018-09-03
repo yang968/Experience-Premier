@@ -23,7 +23,7 @@ module.exports = {
         exclude: /(node_modules)/,
         use: [
           // fallback to style-loader in development
-          process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'style-loader',
           "css-loader",
           "resolve-url-loader",
           "sass-loader?sourceMap"
