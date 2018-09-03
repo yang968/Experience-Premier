@@ -1,0 +1,40 @@
+.modal {
+  display: none;
+
+  &.is-open {
+    display: block;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  color: $dark-color;
+  top: 10px;
+  right: 20px;
+  font-size: 50px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.modal-form {
+  position: absolute;
+  z-index: 3;
+  margin: auto;
+  margin-left: -275px;
+  top: 100px;
+  left: 50%;
+  background: $light-color;
+  border: none;
+  border-radius: 5px;
+}

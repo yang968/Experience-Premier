@@ -1,0 +1,39 @@
+@import 'partials/variables';
+@import 'partials/functions';
+
+// Styles
+
+html, body {
+  font-family: $montserrat;
+  background: lighten($light-color, 40%);
+  // overflow-y: hidden;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 25px 12px;
+  color: set-text-color($secondary-color);
+  background-color: $secondary-color;
+  box-sizing: border-box;
+
+  a {
+    font-family: $montserrat, sans-serif;
+    font-size: 36px;
+    text-decoration: none;
+    color: set-text-color($secondary-color);
+  }
+}
+
+.main {
+  position: absolute;
+  width: 100%;
+}
+
+button {
+  font-family: $montserrat, sans-serif; 
+  border: none;
+  font-size: 17px;
+}

@@ -1,0 +1,36 @@
+.splash-header {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 1;
+
+  font-size: 14px;
+  font-weight: 400;
+  color: $primary-color;
+}
+
+.splash-header-spacer {
+  position: relative;
+  width: 100%;
+  height: 70px;
+}
+
+.home-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  letter-spacing: 1px;
+  color: $primary-color;
+}
+
+i.icon-home {
+  background: image-url("flipped_trello_logo.png");
+  background-size: 98%;
+  width: 36px;
+  height: 36px;
+  margin-right: 7px;
+  padding-bottom: 8px;
+}

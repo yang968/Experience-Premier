@@ -1,0 +1,105 @@
+.employee-page-container {
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 220px, ;
+  grid-gap: 1em;
+
+  h1 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 0.3em;
+  }
+}
+
+.employee-info-container {
+  grid-row: 1 / 2;
+  max-height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid darken($light-color, 5%);
+  border-radius: 3px;
+  padding: 15px;
+
+  .employee-profile-pic {
+    height: 180px;
+    border: 1px solid $light-color;
+    border-radius: 50%;
+  }
+
+  section {
+    max-height: 100%;
+    margin-left: 30px;
+    overflow: hidden;
+      
+    * {
+      line-height: 1.5em;
+    }
+
+    h1 {
+      font-size: 30px;
+    }
+    
+    h2 {
+      font-size: 18px;
+      // line-height: 1.5em;
+    }
+  
+  }
+
+  .completed-call-count {
+    height: 60%;
+    background: $primary-color-dark;
+    color: set-text-color($primary-color-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    width: 120px;
+    overflow: hidden;
+
+    h1 {
+      font-size: 60px;
+      font-weight: 400;
+      line-height: 1.1em;
+      margin: 0;
+    }
+  }
+}
+
+.employee-call-index-container {
+  grid-row: 2 / 3;
+  border: none;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1em;
+
+  & > div {
+    border: 1px solid darken($light-color, 5%);
+    border-radius: 3px;
+  }
+  
+  .performance-data {
+    padding: 20px;
+    box-sizing: border-box;
+    grid-column: 1 / 4;
+  }
+  
+  .call-history-container {
+    padding: 20px;
+    box-sizing: border-box;
+    grid-column: 4 / 6;
+
+    h1 {
+      margin-bottom: 1em;
+    }
+  }
+
+}

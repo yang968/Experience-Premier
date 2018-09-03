@@ -1,0 +1,53 @@
+{
+  "name": "exp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "webpack-dev-server --mode=development --open --config webpack.dev.js",
+    "webpack": "webpack --mode=development --watch"
+  },
+  "author": "Victor Yang, Mark Lee, Nick Matison, Jordan Yu",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "chart.js": "^2.7.2",
+    "dateformat": "^3.0.3",
+    "file-loader": "^2.0.0",
+    "form-urlencoded": "^3.0.0",
+    "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.10",
+    "microsoft-speech-browser-sdk": "0.0.12",
+    "normalize.css": "^8.0.0",
+    "react": "^16.4.2",
+    "react-chartjs-2": "^2.7.4",
+    "react-dom": "^16.4.2",
+    "react-favicon": "0.0.14",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "vcap_services": "^0.5.1",
+    "watson-developer-cloud": "^3.9.0",
+    "watson-speech": "^0.35.0",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.6",
+    "webpack-merge": "^4.1.4"
+  },
+  "devDependencies": {
+    "css-loader": "^1.0.0",
+    "mini-css-extract-plugin": "^0.4.2",
+    "node-sass": "^4.9.3",
+    "nodemon": "^1.18.3",
+    "resolve-url-loader": "^2.3.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.22.1"
+  }
+}

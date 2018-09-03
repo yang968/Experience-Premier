@@ -1,0 +1,91 @@
+.dashboard-sidebar-container {
+  position: fixed;
+  grid-column: 1 / 2;
+  width: 25vw;
+  min-width: 250px;
+  height: 100vh;
+  background: $primary-color;
+
+  .dashboard-sidebar {
+    position: fixed;
+    overflow: hidden;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 20px;
+    color: set-text-color($primary-color);
+  
+    .dashboard-home-link {
+      text-decoration: none;
+      font-size: 40px;
+      letter-spacing: 1px;
+      color: set-text-color($primary-color); 
+    }
+  
+    .welcome-message {
+      padding-top: 1.2em;
+      padding-left: 3px;
+      font-size: 16px;
+      animation-delay: 1s;
+    }
+  }
+}
+
+.dashboard-sidebar-nav-container {
+  padding: 2em 0.5em 2em 1em;
+  
+  .dashboard-sidebar-nav {
+    width: 100%;
+    bottom: 0;
+    
+    &:first-child {
+      height: 100%;
+    }
+    
+    li {
+      font-size: 18px;
+      line-height: 1.5em;
+      margin-bottom: 12px;
+      overflow: hidden;
+      
+      &:last-child {
+        position: fixed;
+        bottom: 30px;
+      }
+      
+      * {
+        display: block;
+        width: 10vw;
+        border: none;
+        border-radius: 1.5px;
+        padding: 6px 0 6px 10px;
+        padding-right: 2vw;
+        margin: 0;
+        background: rgba(255, 255, 255, 0.2);
+        color: set-text-color($primary-color);
+        transition: 0.1s;
+        
+        &:hover {
+          width: 100%;
+          background: rgba(255, 255, 255, 0.3);
+          cursor: pointer;
+        }
+      }
+
+      a {
+        text-decoration: none;
+        overflow: hidden;
+      }
+
+      button {
+        display: block;
+        text-align: left;
+
+        &:hover {
+          width: 160%;
+        }
+      }
+    }
+  }
+}

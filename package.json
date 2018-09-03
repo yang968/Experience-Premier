@@ -5,19 +5,25 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "server": "nodemon app.js"
+    "server": "nodemon app.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "Victor Yang, Mark Lee, Nick Matison, Jordan Yu",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.9",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "validator": "^10.7.0"
+    "promise": "^8.0.1",
+    "validator": "^10.7.0",
+    "vcap_services": "^0.5.1",
+    "watson-developer-cloud": "^3.9.0",
+    "watson-speech": "^0.35.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.3"
