@@ -8,7 +8,6 @@ const handleClick = (e, task, triggerManager) => {
 }
 
 const CallHistoryItem = ({ task, triggerManager }) => {
-  console.log(triggerManager)
   return (
   <ul className="call-history-item-list" onClick={(e) => handleClick(e, task, triggerManager)}>
     <div className="history-item-div animated slideInUp">

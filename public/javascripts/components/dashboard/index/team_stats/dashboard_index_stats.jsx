@@ -29,7 +29,8 @@ class DashboardIndexStats extends React.Component {
   }
 
   componentWillMount() {
-    if (this.props.stats.length > 0) {
+    console.log(this.props.stats)
+    if (this.props.stats.length === 0) {
       let [neg, neu, pos, s, j, a, f, d] = [0, 0, 0, 0, 0, 0, 0, 0];
       let count = 0;
       let stats = this.props.stats;
@@ -54,7 +55,7 @@ class DashboardIndexStats extends React.Component {
   }
 
 	render() {
-    if (this.props.stats === 0) {
+    if (this.props.stats.length === 0) {
       return <div className="dashboard-index-stats-container">
         <h1>You have no data to show :(</h1>
       </div>;
