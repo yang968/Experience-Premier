@@ -43,10 +43,10 @@
     "mini-css-extract-plugin": "^0.4.2",
     "css-loader": "^1.0.0",
     "resolve-url-loader": "^2.3.0",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "node-sass": "^4.9.3"
   },
   "devDependencies": {
-    "node-sass": "^4.9.3",
     "nodemon": "^1.18.3",
     "style-loader": "^0.22.1"
   }
