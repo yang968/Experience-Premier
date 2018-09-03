@@ -36,13 +36,15 @@
   
   .dashboard-index-employees-list {
     font-size: 18px;
-    overflow: auto;
+    max-height: 80%;
+    overflow-y: scroll;
 
     .employee-list-item {
       background: $primary-color;
       border-radius: 2px;
       color: set-text-color($primary-color);
       padding: 5px 10px;
+      margin-bottom: 5px;
       transition: 0.05s;
 
       &:nth-child(even) {
