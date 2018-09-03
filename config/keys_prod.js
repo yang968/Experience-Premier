@@ -4,4 +4,3 @@ module.exports = {
   emotionUsername: process.env.EMOTION_USERNAME,
   emotionPassword: process.env.EMOTION_PASSWORD
 };
-

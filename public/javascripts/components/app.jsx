@@ -11,7 +11,7 @@ import DashboardPage from './dashboard/dashboard_page';
 import { Route } from 'react-router-dom';
 
 const App = () => (
-  <div>
+  <div className="app-div">
       <AuthRoute path="/" component={SplashHeaderContainer} />
       <AuthRoute exact path="/" component={SplashBody} />
       <AuthRoute exact path="/" component={LoginFormContainer} />
