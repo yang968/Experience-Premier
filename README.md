@@ -20,12 +20,14 @@ Managers, executives, and HR representatives will be able to view the resulting 
 ## Features
 Employee login displays their own data and previous calls. They can select a specific call and display that call's data.
 
+![picture](images/dashboard.gif)
 
 Manager login displays their team's data as well as the manager's previous calls. Manager can click on an employee to render the view the employee's data.
-(gif)
+
+![picture](images/signin.gif)
 
 Employees and Managers can both record a call or a conversation
-(gif)
+
 
 
 ## Possible Future Implementations
