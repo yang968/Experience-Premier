@@ -5,20 +5,26 @@ class TextAnalysis extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      transcript: ""
+    }
   }
 
   componentWillUnmount() {
     this.props.clearErrors();
   }
 
+  updateTranscript(e) {
+    this.setState({transcript: e.target.value})
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.clearErrors();
-    let p = document.querySelector(".text-description")
-    console.log(this.props.currentUser)
+    console.log(this.state.transcript)
     this.props.createTask({
       token: this.props.currentUser.token,
-      transcript: p.innerText
+      transcript: this.state.transcript
     });
 
   };
@@ -40,6 +46,7 @@ class TextAnalysis extends React.Component {
             className="live-text" 
             type="text" 
             placeholder="Your text here"
+            onChange={(e) => this.updateTranscript(e)}
           ></textarea>
           <ul>
             {errors}
