@@ -35,6 +35,9 @@ class DashboardSidebar extends React.Component {
                 <Link to="/dashboard/call">Record call</Link>
               </li>
               <li>
+                <Link to="/dashboard/text-analysis">Text Analysis</Link>
+              </li>
+              <li>
                 <button onClick={this.handleLogout}>Log out</button>
               </li>
             </ul>
