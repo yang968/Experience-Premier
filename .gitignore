@@ -3,3 +3,5 @@
 .DS_store
 /public/node_modules/*
 /documents/Untitled-1
+/public/bundle.js
+/public/bundle.js.map
