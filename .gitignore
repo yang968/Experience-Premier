@@ -2,4 +2,6 @@
 /node_modules
 .DS_store
 /public/node_modules/*
+/public/bundle.js 
+/public/bundle.js.map
 /documents/Untitled-1
