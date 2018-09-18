@@ -5,20 +5,26 @@ class TextAnalysis extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      transcript: ""
+    }
   }
 
   componentWillUnmount() {
     this.props.clearErrors();
   }
 
+  updateTranscript(e) {
+    this.setState({transcript: e.target.value})
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.clearErrors();
-    let p = document.querySelector(".text-description")
-    console.log(this.props.currentUser)
+    console.log(this.state.transcript)
     this.props.createTask({
       token: this.props.currentUser.token,
-      transcript: p.innerText
+      transcript: this.state.transcript
     });
 
   };
@@ -39,7 +45,9 @@ class TextAnalysis extends React.Component {
             <textarea
             className="live-text" 
             type="text" 
-            placeholder="Your text here"
+            placeholder="Here you can submit text for data analysis. Examples include an email you have drafted
+          or notes for a presentation you have prepared."
+            onChange={(e) => this.updateTranscript(e)}
           ></textarea>
           <ul>
             {errors}
@@ -47,9 +55,6 @@ class TextAnalysis extends React.Component {
           <button className="record-button animated slideInUp" onClick={this.handleSubmit}>
             Submit Text
           </button>
-          <p className="text-description">Here you can submit text for data analysis. Examples include an email you have drafted
-            or notes for a presentation you have prepared.
-          </p>
         </div>
       </div>
     );
