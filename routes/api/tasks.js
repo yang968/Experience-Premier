@@ -49,6 +49,7 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
 
   // Calling IBM Watson from Backend
   let results = {};
+  // console.log(parameters);
   apiCall.analyze(parameters, function(error, response) {
     if (error) {
       console.log('Failed to get transcript analyzed: ' + error);
