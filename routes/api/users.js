@@ -161,9 +161,12 @@ function getUserInfoAndToken(res, user, needToken) {
   });
 
   let findTasks = new Promise((resolve, reject) => {
-    Task.find({ user: payload.id }, 'user transcript date results', (error, result) => {
-      if (error) reject(error);
-      resolve(result);
+    // Task.find({ user: payload.id }, 'user transcript date results', (error, result) => {
+    //   if (error) reject(error);
+    //   resolve(result);
+    // });
+    Task.find({ user: payload.id }, "user transcript date results").sort({ date: 'desc' }).then(tasks => {
+      resolve(tasks);
     });
   });
 
