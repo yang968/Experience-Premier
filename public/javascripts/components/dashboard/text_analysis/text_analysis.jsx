@@ -45,7 +45,8 @@ class TextAnalysis extends React.Component {
             <textarea
             className="live-text" 
             type="text" 
-            placeholder="Your text here"
+            placeholder="Here you can submit text for data analysis. Examples include an email you have drafted
+          or notes for a presentation you have prepared."
             onChange={(e) => this.updateTranscript(e)}
           ></textarea>
           <ul>
@@ -54,9 +55,6 @@ class TextAnalysis extends React.Component {
           <button className="record-button animated slideInUp" onClick={this.handleSubmit}>
             Submit Text
           </button>
-          <p className="text-description">Here you can submit text for data analysis. Examples include an email you have drafted
-            or notes for a presentation you have prepared.
-          </p>
         </div>
       </div>
     );
