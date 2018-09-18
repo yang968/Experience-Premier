@@ -21,12 +21,12 @@ class TextAnalysis extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.clearErrors();
-    console.log(this.state.transcript)
+    // console.log(this.state.transcript)
     this.props.createTask({
       token: this.props.currentUser.token,
       transcript: this.state.transcript
     });
-
+    this.setState({ transcript: "" });
   };
 
   render() {
@@ -43,12 +43,14 @@ class TextAnalysis extends React.Component {
         <div className="speech-record-box">
           <h1>Submit Text for Analysis</h1> 
             <textarea
-            className="live-text" 
-            type="text" 
-            placeholder="Here you can submit text for data analysis. Examples include an email you have drafted
-          or notes for a presentation you have prepared."
-            onChange={(e) => this.updateTranscript(e)}
-          ></textarea>
+              className="live-text" 
+              type="text" 
+              placeholder="Here you can submit text for data analysis. Examples include an email you have drafted
+                or notes for a presentation you have prepared."
+              onChange={(e) => this.updateTranscript(e)}
+              value={this.state.transcript}
+            >
+            </textarea>
           <ul>
             {errors}
           </ul>
