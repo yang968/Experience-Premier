@@ -2,10 +2,6 @@
 
 [Live Link](http://experience-premier.herokuapp.com/#/)
 
-## Team Members
-[Seungho Victor Yang](https://github.com/yang968), [Nick Matison](https://github.com/nmatison), [Mark Lee](https://github.com/marklee9), [Jordan Yu](https://github.com/JordanYu4)
-
-
 ## Background & Overview
 
 ExP is a customer service management platform that provides employee performance data based on customer interaction records. When an employee completes a call, they will be able to submit transcripts or live conversation recordings, which will then be sent to the back-end. Data will then be passed to IBM Watson’s text analysis API for sentiment analysis, which in turn will be returned to the application frontend to be visualized. 
@@ -28,9 +24,10 @@ Manager login displays their team's data as well as the manager's previous calls
 
 Employees and Managers can both record a call or a conversation
 
-
-
 ## Possible Future Implementations
 + Allow a user to submit text as well. This could include emails, speeches, presentations and live chats
 + Implement feature that allows managers to filter team data based on year, month, week, or day.
 + Expand positions above just a manager of a team. Display the data of entire branches and companies. Compare that data to data from companies within the same Industry.
+
+## Team Members
+Seungho Victor Yang, Nick Matison, Mark Lee, Jordan Yu
