@@ -48,10 +48,12 @@ const receiveUser = payload => ({
   payload: payload.data
 });
 
-const receiveCurrentUser = (payload) => ({
+const receiveCurrentUser = (payload) => {
+  console.log(payload)
+  return ({
   type: RECEIVE_CURRENT_USER,
-  payload: payload.data
-})
+  payload: payload
+  })}
 
 const receiveErrors = (errors) => {
   return ({
