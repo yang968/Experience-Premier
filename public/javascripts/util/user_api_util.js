@@ -30,7 +30,6 @@ export const logout = (token) => {
       mode: "cors",
       credentials: "same-origin",
       headers: {
-        "Content-Type": "application/x-www-form-+urlencoded",
         "Authorization": token
       },
       redirect: "follow",
@@ -39,12 +38,6 @@ export const logout = (token) => {
   );
 };
 
-// export const getDashboard = (token) => {
-//   let instance = axios.create({});
-//   instance.defaults.headers.common[`Authorization`] = token;
-//   return instance.get("/api/users/dashboard");
-// }
-
 export const getDashboard = (token) => {
   return(
     fetch("/api/users/dashboard", {
@@ -52,7 +45,6 @@ export const getDashboard = (token) => {
       mode: "cors",
       credentials: "same-origin",
       headers: {
-        "Content-Type": "application/x-www-form-+urlencoded",
         "Authorization": token
       },
       redirect: "follow",

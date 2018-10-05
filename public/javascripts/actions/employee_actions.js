@@ -49,7 +49,6 @@ const receiveUser = payload => ({
 });
 
 const receiveCurrentUser = (payload) => {
-  console.log(payload)
   return ({
   type: RECEIVE_CURRENT_USER,
   payload
