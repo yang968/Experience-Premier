@@ -23,16 +23,28 @@ export const login = (user) => {
   )};
 
 
+// export const logout = (token) => {
+//   let instance = axios.create({});
+//   instance.defaults.headers.common[`Authorization`] = token;
+//   return instance.post("/api/users/logout")
+// }
 export const logout = (token) => {
-  let instance = axios.create({});
-  // instance.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-  instance.defaults.headers.common[`Authorization`] = token;
-  return instance.post("/api/users/logout")
-}
+return (
+  fetch("/api/users/logout", {
+    method: "POST",
+    mode: "cors",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/x-www-form-+urlencoded",
+      "Authorization": token
+    },
+    redirect: "follow",
+    referrer: "no-referrer",
+  }).then((res) => res.json()).then((response) => { return response })
+)};
 
 export const getDashboard = (token) => {
   let instance = axios.create({});
-  // instance.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
   instance.defaults.headers.common[`Authorization`] = token;
   return instance.get("/api/users/dashboard");
 }
