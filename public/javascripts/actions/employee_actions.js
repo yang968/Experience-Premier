@@ -45,7 +45,7 @@ const logoutUser = (res) => ({
 
 const receiveUser = payload => ({
   type: RECEIVE_USER,
-  payload: payload.data
+  payload
 });
 
 const receiveCurrentUser = (payload) => {

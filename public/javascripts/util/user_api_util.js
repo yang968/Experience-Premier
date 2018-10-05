@@ -1,11 +1,22 @@
 import axios from "axios";
 import formurlencoded from 'form-urlencoded/dist/form-urlencoded';
 
-export const createUser = (user) => {
-  let instance = axios.create({});
-  instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-  return instance.post("/api/users/register", formurlencoded(user))
-}
+// create/register option not yet available on the front end.
+
+// export const createUser = (user) => {
+//   return (
+//     fetch("/api/users/register", {
+//       method: "POST",
+//       mode: "cors",
+//       credentials: "same-origin",
+//       headers: {
+//         "Content-Type": "application/x-www-form-urlencoded"
+//       },
+//       redirect: "follow",
+//       referrer: "no-referrer"
+//     }).then((res) => res.json()).then((response) => {return response})
+//   );
+// };
 
 export const login = (user) => {
   return (
@@ -54,7 +65,16 @@ export const getDashboard = (token) => {
 };
 
 export const fetchUser = (userId) => {
-  let instance = axios.create({});
-  instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; 
-  return instance.get(`/api/users/${userId}`);
+  return (
+    fetch(`/api/users/${userId}`, {
+      method: "GET",
+      mode: "cors",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      redirect: "follow",
+      referrer: "no-referrer",
+    }).then((res) => res.json()).then((response) => { return response })
+  );
 };
