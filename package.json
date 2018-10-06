@@ -24,7 +24,6 @@
     "passport-jwt": "^4.0.0",
     "promise": "^8.0.1",
     "validator": "^10.7.0",
-    "vcap_services": "^0.5.1",
     "watson-developer-cloud": "^3.9.0"
   },
   "devDependencies": {

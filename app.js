@@ -3,7 +3,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const cors = require('cors');
-const vcapServices = require('vcap_services');
 const app = express();
 
 // config 

@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_USER, RECEIVE_DASHBOARD}from '../actions/employee_actions';
+import { RECEIVE_DASHBOARD }from '../actions/employee_actions';
 
 const PerformanceReducer = (oldState = [], action) => {
   Object.freeze(oldState);
