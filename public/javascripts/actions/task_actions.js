@@ -23,12 +23,12 @@ export const deleteTask = task => dispatch => (
 
 const receiveTask = taskData => ({
   type: RECEIVE_TASK,
-  task: taskData.data
+  task: taskData
 });
 
 const removeTask = taskData => ({
   type: REMOVE_TASK,
-  task: taskData.data
+  task: taskData
 });
 
 const receiveErrors = errors => ({

@@ -1,7 +1,6 @@
-import axios from "axios";
 import formurlencoded from 'form-urlencoded/dist/form-urlencoded';
 
-// create/register option not yet available on the front end.
+// create/register option not yet available on the front end. Leaving code here in case we decide to use it.
 
 // export const createUser = (user) => {
 //   return (
