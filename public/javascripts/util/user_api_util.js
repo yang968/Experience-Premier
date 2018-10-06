@@ -1,22 +1,5 @@
 import formurlencoded from 'form-urlencoded/dist/form-urlencoded';
 
-// create/register option not yet available on the front end. Leaving code here in case we decide to use it.
-
-// export const createUser = (user) => {
-//   return (
-//     fetch("/api/users/register", {
-//       method: "POST",
-//       mode: "cors",
-//       credentials: "same-origin",
-//       headers: {
-//         "Content-Type": "application/x-www-form-urlencoded"
-//       },
-//       redirect: "follow",
-//       referrer: "no-referrer"
-//     }).then((res) => res.json()).then((response) => {return response})
-//   );
-// };
-
 export const login = (user) => {
   return (
   fetch("/api/users/login", {
@@ -77,3 +60,20 @@ export const fetchUser = (userId) => {
     }).then((res) => res.json()).then((response) => { return response })
   );
 };
+
+// create/register option not yet available on the front end. Leaving code here in case we decide to use it.
+
+// export const createUser = (user) => {
+//   return (
+//     fetch("/api/users/register", {
+//       method: "POST",
+//       mode: "cors",
+//       credentials: "same-origin",
+//       headers: {
+//         "Content-Type": "application/x-www-form-urlencoded"
+//       },
+//       redirect: "follow",
+//       referrer: "no-referrer"
+//     }).then((res) => res.json()).then((response) => {return response})
+//   );
+// };
