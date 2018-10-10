@@ -35,7 +35,7 @@ export const getDashboard = token => dispatch => (
 
 const receiveDashboard = payload => ({
   type: RECEIVE_DASHBOARD,
-  payload: payload.data
+  payload
 })
 
 const logoutUser = (res) => ({
@@ -45,13 +45,14 @@ const logoutUser = (res) => ({
 
 const receiveUser = payload => ({
   type: RECEIVE_USER,
-  payload: payload.data
+  payload
 });
 
-const receiveCurrentUser = (payload) => ({
+const receiveCurrentUser = (payload) => {
+  return ({
   type: RECEIVE_CURRENT_USER,
-  payload: payload.data
-})
+  payload
+  })}
 
 const receiveErrors = (errors) => {
   return ({
