@@ -1,7 +1,8 @@
 {
   "name": "exp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Package config for ExP application",
+  "repository": "https://github.com/yang968/Experience-Premier",
   "main": "app.js",
   "scripts": {
     "postinstall": "npm install --prefix ./public",

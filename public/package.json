@@ -1,7 +1,8 @@
 {
-  "name": "exp",
+  "name": "exp-frontend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Package config for ExP React front-end",
+  "repository": "https://github.com/yang968/Experience-Premier",
   "main": "app.js",
   "scripts": {
     "postinstall": "webpack --mode=production",
