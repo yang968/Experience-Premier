@@ -5,7 +5,7 @@ const ContactPage = () => (
     <ul className="team-list animated slideInLeft">
       <li className="team-member">
         <img
-          src="https://media.licdn.com/dms/image/C5103AQG3yhiDLVqLqw/profile-displayphoto-shrink_800_800/0?e=1541030400&v=beta&t=qgACwJSC2LdxpbxUMb2hf_SIpPd9WZz7TXz_nxahjYw"
+          src={require("../../../images/victor-pro-pic.jpg")}
           alt="Victor Yang"
           className="profile-pic"
         />
@@ -37,8 +37,8 @@ const ContactPage = () => (
       </li>
       <li className="team-member">
         <img
-          src="https://media.licdn.com/dms/image/C4E03AQF6tR4XvjrqNw/profile-displayphoto-shrink_800_800/0?e=1541030400&v=beta&t=dVG3HDMlTWjGe86gXm43XVb4wlLDmGoWJ4pntWIp1I0"
-          alt="Victor Yang"
+          src={require("../../../images/nick-pro-pic.jpg")}
+          alt="Nick Matison"
           className="profile-pic"
         />
         <section>
@@ -69,8 +69,8 @@ const ContactPage = () => (
       </li>
       <li className="team-member">
         <img
-          src="https://media.licdn.com/dms/image/C5603AQGRnxPhvez6MQ/profile-displayphoto-shrink_800_800/0?e=1541030400&v=beta&t=7c6lq6eYvLQmW2Lj8g2DcX90yi7l0VyDO68LiiuSYeM"
-          alt="Victor Yang"
+          src={require("../../../images/mark-pro-pic.jpg")}
+          alt="Mark Lee"
           className="profile-pic"
         />
         <section>
@@ -101,8 +101,8 @@ const ContactPage = () => (
       </li>
       <li className="team-member">
         <img
-          src="https://media.licdn.com/dms/image/C5603AQG5UmY5n1ZSLA/profile-displayphoto-shrink_800_800/0?e=1541030400&v=beta&t=OXNQq8F30zs7qcK0gIts51MUpuaPmCr2r3UpGl4IP-M"
-          alt="Victor Yang"
+          src={require("../../../images/jordan-pro-pic.jpg")}
+          alt="Jordan Yu"
           className="profile-pic"
         />
         <section>
