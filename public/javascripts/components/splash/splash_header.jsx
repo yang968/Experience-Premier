@@ -7,7 +7,7 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
-    this.sessionTriggers = this.sessionTriggers.bind(this)
+    this.stageLoginModal = this.stageLoginModal.bind(this)
   }
 
   demoLogin() {
@@ -22,26 +22,28 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
   };
 
   componentDidMount() {
-    this.sessionTriggers();
+    this.stageLoginModal();
   }
 
-  sessionTriggers(e) {
+  stageLoginModal(e) {
     // e.preventDefault();
     if (!this.props.currentUser) {
       let modal = document.querySelector(".modal");
       let modalOverlay = document.querySelector(".modal-overlay");
       let openButton = document.querySelector(".js-modal-open");
-      let closeButton = document.querySelector(".js-modal-close")
+      let closeButtons = document.getElementsByClassName("js-modal-close");
 
       openButton.addEventListener("click", function() {
         modal.classList.toggle("is-open", true);
         modalOverlay.classList.toggle("is-open", true);
       });
 
-      closeButton.addEventListener("click", function () {
-        modal.classList.toggle("is-open", false);
-        modalOverlay.classList.toggle("is-open", false);
-      })
+      for (let i = 0; i < closeButtons.length; i++) {
+        closeButtons[i].addEventListener("click", function () {
+          modal.classList.toggle("is-open", false);
+          modalOverlay.classList.toggle("is-open", false);
+        })
+      }
     }
   }
 
@@ -57,7 +59,7 @@ class SplashHeader extends React.Component { // ({ currentUser, logout, login })
           Contact Us
         </Link>
         &nbsp;
-        <button className="session-button js-modal-open" onClick={this.sessionTriggers}>Log In</button>
+        <button className="session-button js-modal-open" onClick={this.stageLoginModal}>Log In</button>
         &nbsp;
         <button className="session-button" onClick={this.demoLogin}>
           Experience the Glory

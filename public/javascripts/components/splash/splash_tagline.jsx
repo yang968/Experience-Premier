@@ -7,11 +7,11 @@ class TagLine extends React.Component {
   constructor (props) {
     super(props);
     this.demoLogin = this.demoLogin.bind(this);
-    this.sessionTriggers = this.sessionTriggers.bind(this);
+    this.stageLoginModal = this.stageLoginModal.bind(this);
   }
 
   componentDidMount() {
-    this.sessionTriggers();
+    this.stageLoginModal();
   }
 
   demoLogin(e) {
@@ -23,23 +23,25 @@ class TagLine extends React.Component {
     });
   }
 
-  sessionTriggers(e) {
+  stageLoginModal(e) {
     // e.preventDefault();
     if (!this.props.currentUser) {
       let modal = document.querySelector(".modal");
       let modalOverlay = document.querySelector(".modal-overlay");
       let openButton = document.querySelector(".js-modal-open2");
-      let closeButton = document.querySelector(".js-modal-close");
+      let closeButtons = document.getElementsByClassName("js-modal-close");
 
       openButton.addEventListener("click", function () {
         modal.classList.toggle("is-open", true);
         modalOverlay.classList.toggle("is-open", true);
       });
 
-      closeButton.addEventListener("click", function () {
-        modal.classList.toggle("is-open", false);
-        modalOverlay.classList.toggle("is-open", false);
-      })
+      for (let i=0; i < closeButtons.length; i++) {
+        closeButtons[i].addEventListener("click", function () {
+          modal.classList.toggle("is-open", false);
+          modalOverlay.classList.toggle("is-open", false);
+        })
+      }
     }
   }
 

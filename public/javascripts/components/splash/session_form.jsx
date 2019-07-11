@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
@@ -52,15 +51,15 @@ class SessionForm extends React.Component {
           <form onSubmit={this.handleSubmit} className="login-form-box">
             <br />
             <h1>Sign in</h1>
-            <h3>or <Link to="/contact">contact us</Link> to create an account</h3>
+            <h3>or <Link to="/contact" className="js-modal-close">contact us</Link> to create an account</h3>
             <div className="login-form">
               <label>Email
               <br />
                 <input type="text"
                   value={this.state.email}
-                  onChange={this.update('email')}
-                  className="login-input"
                   placeholder="e.g. tony.stark@starkindustries.com"
+                  className="login-input"
+                  onChange={this.update('email')}
                   />
               </label>
               <br />
@@ -79,7 +78,7 @@ class SessionForm extends React.Component {
               </ul>
               <input 
                 className={"session-button " + 
-                this.state.email && this.state.password ? "form-submit-enabled" : "form-submit-disabled"}
+                  this.state.email && this.state.password ? "form-submit-enabled" : "form-submit-disabled"}
                 type="submit"
                 value="Sign in"
                 disabled={!(this.state.email && this.state.password)}
@@ -90,7 +89,6 @@ class SessionForm extends React.Component {
       </div>
     );
   }
-
 }
 
 export default withRouter(SessionForm);
