@@ -8,7 +8,7 @@
   padding-right: 1em;
   
   div {
-    border-radius: 3px;
+    border-radius: 2px;
     
     h1 {
       font-size: 16px;
@@ -24,9 +24,9 @@
   }
 }
 
-.dashboard-index-employees-container { // edit 
+.dashboard-index-employees-container { 
   background: #fff;
-  border: 1px solid darken($light-color, 5%);
+  // border: 1px solid darken($light-color, 5%);
   grid-row: 2 / 3;
   grid-column: 1 / 2;
   min-width: 0;
@@ -59,9 +59,9 @@
   }
 }
 
-.dashboard-index-call-history-container { // edit
+.dashboard-index-call-history-container { 
   background:#fff;
-  border: 1px solid darken($light-color, 5%);
+  // border: 1px solid darken($light-color, 5%);
   grid-row: 2 / 3;
   grid-column: 2 / 3;
   max-height: 100%;

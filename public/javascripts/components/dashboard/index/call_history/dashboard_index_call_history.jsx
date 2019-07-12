@@ -19,7 +19,7 @@ class DashboardIndexCallHistory extends React.Component {
 
   render() {
     return (
-      <div className="dashboard-index-call-history-container">
+      <div className="dashboard-index-call-history-container container-shadow">
         <h1>Your Calls:</h1>
         {/* <div className="list-container"> */}
           <ul className="dashboard-index-call-history-list">

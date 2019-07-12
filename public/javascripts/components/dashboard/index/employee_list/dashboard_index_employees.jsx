@@ -12,7 +12,7 @@ class DashboardIndexEmployees extends React.Component {
     const employees = this.props.employees;
      
     return (
-      <div className="dashboard-index-employees-container">
+      <div className="dashboard-index-employees-container container-shadow">
         <h1>Your Team:</h1>
         <ul className="dashboard-index-employees-list">
           {employees.map(employee => (

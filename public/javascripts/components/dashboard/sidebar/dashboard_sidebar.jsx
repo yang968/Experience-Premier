@@ -17,7 +17,7 @@ class DashboardSidebar extends React.Component {
 
 
   render() {
-    return <div className="dashboard-sidebar-container">
+    return <div className="dashboard-sidebar-container container-shadow">
         <div className="dashboard-sidebar">
           <Link to="/dashboard" className="dashboard-home-link">
             <i className="icon-dashboard" />
