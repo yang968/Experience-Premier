@@ -1,22 +1,22 @@
 .dashboard-index-container {
   display: grid;
-  grid-template-columns: repeat(2, 50%);
-  grid-template-rows: repeat(2, 50%);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   grid-gap: 1em;
-  max-height: 100%;
-  box-sizing: border-box;
-  padding-right: 1em;
-  
-  div {
+  max-height: 100vh;
+
+  .dashboard-index-section {
+    background: #FFFFFF;
     border-radius: 2px;
-    
-    h1 {
+    padding: 20px;
+
+    .dashboard-index-section-title {
       font-size: 16px;
       font-weight: 700;
       margin-bottom: 15px;
     }
   }
-
+  
   .managers-div {
     display: flex;
     justify-content: space-around;
@@ -50,16 +50,13 @@
 }
 
 .dashboard-index-employees-container { 
-  background: #fff;
   grid-row: 2 / 3;
   grid-column: 1 / 2;
-  min-width: 0;
   max-height: 65%;
-  padding: 20px;
   
   .dashboard-index-employees-list {
-    font-size: 18px;
     max-height: 80%;
+    font-size: 18px;
 
     .employee-list-item {
       padding: 5px 10px;
@@ -68,16 +65,13 @@
 }
 
 .dashboard-index-call-history-container { 
-  background:#fff;
   grid-row: 2 / 3;
   grid-column: 2 / 3;
   max-height: 100%;
-  padding: 20px;
-  margin-bottom: 1em;
   
   .dashboard-index-call-history-list {
-    font-size: 16px;
     max-height: 100%;
+    font-size: 16px;
 
     .call-history-list-item {
       padding: 5px 5px;
@@ -85,8 +79,7 @@
       .history-item-div {
         display: flex;
         justify-content: space-between;
-        width: 80%;
-        border: none;
+        width: 90%;
       }
     }
   }

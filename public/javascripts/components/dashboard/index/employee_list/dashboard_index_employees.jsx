@@ -12,14 +12,11 @@ class DashboardIndexEmployees extends React.Component {
     const employees = this.props.employees;
      
     return (
-      <div className="dashboard-index-employees-container container-shadow">
-        <h1>Your Team:</h1>
+      <div className="dashboard-index-employees-container dashboard-index-section container-shadow">
+        <h1 className="dashboard-index-section-title">Your Team:</h1>
         <ul className="dashboard-index-employees-list scroll-list">
           {employees.map(employee => (
-            <EmployeeListItem 
-              key={employee._id} 
-              employee={employee} 
-            />
+            <EmployeeListItem key={employee._id} employee={employee} />
           ))}
         </ul>
       </div>

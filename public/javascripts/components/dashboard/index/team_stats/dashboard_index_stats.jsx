@@ -59,24 +59,24 @@ class DashboardIndexStats extends React.Component {
     } else {
     this.getData();
 		return <div className="dashboard-index-stats-container">
-          <div className="dashboard-index-stats-graph-pie container-shadow">
-            <div className='stats-graph-title-one'>
+      <div className="dashboard-index-stats-graph-pie dashboard-index-section container-shadow">
+            <div className="stats-graph-title">
               <h6>{this.returnUserPronoun()} Cumulative Performance </h6>
             </div>
             <div className="piechart">
               <Pie data={this.state.chartData1} options={{legend: {position: 'right'}}}/>
             </div>
           </div>
-          <div className="dashboard-index-stats-graph-bar container-shadow">
-            <h6>{this.returnUserPronoun()} Average Sentiment Analysis </h6>
-            <div className='top-right'>
-              <div className='stats-graph-title'>
+      <div className="dashboard-index-stats-graph-bar dashboard-index-section container-shadow">
+            <h6 className="stats-graph-title">{this.returnUserPronoun()} Average Sentiment Analysis </h6>
+            <div className="top-right">
+              {/* <div className='stats-graph-title'>
                 <h6> Bar Graph </h6>
-              </div>
+              </div> */}
               <Bar data={this.state.chartData2} options={{ legend: false }} />
-              <div className='stats-graph-title'>
+              {/* <div className='stats-graph-title'>
                 <h6> Polar Area Chart </h6>
-              </div>
+              </div> */}
               <Polar data={this.state.chartData2} options={{ legend: { position: 'right' } }}/>
             </div>
          </div>
