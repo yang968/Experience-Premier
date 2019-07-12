@@ -27,6 +27,10 @@ html, body {
   height: 100%;
   line-height: 1;
 }
+html::-webkit-scrollbar {
+  display: none;
+}
+
 ol, ul {
   list-style: none;
 }
