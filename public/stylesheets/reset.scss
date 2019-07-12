@@ -54,10 +54,6 @@ button {
   }
 }
 
-* {
-  box-sizing: border-box;
-}
-
 #root {
   height: 100%;
 }
@@ -68,4 +64,8 @@ button {
 
 .app-div {
   height: 100%;
+}
+
+.app-div * {
+  box-sizing: border-box;
 }
