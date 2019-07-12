@@ -8,7 +8,7 @@ const handleClick = (e, task, triggerManager) => {
 
 const CallHistoryItem = ({ task, triggerManager }) => {
   return (
-  <ul className="call-history-list-item" onClick={(e) => handleClick(e, task, triggerManager)}>
+  <ul className="call-history-list-item scroll-list-item" onClick={(e) => handleClick(e, task, triggerManager)}>
     <div className="history-item-div animated slideInUp">
       <li>{dateFormat(task.date)}</li>
       <li className="overall-score">

@@ -23,7 +23,7 @@ class EmployeeListItem extends React.Component {
     let employee = this.props.employee;
     return (
       <li
-        className="employee-list-item animated fadeInUp"
+        className="employee-list-item scroll-list-item animated fadeInUp"
         onClick={this.handleClick}
       >
         {employee.firstName}
