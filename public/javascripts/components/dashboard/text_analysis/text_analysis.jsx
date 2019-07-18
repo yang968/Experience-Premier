@@ -40,7 +40,7 @@ class TextAnalysis extends React.Component {
     }
     return (
       <div className="speech-record-container animated zoomIn">
-        <div className="speech-record-box">
+        <div className="speech-record-box container-shadow">
           <h1>Submit Text for Analysis</h1> 
             <textarea
               className="live-text" 

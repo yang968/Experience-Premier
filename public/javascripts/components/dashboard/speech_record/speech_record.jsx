@@ -82,7 +82,7 @@ class SpeechRecord extends React.Component {
     }
     return (
       <div className="speech-record-container animated zoomIn">
-        <div className="speech-record-box">
+        <div className="speech-record-box container-shadow">
           <h1>Record Conversation</h1>
           <div className="live-text" />
           <ul>
