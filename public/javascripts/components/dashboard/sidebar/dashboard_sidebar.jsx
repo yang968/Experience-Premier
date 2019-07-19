@@ -27,17 +27,17 @@ class DashboardSidebar extends React.Component {
             Hello {this.props.currentUser.firstName}
           </nav>
           <nav className="dashboard-sidebar-nav-container">
-            <ul className="dashboard-sidebar-nav">
-              <li>
+            <ul className="dashboard-sidebar-nav-list">
+              <li className="dashboard-sidebar-nav-item">
                 <Link to="/dashboard">Dashboard</Link>
               </li>
-              <li>
+              <li className="dashboard-sidebar-nav-item">
                 <Link to="/dashboard/call">Record call</Link>
               </li>
-              <li>
+              <li className="dashboard-sidebar-nav-item">
                 <Link to="/dashboard/text-analysis">Text Analysis</Link>
               </li>
-              <li>
+              <li className="dashboard-sidebar-nav-item">
                 <button onClick={this.handleLogout}>Log out</button>
               </li>
             </ul>
