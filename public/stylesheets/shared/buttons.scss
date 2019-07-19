@@ -1,0 +1,19 @@
+.btn {
+  padding: 0.5em 2em 0.5em;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 3px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn-red {
+  background: lighten($alert-color, 5%);
+  color: set-text-color($alert-color);
+
+  &:hover {
+    background: $alert-color; 
+  }
+}
