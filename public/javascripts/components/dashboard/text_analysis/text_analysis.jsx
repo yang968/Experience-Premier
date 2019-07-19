@@ -32,11 +32,11 @@ class TextAnalysis extends React.Component {
   render() {
     let errors = null;
     if (this.props.errors && this.props.errors[0] === TASK_SUBMITTED) {
-      errors = <li className="task-success animated fadeInDown">
+      errors = <li className="task-response task-success animated fadeInDown">
           {this.props.errors[0]}
         </li>;
     } else if (this.props.errors) {
-      errors = this.props.errors.map((error, idx) => (<li className="task-fail animated fadeInDown" key={idx}>{error}</li>));
+      errors = this.props.errors.map((error, idx) => (<li className="task-response task-fail animated fadeInDown" key={idx}>{error}</li>));
     }
     return (
       <div className="speech-record-container animated zoomIn">

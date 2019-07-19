@@ -40,7 +40,7 @@
     }
   }
 
-  .task-fail {
+  .task-response {
     font-size: 16px;
     color: #fff;
     border: 1px solid none;
@@ -49,18 +49,13 @@
     padding: 5px;
     text-align: center;
     opacity: 0.75;
+  }
+
+  .task-fail {
     background: rgba(235, 90, 70, 0.75)
   }
 
   .task-success {
-    font-size: 16px;
-    color: #fff;
-    border: 1px solid none;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 5px;
-    text-align: center;
-    opacity: 0.75;
     background: rgba(103, 205, 134, 0.75)
   }
 
@@ -71,6 +66,7 @@
     right: 30px;
     font-size: 20px;
   }
+  
   .text-description {
     margin-top: 20px;
     overflow-wrap: break-word;
