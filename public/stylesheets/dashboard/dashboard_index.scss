@@ -3,7 +3,7 @@
   grid-template-columns: 100%;
   grid-template-rows: repeat(2, 1fr);
   grid-gap: 1em;
-  max-height: 100vh;
+  height: 100vh;
   padding: 1em;
 
   .dashboard-index-section {
@@ -30,16 +30,15 @@
 }
 
 .list-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  max-height: 100%;
+  position: relative
 }
 
 .scroll-list-wrapper {
-  flex: 1;
-  width: 100%;
+  position: absolute;
+  top: 3.5em;
+  bottom: 1.5em;
+  left: 1.5em;
+  right: 1.5em;
   overflow: hidden;
   overflow-y: auto;
 
@@ -71,6 +70,7 @@
   grid-row: 1 / 2;
   grid-column: 1 / 2;
   padding: 0;
+  overflow: hidden;
   
   .dashboard-index-employees-list {
     font-size: 18px;
@@ -85,6 +85,7 @@
   grid-row: 1 / 2;
   grid-column: 2 / 3;
   padding: 0;
+  overflow: hidden;
   
   .dashboard-index-call-history-list {
     font-size: 16px;
