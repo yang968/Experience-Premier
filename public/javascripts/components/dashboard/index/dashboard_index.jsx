@@ -10,34 +10,33 @@ class DashboardIndex extends React.Component {
     super(props);
 
     this.renderEmployees = this.renderEmployees.bind(this);
-    this.renderCallHistory = this.renderCallHistory.bind(this);
+    this.renderSubordinatesOrCallHistory = this.renderSubordinatesOrCallHistory.bind(this);
   }
 
   componentDidMount() {
     this.props.getDashboard(this.props.token);
   }
 
-  renderCallHistory (employees) {
-    if (!this.props.managerTask && employees.length > 0) return (
-      <DashboardIndexCallHistoryContainer />
-    );
-  }
-
   renderEmployees(employees) {
     if (!this.props.managerTask && employees.length > 0) return <DashboardIndexEmployeesContainer />;
   }
-
-  renderSubordinateContainer(employees) {
-    if (this.props.managerTask || employees.length === 0) return <SubordinateIndexContainer />;
+  
+  renderSubordinatesOrCallHistory(employees) {
+    if (this.props.managerTask || employees.length === 0) {
+      return <SubordinateIndexContainer />
+    } else if (!this.props.managerTask && employees.length > 0) {
+      return <DashboardIndexCallHistoryContainer />
+    }
   }
-
+  
   render() {
     return (
       <div className="dashboard-index-container">
         <DashboardIndexStatsContainer />
-        { this.renderEmployees(this.props.employees) }
-        { this.renderCallHistory(this.props.employees) }
-        { this.renderSubordinateContainer(this.props.employees) }
+        <div className="dashboard-list-sections">
+          { this.renderEmployees(this.props.employees) }
+          { this.renderSubordinatesOrCallHistory(this.props.employees) }
+        </div>
       </div>
     );
   }
