@@ -60,7 +60,7 @@ class SubordinateIndex extends React.Component {
 
   render() {
     return (
-    <div id="subordinate-index">
+      <div id="subordinate-index">
         <div className="performance-data"> 
           <div className="back-button-div">{this.backToEmployees()}</div>
           {this.renderGraph()}

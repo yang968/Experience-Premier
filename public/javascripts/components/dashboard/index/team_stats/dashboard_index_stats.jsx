@@ -53,34 +53,34 @@ class DashboardIndexStats extends React.Component {
   }
 	render() {
     if (this.props.stats.length === 0) {
-      return <div className="dashboard-index-stats-container">
-        <h1>You have no data to show :(</h1>
-      </div>;
+      return (
+        <div className="dashboard-index-stats-container">
+          <h1>You have no data to show :(</h1>
+        </div>
+      );
     } else {
-    this.getData();
-		return <div className="dashboard-index-stats-container">
-      <div className="dashboard-index-stats-graph-pie dashboard-index-section container-shadow">
+      this.getData();
+      return (
+        <div className="dashboard-index-stats-container">
+          <div className="dashboard-index-stats-graph-container dashboard-index-section container-shadow">
             <div className="stats-graph-title">
               <h6>{this.returnUserPronoun()} Cumulative Performance </h6>
             </div>
-            <div className="piechart">
+            <div className="cumulative-pie-chart">
               <Pie data={this.state.chartData1} options={{legend: {position: 'right'}}}/>
             </div>
           </div>
-      <div className="dashboard-index-stats-graph-bar dashboard-index-section container-shadow">
-            <h6 className="stats-graph-title">{this.returnUserPronoun()} Average Sentiment Analysis </h6>
-            <div className="top-right">
-              {/* <div className='stats-graph-title'>
-                <h6> Bar Graph </h6>
-              </div> */}
+          <div className="dashboard-index-stats-graph-container dashboard-index-section container-shadow">
+            <h6 className="stats-graph-title">
+              {this.returnUserPronoun()} Average Sentiment Analysis
+            </h6>
+            <div className="sentiment-analysis-graphs">
               <Bar data={this.state.chartData2} options={{ legend: false }} />
-              {/* <div className='stats-graph-title'>
-                <h6> Polar Area Chart </h6>
-              </div> */}
               <Polar data={this.state.chartData2} options={{ legend: { position: 'right' } }}/>
             </div>
-         </div>
-      </div>;
+          </div>
+        </div>
+      );
     }
 	}
 }

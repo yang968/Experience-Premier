@@ -16,12 +16,6 @@
       margin-bottom: 15px;
     }
   }
-  
-  .managers-div {
-    display: flex;
-    justify-content: space-around;
-    border: none;
-  }
 }
 
 .scroll-list {
@@ -52,7 +46,7 @@
 .dashboard-index-employees-container { 
   grid-row: 2 / 3;
   grid-column: 1 / 2;
-  max-height: 65%;
+  // max-height: 100%;
   
   .dashboard-index-employees-list {
     max-height: 80%;
@@ -67,7 +61,7 @@
 .dashboard-index-call-history-container { 
   grid-row: 2 / 3;
   grid-column: 2 / 3;
-  max-height: 100%;
+  // max-height: 100%;
   
   .dashboard-index-call-history-list {
     max-height: 100%;
