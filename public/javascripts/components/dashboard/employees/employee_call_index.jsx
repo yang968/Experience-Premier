@@ -45,7 +45,7 @@ class SubordinateIndex extends React.Component {
 
     return (
       <div className="employee-call-index-container">
-        <div className="performance-data dashboard-section container-shadow">
+        <div className="performance-data-container dashboard-section container-shadow">
           {this.renderGraph()}
         </div>
         <div className="call-history-container dashboard-section list-container container-shadow">

@@ -98,8 +98,10 @@ class CallPerformancePage extends React.Component {
 			this.dataSetup();
 			this.keywordSentimentSetup();
 			this.relevanceSetup();
-			return <div className='performance-page animated fadeIn'>
-					<div className='performance-page-label'>
+
+			return (
+				<div className='performance-data animated fadeIn'>
+					<div className='performance-data-label'>
 						<div className="performance-ls">
 							<pre> Label: {this.colorLabel()}</pre>
 						</div>
@@ -107,8 +109,8 @@ class CallPerformancePage extends React.Component {
 							<pre>Score: {this.colorScore()} </pre>
 						</div>
 					</div>
-					<div className="performance-page-charts">
-						<div className='performance-page-chart'>
+					<div className="performance-data-charts">
+						<div className='performance-data-chart'>
 							<h6>Overall Sentiment Score</h6>
 							<HorizontalBar data={{ 
 									labels: ['Sentiment Analysis'], 
@@ -116,7 +118,7 @@ class CallPerformancePage extends React.Component {
 								options={this.state.horizontalStacked.options} 
 							/>
 						</div>
-						<div className='performance-page-chart'>
+						<div className='performance-data-chart'>
 								<h6>Keywords and Relevance</h6>
 							<HorizontalBar data={{
 								datasets: this.state.relevance.chartData.datasets
@@ -124,7 +126,7 @@ class CallPerformancePage extends React.Component {
 								options={this.state.keywords.options}
 							/>
 						</div>
-						<div className='performance-page-chart-kw'>
+						<div className='performance-data-chart-kw'>
 							<h6>Sentiment Analysis of Each Keyword</h6>
 							<HorizontalBar data={{
 								labels: this.state.keywords.labels,
@@ -134,7 +136,8 @@ class CallPerformancePage extends React.Component {
 							/>
 						</div>
 				</div>
-			</div>;
+			</div>
+		);
 	}
 }
 

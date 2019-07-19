@@ -79,13 +79,13 @@
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 1em;
 
-  .performance-data,
+  .performance-data-container,
   .call-history-container {
     padding: 20px;
     border-radius: 2px;
   }
   
-  .performance-data {
+  .performance-data-container {
     grid-column: 1 / 4;
   }
   

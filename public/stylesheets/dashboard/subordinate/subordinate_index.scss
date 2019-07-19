@@ -31,72 +31,70 @@
 
 }
 
-.performance-data {
-    background-color: white;
-    padding: 20px;
+.performance-data-container {
 
-    .performance-page {
+  .performance-data {
+    border: none;
+    padding: 0;
+
+    .performance-data-label {
       border: none;
       padding: 0;
+      font-size: 1em;
+      text-align: justify;
 
-      .performance-page-label {
+      .performance-ls {
         border: none;
         padding: 0;
-        font-size: 1em;
-        text-align: justify;
+        width: 50%;
+        display: inline-block;
 
-        .performance-ls {
-          border: none;
-          padding: 0;
-          width: 50%;
-          display: inline-block;
-
-          .negative {
-            color: red;
-          }
-
-          .positive {
-            color: rgb(0, 212, 0);
-          }
+        .negative {
+          color: red;
         }
 
-        .performance-ls2 {
-          border: none;
-          padding: 0;
-          width: 50%;
-          display: inline-block;
-          text-align: right;
-
-          .negative {
-            color: red;
-          }
-
-          .positive {
-            color: rgb(0, 212, 0);
-          }
+        .positive {
+          color: rgb(0, 212, 0);
         }
       }
 
-      .performance-page-charts {
-        padding: 0;
+      .performance-ls2 {
         border: none;
-        overflow: auto;
-        margin-top: 10px;
+        padding: 0;
+        width: 50%;
+        display: inline-block;
+        text-align: right;
 
-        .performance-page-chart {
-          border: none;
-          padding: 0;
-          margin-top: 5px;
-          margin-bottom: 20px;
+        .negative {
+          color: red;
         }
 
-        .performance-page-chart-kw {
-          border: none;
-          padding: 0;
-          margin-bottom: 20px;
-          overflow: visible;
+        .positive {
+          color: rgb(0, 212, 0);
         }
       }
     }
+
+    .performance-data-charts {
+      padding: 0;
+      border: none;
+      overflow: auto;
+      margin-top: 10px;
+
+      .performance-data-chart {
+        border: none;
+        padding: 0;
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+
+      .performance-data-chart-kw {
+        border: none;
+        padding: 0;
+        margin-bottom: 20px;
+        overflow: visible;
+      }
+    }
   }
+}
   
