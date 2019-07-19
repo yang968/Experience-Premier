@@ -6,16 +6,17 @@
   height: 100vh;
   padding: 1em;
 
-  .dashboard-index-section {
-    background: #FFFFFF;
-    border-radius: 2px;
-    padding: 20px;
+}
 
-    .dashboard-index-section-title {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 15px;
-    }
+.dashboard-section {
+  background: #FFFFFF;
+  border-radius: 2px;
+  padding: 20px;
+
+  .dashboard-section-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 15px;
   }
 }
 
@@ -35,7 +36,7 @@
 
 .scroll-list-wrapper {
   position: absolute;
-  top: 3.5em;
+  top: 3em;
   bottom: 1.5em;
   left: 1.5em;
   right: 1.5em;
@@ -69,7 +70,6 @@
 .dashboard-index-employees-container { 
   grid-row: 1 / 2;
   grid-column: 1 / 2;
-  padding: 0;
   overflow: hidden;
   
   .dashboard-index-employees-list {
@@ -84,20 +84,19 @@
 .dashboard-index-call-history-container { 
   grid-row: 1 / 2;
   grid-column: 2 / 3;
-  padding: 0;
-  overflow: hidden;
-  
-  .dashboard-index-call-history-list {
-    font-size: 16px;
+  overflow: hidden;  
+}
 
-    .call-history-list-item {
-      padding: 5px 5px;
+.call-history-container {
+  font-size: 16px;
 
-      .history-item-div {
-        display: flex;
-        justify-content: space-between;
-        width: 90%;
-      }
+  .call-history-list-item {
+    padding: 5px 5px;
+
+    .history-item-div {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
     }
   }
 }

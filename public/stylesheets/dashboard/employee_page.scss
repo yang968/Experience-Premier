@@ -1,9 +1,9 @@
 .employee-page-container {
   height: 100%;
-  box-sizing: border-box;
   display: grid;
-  grid-template-rows: 220px, auto;
+  grid-template-rows: 220px auto;
   grid-gap: 1em;
+  padding: 1em;
 
   h1 {
     font-size: 17px;
@@ -20,8 +20,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border: 1px solid darken($light-color, 5%);
-  border-radius: 3px;
+  border-radius: 2px;
   padding: 15px;
 
   .employee-profile-pic {
@@ -51,7 +50,7 @@
   }
 
   .completed-call-count {
-    height: 60%;
+    height: 90%;
     background: $primary-color-dark;
     color: set-text-color($primary-color-dark);
     display: flex;
@@ -80,20 +79,17 @@
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 1em;
 
-  & > div {
-    border: 1px solid darken($light-color, 5%);
-    border-radius: 3px;
+  .performance-data,
+  .call-history-container {
+    padding: 20px;
+    border-radius: 2px;
   }
   
   .performance-data {
-    padding: 20px;
-    box-sizing: border-box;
     grid-column: 1 / 4;
   }
   
   .call-history-container {
-    padding: 20px;
-    box-sizing: border-box;
     grid-column: 4 / 6;
 
     h1 {

@@ -9,7 +9,7 @@ const EmployeeInfo = (props) => {
   date = dateFormat(date, "longDate");
 
   return (
-    <div className="employee-info-container">
+    <div className="employee-info-container container-shadow">
       <img
         src={imgUrl}
         alt="employee-profile-pic"

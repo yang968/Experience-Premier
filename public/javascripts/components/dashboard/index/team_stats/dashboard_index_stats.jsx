@@ -62,7 +62,7 @@ class DashboardIndexStats extends React.Component {
       this.getData();
       return (
         <div className="dashboard-index-stats-container">
-          <div className="dashboard-index-stats-graph-container dashboard-index-section container-shadow">
+          <div className="dashboard-index-stats-graph-container dashboard-section container-shadow">
             <div className="stats-graph-title">
               <h6>{this.returnUserPronoun()} Cumulative Performance </h6>
             </div>
@@ -70,7 +70,7 @@ class DashboardIndexStats extends React.Component {
               <Pie data={this.state.chartData1} options={{legend: {position: 'right'}}}/>
             </div>
           </div>
-          <div className="dashboard-index-stats-graph-container dashboard-index-section container-shadow">
+          <div className="dashboard-index-stats-graph-container dashboard-section container-shadow">
             <h6 className="stats-graph-title">
               {this.returnUserPronoun()} Average Sentiment Analysis
             </h6>

@@ -28,7 +28,7 @@ class SubordinateIndex extends React.Component {
     let tasks = this.props.tasks;
     if (tasks.length > 0) {
       return tasks.map((task, i) =>
-        <ul key={i} className="call-history-item-list" onClick={(e) => this.handleClick(e, task)}>
+        <ul key={i} className="call-history-item-list scroll-list-item call-history-list-item" onClick={(e) => this.handleClick(e, task)}>
           <div className="history-item-div">
             <li>{dateFormat(task.date)}</li>
             <li className="overall-score">Sentiment:  {`${(task.results.sentiment.score * 100).toFixed(2)}%`}</li>
@@ -45,14 +45,16 @@ class SubordinateIndex extends React.Component {
 
     return (
       <div className="employee-call-index-container">
-        <div className="performance-data">
+        <div className="performance-data dashboard-section container-shadow">
           {this.renderGraph()}
         </div>
-        <div className="call-history-container">
+        <div className="call-history-container dashboard-section list-container container-shadow">
           <h1 className="stats-graph-title">
             {employee.firstName}'s Calls
           </h1>
-          <ul className="call-history-list">{this.displayTasks()}</ul>
+          <div className="scroll-list-wrapper">
+            <ul className="call-history-list scroll-list">{this.displayTasks()}</ul>
+          </div>
         </div>
       </div>
     );

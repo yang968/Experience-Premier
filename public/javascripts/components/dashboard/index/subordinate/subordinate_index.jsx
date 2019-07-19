@@ -65,9 +65,9 @@ class SubordinateIndex extends React.Component {
           <div className="back-button-div">{this.backToEmployees()}</div>
           {this.renderGraph()}
         </div>
-        <div className="call-history-container">
-          <h1 className="stats-graph-title">Your Calls:</h1>
-          <ul className="call-history-list">
+        <div className="call-history-container dashboard-section">
+          <h1 className="dashboard-section-title">Your Calls:</h1>
+          <ul className="call-history-container">
             {this.displayTasks()}
           </ul>
         </div>
