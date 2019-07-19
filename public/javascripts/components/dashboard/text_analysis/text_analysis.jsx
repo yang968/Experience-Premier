@@ -54,7 +54,7 @@ class TextAnalysis extends React.Component {
           <ul>
             {errors}
           </ul>
-          <button className="record-button animated slideInUp" onClick={this.handleSubmit}>
+          <button className="record-button btn btn-red animated slideInUp" onClick={this.handleSubmit}>
             Submit Text
           </button>
         </div>
